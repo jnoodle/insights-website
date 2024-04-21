@@ -19,14 +19,11 @@ const config: Config = {
     themes: [
       {
         insights: {
-          primary: "#FCFC03",
-          secondary: "#A0C0FF",
-          accent: "#20211E",
-          neutral: "#8A8A8A",
-          "base-100": "#090808",
-          "base-200": "#2C3921",
-          "base-300": "#414933",
-          "base-content": "#8A8A8A",
+          primary: "#1D9BF0",
+          secondary: "#EFF3F4",
+          accent: "#0F1419",
+          neutral: "#536471",
+          "base-100": "#eff3f4",
         },
       },
     ],

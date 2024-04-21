@@ -9,14 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-query-devtools": "^5.29.2",
+    "@web3modal/wagmi": "^4.1.7",
+    "axios": "^1.6.8",
+    "dayjs": "^1.11.10",
+    "html-react-parser": "^5.1.10",
+    "iron-session": "^8.0.1",
     "next": "14.1.4",
+    "numeral": "^2.0.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-infinite-scroll-component": "^6.1.0",
+    "siwe": "^2.3.1",
+    "twitter-text": "^3.1.0",
+    "viem": "^2.9.17",
+    "wagmi": "^2.5.19"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/numeral": "^2.0.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/twitter-text": "^3.1.10",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.9.0",
     "eslint": "^8",

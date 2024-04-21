@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 15, 20, 25;
+  --foreground-rgb: 83, 100, 113;
   --background-rgb: 255, 255, 255;
 }
 
@@ -24,4 +24,62 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+a {
+  color: #1d9bf0;
+}
+.link {
+  cursor: pointer;
+  text-decoration-line: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+}
+.tabtitle {
+  border-bottom-width: 1px;
+  border-color: #eff3f4;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+}
+.tabtitle.tabs-bordered > .tab {
+  border-color: transparent;
+  border-bottom-width: 4px;
+  font-size: 18px;
+  color: #536471;
+  padding: 0 3rem 2.5rem;
+}
+.tabtitle.tabs-bordered > .tab:hover {
+  color: #0f1419;
+}
+@media (max-width: 768px) {
+  .tabtitle.tabs-bordered > .tab {
+    font-size: 16px;
+    padding: 0 1rem 2rem;
+  }
+}
+.tabtitle.tabs-bordered > .tab.tab-active:not(.tab-disabled):not([disabled]) {
+  color: #0f1419;
+  border-color: #1d9bf0;
+  font-weight: bold;
+}
+
+.tweet {
+  width: calc(100% - 1.25rem);
+}
+@media (max-width: 768px) {
+  .tweet {
+    width: 100%;
+  }
+}
+
+.drawer-side {
+  z-index: 100;
 }
