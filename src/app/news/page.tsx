@@ -53,7 +53,7 @@ export default function Home() {
       loader={<Loading />}
       endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
     >
-      <div className="flex flex-col items-center justify-between w-full pt-10">
+      <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="news" />
         {articles.map((t) => (
           <Article key={t.id} {...t} />

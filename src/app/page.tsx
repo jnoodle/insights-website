@@ -6,7 +6,7 @@ import { Tweet, TweetPropType } from "@/components/Tweet";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { Loading } from "@/components/Loading";
-import { pageSize } from "@/app/utils";
+import { isLogin, pageSize } from "@/app/utils";
 import { ArticlePropType } from "@/components/Article";
 
 export default function Home() {
@@ -17,6 +17,7 @@ export default function Home() {
   const effectRef = useRef(false);
 
   useEffect((): any => {
+    isLogin();
     // fix react 18 strict mode: https://rishabhsharma.bio/next-js-issue-useeffect-hook-running-twice-in-client-9fb6712f6362
     if (!effectRef.current) {
       fetchMoreData();
@@ -54,10 +55,10 @@ export default function Home() {
       loader={<Loading />}
       endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
     >
-      <div className="flex flex-col items-center justify-between w-full pt-10">
+      <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="posts" />
         {tweets.map((t) => (
-          <Tweet {...t} />
+          <Tweet key={t.id} {...t} />
         ))}
       </div>
     </InfiniteScroll>

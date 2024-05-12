@@ -4,10 +4,14 @@ import Link from "next/link";
 
 export type TabTitlePropType = {
   active: "posts" | "predictions" | "news";
+  isFixed?: boolean;
 };
-export function TabTitle(props: TabTitlePropType) {
+export function TabTitle({ isFixed = true, ...props }: TabTitlePropType) {
   return (
-    <div role="tablist" className="tabtitle tabs tabs-bordered fixed top-16 z-50 w-full max-w-5xl px-2 pt-2">
+    <div
+      role="tablist"
+      className={`tabtitle tabs tabs-bordered ${!isFixed ? "" : "fixed top-16 z-50"} w-full max-w-5xl px-2 pt-2`}
+    >
       <Link
         href={props.active === "posts" ? "" : "/"}
         role="tab"

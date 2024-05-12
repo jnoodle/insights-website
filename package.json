@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@multiavatar/multiavatar": "^1.0.7",
     "@tanstack/react-query": "^5.29.2",
     "@tanstack/react-query-devtools": "^5.29.2",
     "@web3modal/wagmi": "^4.1.7",
@@ -21,7 +22,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-toastify": "^10.0.5",
     "siwe": "^2.3.1",
+    "tweet-json-to-html": "^1.1.1",
+    "tweet-to-html": "^2.0.0",
     "twitter-text": "^3.1.0",
     "viem": "^2.9.17",
     "wagmi": "^2.5.19"

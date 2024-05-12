@@ -6,10 +6,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { Loading } from "@/components/Loading";
 import { pageSize } from "@/app/utils";
-import { Predicion, PredicionPropType } from "@/components/Prediction";
+import { Prediction, PredictionPropType } from "@/components/Prediction";
 
 export default function Home() {
-  const [predicions, setPredicions]: [PredicionPropType[], any] = useState([]);
+  const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [fromIndex, setFromIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,8 +18,8 @@ export default function Home() {
   useEffect((): any => {
     // fix react 18 strict mode: https://rishabhsharma.bio/next-js-issue-useeffect-hook-running-twice-in-client-9fb6712f6362
     if (!effectRef.current) {
-      // fetchMoreData();
-      setPredicions([{}, {}, {}, {}]);
+      fetchMoreData();
+      // setPredictions([{}, {}, {}, {}]);
     }
     return () => (effectRef.current = true);
   }, []);
@@ -32,7 +32,7 @@ export default function Home() {
       .get(`/v0/public/predictions?from=${fromIndex}&size=${pageSize}`)
       .then((res) => {
         if (res.data && res.data.code === 0 && res.data.data.length > 0) {
-          setPredicions((prevItems: PredicionPropType[]) => [...prevItems, ...res.data.data]);
+          setPredictions((prevItems: PredictionPropType[]) => [...prevItems, ...res.data.data]);
           setFromIndex((prevIndex) => prevIndex + res.data.data.length);
           // TODO has more
           setHasMore(res.data.data.length >= pageSize);
@@ -48,16 +48,16 @@ export default function Home() {
 
   return (
     <InfiniteScroll
-      dataLength={predicions.length}
+      dataLength={predictions.length}
       next={fetchMoreData}
       hasMore={hasMore}
       loader={<Loading />}
       endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
     >
-      <div className="flex flex-col items-center justify-between w-full pt-10">
+      <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="predictions" />
-        {predicions.map((t) => (
-          <Predicion key={t.id} {...t} />
+        {predictions.map((t) => (
+          <Prediction key={t.id} {...t} />
         ))}
       </div>
     </InfiniteScroll>

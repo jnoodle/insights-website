@@ -27,7 +27,7 @@ const metadata: any = {
   icons: ["https://insights.best/favicon.png"],
 };
 
-const chains: [Chain, ...Chain[]] = [mainnet, sepolia];
+const chains: [Chain, ...Chain[]] = [mainnet];
 const wagmiConfig = defaultWagmiConfig({
   chains, // required
   projectId, // required
@@ -61,7 +61,7 @@ export function Web3Modal({ children, initialState }: { children: ReactNode; ini
   return (
     <WagmiProvider config={wagmiConfig} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
         {children}
       </QueryClientProvider>
     </WagmiProvider>

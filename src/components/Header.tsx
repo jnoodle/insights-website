@@ -9,12 +9,12 @@ export function Header() {
       <div className="flex-1">
         <div className="btn btn-ghost p-0 hidden md:flex">
           <Link href="/" className="relative w-32 h-10">
-            <Image fill src="/insights-logo.svg" alt="Ladder" priority />
+            <Image fill src="/insights-logo.svg" alt="Insights" priority />
           </Link>
         </div>
         <div className="btn btn-ghost px-1 py-0 md:hidden">
           <Link href="/" className="relative w-6 h-6">
-            <Image fill src="/insights-logo-icon.svg" alt="Ladder" priority />
+            <Image fill src="/insights-logo-icon.svg" alt="Insights" priority />
           </Link>
         </div>
       </div>
@@ -36,7 +36,9 @@ export function Header() {
             </Link>
           </li>
         </ul>
-        <div className="px-3 md:px-4">{/*<ConnectButton />*/}</div>
+        <div className="px-3 md:px-4">
+          <ConnectButton />
+        </div>
       </div>
     </div>
   );

@@ -64,7 +64,7 @@ export function Article(props: ArticlePropType) {
             <>
               {parse(props.subject || "")}
               <span className="text-primary ml-2 flex cursor-pointer" onClick={() => setViewDetails(true)}>
-                more <Image src="/downArrow.svg" alt="" width={20} height={14} priority className="inline" />
+                more <img src="/downArrow.svg" alt="" className="inline w-5" />
               </span>
             </>
           )}

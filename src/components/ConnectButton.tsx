@@ -2,11 +2,15 @@
 
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount, useSignTypedData, useSwitchChain, useAccountEffect, useDisconnect, useSignMessage } from "wagmi";
-import { ellipseAddress } from "@/app/utils";
+import { ellipseAddress, toastConfig } from "@/app/utils";
 import { SiweMessage } from "siwe";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { Login } from "@/api/user";
 
 export default function ConnectButton() {
+  const router = useRouter();
   const { open } = useWeb3Modal();
   const { disconnect } = useDisconnect();
   const { address, chainId, isConnecting, isConnected } = useAccount();
@@ -15,11 +19,15 @@ export default function ConnectButton() {
   const [isSigning, setIsSigning] = useState(false);
   const handleConnect = () => {
     if (!address) {
+      // connect wallet
       open();
     } else if (chainId !== +process.env.NEXT_PUBLIC_CorrectChainId!) {
+      // switch chain
       switchChain({ chainId: +process.env.NEXT_PUBLIC_CorrectChainId! });
     } else {
-      open({ view: "Account" });
+      // goto profile page
+      router.push("/profile");
+      // open({ view: "Account" });
     }
   };
 
@@ -36,13 +44,18 @@ export default function ConnectButton() {
         const res = await fetch("/api/me");
         const json = await res.json();
         console.log(json);
-        if (address === json.address) return;
+        if (address === json.address) {
+          console.log("Sign-In-Success with session", json);
+          await Login(address);
+          return;
+        }
 
         setIsSigning(true);
         const nonceRes = await fetch("/api/nonce");
         const nonce = await nonceRes.text();
         if (!address || !chainId) {
           console.error("Wallet connected error!");
+          toast.error("Wallet connected error!", toastConfig);
           return;
         }
 
@@ -50,7 +63,7 @@ export default function ConnectButton() {
         const message = new SiweMessage({
           domain: window.location.host,
           address,
-          statement: "Sign in to Ladder (https://ladder.best).",
+          statement: "Sign in to Insights.",
           uri: window.location.origin,
           version: "1",
           chainId,
@@ -76,6 +89,11 @@ export default function ConnectButton() {
         }
 
         console.log("Sign-In-Success", message, signature);
+        localStorage.setItem("insights_signin_message", JSON.stringify(message));
+        localStorage.setItem("insights_signin_signature", signature);
+
+        // Login
+        await Login(address);
         setIsSigning(false);
       } catch (error) {
         console.error(error);
