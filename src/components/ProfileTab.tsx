@@ -104,8 +104,8 @@ export function ProfileTab(props: ProfileTabPropType) {
             endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
           >
             <div className="flex flex-col items-center justify-between w-full pt-2">
-              {tweets.map((t) => (
-                <Tweet {...t} />
+              {tweets.map((t, i) => (
+                <Tweet {...t} key={i} />
               ))}
             </div>
           </InfiniteScroll>
@@ -118,8 +118,8 @@ export function ProfileTab(props: ProfileTabPropType) {
             endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
           >
             <div className="flex flex-col items-center justify-between w-full pt-2">
-              {predictions.map((t) => (
-                <Prediction {...t} />
+              {predictions.map((t, i) => (
+                <Prediction {...t} key={i} />
               ))}
             </div>
           </InfiniteScroll>
