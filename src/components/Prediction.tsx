@@ -27,6 +27,7 @@ export type PredictionPropType = {
   userId?: string;
   coinId?: string;
   resultAchievementTime?: string;
+  resultPrice?: string;
   trend?: string;
   explanation?: string;
   price?: string;
@@ -47,7 +48,7 @@ export function Prediction(props: PredictionPropType) {
     ) : props.success === false ? (
       <Image src="/failure.svg" width={42} height={42} priority alt="failure" />
     ) : (
-      <Image src="/failure.svg" width={42} height={42} priority alt="failure" className="invisible" />
+      <Image src="/unknown.svg" width={42} height={42} priority alt="unknown" />
     );
 
   return (
@@ -103,21 +104,22 @@ export function Prediction(props: PredictionPropType) {
           </Link>
         </div>
         <div className="flex flex-col items-start gap-2 grow">
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col md:flex-row md:items-center">
             <span>
               Price at prediction creation: <span className="font-bold text-accent">{formatPrice(props.price)}</span>
             </span>
             <span className="ml-1 text-xs md:text-sm">({props.createTime && utcLocal(props.createTime)})</span>
           </div>
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col md:flex-row md:items-center">
             <span>
-              Price at prediction fulfillment: <span className="font-bold text-accent">{formatPrice(null)}</span>
+              Price at prediction fulfillment:{" "}
+              <span className="font-bold text-accent">{formatPrice(props.resultPrice)}</span>
             </span>
             <span className="ml-1 text-xs md:text-sm">
               ({props.resultAchievementTime && utcLocal(props.resultAchievementTime)})
             </span>
           </div>
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col md:flex-row md:items-center">
             <span>
               Price (1d): <span className="font-bold text-accent">{formatPrice(props.priceDayOne)}</span>
             </span>

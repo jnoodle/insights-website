@@ -46,7 +46,12 @@ export default function Home() {
   }, []);
 
   const openAddPrediction = () => {
-    setIsPredictionModalOpen(true);
+    // TODO
+    if (currentUser && currentUser.tweet && currentUser.tweet.name) {
+      setIsPredictionModalOpen(true);
+    } else {
+      toast.error("This feature only supports verified users.", toastConfig);
+    }
   };
   const closeAddPrediction = () => {
     setIsPredictionModalOpen(false);
