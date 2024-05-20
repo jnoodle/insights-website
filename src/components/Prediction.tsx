@@ -11,6 +11,14 @@ import { InsightsUser } from "@/components/Tweet";
 import { Accuracy } from "@/components/Accuracy";
 import numeral from "numeral";
 
+export type CoinInfo = {
+  id?: number;
+  last_updated?: string;
+  name?: string;
+  slug?: string;
+  symbol?: string;
+  quote?: any;
+};
 export type PredictionPropType = {
   id?: string;
   createTime?: string;
@@ -27,6 +35,7 @@ export type PredictionPropType = {
   priceDaySeven?: string;
   success?: boolean;
   over?: boolean;
+  coin: CoinInfo;
 };
 export function Prediction(props: PredictionPropType) {
   const [viewDetails, setViewDetails] = useState(false);
@@ -80,11 +89,12 @@ export function Prediction(props: PredictionPropType) {
             <Image src="/fall.svg" width={64} height={64} priority alt="fall" />
           )}
           <Link
-            href={`https://coinmarketcap.com/currencies/${props.coinId}/`}
+            href={`https://coinmarketcap.com/currencies/${props.coin.slug}/`}
             target="_blank"
-            className="link text-primary text-base font-bold"
+            className="link text-primary text-base font-bold flex flex-col"
           >
-            {props.coinId}
+            <span>{props.coin.symbol}</span>
+            <span className="text-xs font-normal">({props.coin.name})</span>
           </Link>
         </div>
         <div className="flex flex-col items-start gap-2">
