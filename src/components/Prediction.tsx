@@ -10,6 +10,7 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 import { InsightsUser } from "@/components/Tweet";
 import { Accuracy } from "@/components/Accuracy";
 import numeral from "numeral";
+import dayjs from "dayjs";
 
 export type CoinInfo = {
   id?: number;
@@ -39,6 +40,16 @@ export type PredictionPropType = {
 };
 export function Prediction(props: PredictionPropType) {
   const [viewDetails, setViewDetails] = useState(false);
+
+  const resultIcon = () =>
+    props.success === true ? (
+      <Image src="/success.svg" width={42} height={42} priority alt="success" />
+    ) : props.success === false ? (
+      <Image src="/failure.svg" width={42} height={42} priority alt="failure" />
+    ) : (
+      <Image src="/failure.svg" width={42} height={42} priority alt="failure" className="invisible" />
+    );
+
   return (
     <div className="flex flex-col w-full px-2 pt-3 pb-4 text-sm border-b border-b-secondary" key={props.id}>
       <div className="author flex w-full justify-between items-center">
@@ -73,16 +84,10 @@ export function Prediction(props: PredictionPropType) {
         <div className="date hidden md:block">
           {props.createTime ? utcLocal(props.createTime) : new Date().toLocaleString()}
         </div>
-        <div className="flex items-center md:hidden">
-          {props.success ? (
-            <Image src="/success.svg" width={42} height={42} priority alt="success" />
-          ) : (
-            <Image src="/failure.svg" width={42} height={42} priority alt="failure" />
-          )}
-        </div>
+        <div className="flex items-center md:hidden">{resultIcon()}</div>
       </div>
       <div className="prediction flex w-full flex-col md:flex-row justify-between items-start md:items-center md:pl-5">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 min-w-60" title={props.explanation}>
           {props.trend === "rise" ? (
             <Image src="/rise.svg" width={64} height={64} priority alt="rise" />
           ) : (
@@ -97,14 +102,22 @@ export function Prediction(props: PredictionPropType) {
             <span className="text-xs font-normal">({props.coin.name})</span>
           </Link>
         </div>
-        <div className="flex flex-col items-start gap-2">
-          <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col items-start gap-2 grow">
+          <div className="flex flex-col md:flex-row items-center">
             <span>
-              Price during prediction: <span className="font-bold text-accent">{formatPrice(props.price)}</span>
+              Price at prediction creation: <span className="font-bold text-accent">{formatPrice(props.price)}</span>
             </span>
-            <span className="ml-1 text-xs md:text-sm">(Mar 29, 2024 at 4:51 p.m.)</span>
+            <span className="ml-1 text-xs md:text-sm">({props.createTime && utcLocal(props.createTime)})</span>
           </div>
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col md:flex-row items-center">
+            <span>
+              Price at prediction fulfillment: <span className="font-bold text-accent">{formatPrice(null)}</span>
+            </span>
+            <span className="ml-1 text-xs md:text-sm">
+              ({props.resultAchievementTime && utcLocal(props.resultAchievementTime)})
+            </span>
+          </div>
+          <div className="flex flex-col md:flex-row items-center">
             <span>
               Price (1d): <span className="font-bold text-accent">{formatPrice(props.priceDayOne)}</span>
             </span>
@@ -116,13 +129,7 @@ export function Prediction(props: PredictionPropType) {
             </span>
           </div>
         </div>
-        <div className="flex items-center hidden md:block">
-          {props.success ? (
-            <Image src="/success.svg" width={42} height={42} priority alt="success" />
-          ) : (
-            <Image src="/failure.svg" width={42} height={42} priority alt="failure" />
-          )}
-        </div>
+        <div className="flex items-center hidden md:block">{resultIcon()}</div>
       </div>
     </div>
   );

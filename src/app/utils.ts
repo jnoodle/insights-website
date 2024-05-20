@@ -62,7 +62,7 @@ export const isLogin = async () => {
   }
 };
 
-export const formatPrice = (price: number | string | undefined) => {
+export const formatPrice = (price: number | string | undefined | null) => {
   if (!price) {
     return "-";
   } else if (+price < 0.1) {
@@ -70,9 +70,9 @@ export const formatPrice = (price: number | string | undefined) => {
     const zeros = arr.length - arr.replace(/0+/, "").length;
     return numeral(price).format("0." + new Array(zeros + 5).join("0"));
   } else if (+price < 100) {
-    return numeral(price).format("0.00");
+    return numeral(price).format("0.000");
   } else {
-    return numeral(price).format("0");
+    return numeral(price).format("0.00");
   }
 };
 
