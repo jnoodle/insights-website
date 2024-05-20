@@ -35,7 +35,7 @@ export type InsightsUser = {
 // https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
 export type TweetPropType = {
   user?: TwitterUser;
-  userView?: InsightsUser;
+  userView: InsightsUser;
 
   // tweet data
   id?: string;
@@ -48,36 +48,35 @@ export type TweetPropType = {
   favoriteCount?: number;
   viewCount?: number;
   hashtags?: string[];
-  retweet?: boolean;
+  retweet?: any;
   media?: any;
 
   // insights data
   coins?: string[];
 };
 export function Tweet(props: TweetPropType) {
+  const insightUser = props.userView;
+  const tweetUser = props.userView.tweet;
+  const tweetAuthor = props.retweet && props.retweet.user ? props.retweet.user : props.userView.tweet;
+
   return (
     <div className="flex flex-col w-full px-2 pt-4 pb-4 text-sm border-b border-b-secondary">
       <div className="author flex w-full justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="avatar">
             <div className="w-12 rounded-full">
-              {props.userView && props.userView.avatarUrl ? (
-                <img
-                  src={props.userView.avatarUrl}
-                  alt={props.userView && props.userView.name ? props.userView.name : "Anonymous"}
-                />
+              {insightUser.avatarUrl ? (
+                <img src={insightUser.avatarUrl} alt={insightUser.name ? insightUser.name : "Anonymous"} />
               ) : (
-                parse(
-                  multiavatar(props.userView && props.userView.name ? filterString(props.userView.name) : "Anonymous"),
-                )
+                parse(multiavatar(insightUser.name ? filterString(insightUser.name) : "Anonymous"))
               )}
             </div>
           </div>
           <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
             <div className="text-base font-bold">
               {/*TODO alias*/}
-              <Link href={"/user/" + props.userView?.alias} className="link">
-                {props.userView && props.userView.name ? props.userView.name : "Anonymous"}
+              <Link href={"/user/" + insightUser?.alias} className="link">
+                {insightUser.name ? insightUser.name : "Anonymous"}
               </Link>
             </div>
             {/*<div>@{props.user && props.user.screenName ? props.user.screenName : "anonymous"}</div>*/}
@@ -99,10 +98,10 @@ export function Tweet(props: TweetPropType) {
               ))}
             </div>
           )}
-          {props.retweet && (
+          {props.retweet && props.retweet.user && (
             <div className="reposted flex font-bold">
               <Image src="/reposted.svg" alt="reposted" width={12} height={12} priority className="mr-2" />
-              {props.user && props.user.name ? props.user.name : "Anonymous"} reposted
+              {tweetUser && tweetUser.name ? tweetUser.name : "Anonymous"} reposted
             </div>
           )}
           <div className="flex w-full items-center justify-between gap-2">
@@ -110,18 +109,18 @@ export function Tweet(props: TweetPropType) {
               <div className="avatar">
                 <div className="w-7 rounded-full">
                   <img
-                    src={props.user && props.user.profileImageUrl ? props.user.profileImageUrl : "/X_black.svg"}
-                    alt={props.user && props.user.name ? props.user.name : "Anonymous"}
+                    src={tweetAuthor && tweetAuthor.profileImageUrl ? tweetAuthor.profileImageUrl : "/X_black.svg"}
+                    alt={tweetAuthor && tweetAuthor.name ? tweetAuthor.name : "Anonymous"}
                   />
                 </div>
               </div>
               <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
                 <div className="font-bold text-accent">
-                  <Link href={"https://twitter.com/" + props.user!.screenName} target="_blank">
-                    {props.user && props.user.name ? props.user.name : "Anonymous"}
+                  <Link href={"https://twitter.com/" + tweetAuthor!.screenName} target="_blank">
+                    {tweetAuthor && tweetAuthor.name ? tweetAuthor.name : "Anonymous"}
                   </Link>
                 </div>
-                <div>@{props.user && props.user.screenName ? props.user.screenName : "anonymous"}</div>
+                <div>@{tweetAuthor && tweetAuthor.screenName ? tweetAuthor.screenName : "anonymous"}</div>
               </div>
             </div>
             <Link
