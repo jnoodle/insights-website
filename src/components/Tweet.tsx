@@ -20,6 +20,10 @@ export type InsightsUser = {
   name?: string;
   accuracy?: string;
   tweet?: TwitterUser;
+  createTime?: string;
+  updateTime?: string;
+  id?: string;
+  wallet?: string;
 };
 
 // export type TweetMedia = {

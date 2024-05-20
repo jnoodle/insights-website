@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Login } from "@/api/user";
+import Image from "next/image";
+import * as React from "react";
 
 export default function ConnectButton() {
   const router = useRouter();
@@ -111,15 +113,31 @@ export default function ConnectButton() {
         }`}
         onClick={handleConnect}
       >
-        {isConnected
-          ? chainId === +process.env.NEXT_PUBLIC_CorrectChainId!
-            ? isSigning
-              ? "Signing In..."
-              : ellipseAddress(address)
-            : "Switch Chain"
-          : isConnecting
-            ? "Connecting..."
-            : "Connect Wallet"}
+        {isConnected ? (
+          chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
+            isSigning ? (
+              "Signing In..."
+            ) : (
+              <span className="flex">
+                {ellipseAddress(address)}
+                <Image
+                  src="/profile.svg"
+                  className="ml-1 w-4 md:w-6"
+                  alt="My Profile"
+                  width={24}
+                  height={24}
+                  priority
+                />
+              </span>
+            )
+          ) : (
+            "Switch Chain"
+          )
+        ) : isConnecting ? (
+          "Connecting..."
+        ) : (
+          "Connect Wallet"
+        )}
       </button>
       {/*{isConnected + ""}*/}
       {/*<w3m-button />*/}

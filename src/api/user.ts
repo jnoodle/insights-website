@@ -47,9 +47,10 @@ export const getMyProfile = async () => {
     });
 
     console.log(res);
-    return {};
+    return res && res.data ? res.data : {};
   } catch (err) {
     console.error(err);
+    return {};
   }
 };
 
