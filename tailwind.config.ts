@@ -19,7 +19,7 @@ const config: Config = {
     themes: [
       {
         insights: {
-          primary: "#1D9BF0",
+          primary: "#1d9bf0",
           secondary: "#EFF3F4",
           accent: "#0F1419",
           neutral: "#536471",

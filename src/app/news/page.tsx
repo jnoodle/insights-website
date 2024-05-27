@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { Loading } from "@/components/Loading";
 import { pageSize } from "@/app/utils";
+import { TopTopics } from "@/components/TopTopics";
 
 export default function Home() {
   const [articles, setArticles]: [ArticlePropType[], any] = useState([]);
@@ -55,6 +56,7 @@ export default function Home() {
     >
       <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="news" />
+        <TopTopics />
         {articles.map((t) => (
           <Article key={t.id} {...t} />
         ))}

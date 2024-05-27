@@ -86,7 +86,7 @@ export function Tweet(props: TweetPropType) {
             {/*<div>@{props.user && props.user.screenName ? props.user.screenName : "anonymous"}</div>*/}
           </div>
         </div>
-        <div className="date hidden md:block">
+        <div className="date hidden md:block text-neutral">
           {props.createAt ? utcLocal(props.createAt) : new Date().toLocaleString()}
         </div>
       </div>
@@ -119,12 +119,18 @@ export function Tweet(props: TweetPropType) {
                 </div>
               </div>
               <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
-                <div className="font-bold text-accent">
-                  <Link href={"https://twitter.com/" + tweetAuthor!.screenName} target="_blank">
+                <div className="font-bold">
+                  <Link
+                    href={"https://twitter.com/" + tweetAuthor!.screenName}
+                    target="_blank"
+                    className="link text-accent"
+                  >
                     {tweetAuthor && tweetAuthor.name ? tweetAuthor.name : "Anonymous"}
                   </Link>
                 </div>
-                <div>@{tweetAuthor && tweetAuthor.screenName ? tweetAuthor.screenName : "anonymous"}</div>
+                <div className="text-neutral">
+                  @{tweetAuthor && tweetAuthor.screenName ? tweetAuthor.screenName : "anonymous"}
+                </div>
               </div>
             </div>
             <Link
@@ -155,7 +161,9 @@ export function Tweet(props: TweetPropType) {
             {props.media.length > 0 ? (
               <div className="flex gap-2 mt-1 w-full flex-wrap">
                 {props.media.map((m: any, i: any) =>
-                  m.mediaUrlHttps ? <img src={m.mediaUrlHttps} key={i} className="max-w-80 max-h-80" /> : null,
+                  m.mediaUrlHttps ? (
+                    <img src={m.mediaUrlHttps} key={i} className="max-w-40 max-h-40 md:max-w-80 md:max-h-80" />
+                  ) : null,
                 )}
               </div>
             ) : null}
@@ -182,7 +190,7 @@ export function Tweet(props: TweetPropType) {
             )}
           </div>
           <div className="flex w-full justify-between md:hidden">
-            <div className="date text-xs">
+            <div className="date text-xs text-neutral">
               {props.createAt ? utcLocal(props.createAt) : new Date().toLocaleString()}
             </div>
             <Link href={"https://twitter.com/i/web/status/" + props.tweetId} className="link" target="_blank">

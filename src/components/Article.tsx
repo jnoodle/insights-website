@@ -36,10 +36,12 @@ export function Article(props: ArticlePropType) {
           </div>
         </div>
         <div className="date">
-          <Link href={props.sourceLink || "#"} target="_blank" className="text-primary mr-3">
-            {props.source || "anonymous"}
-          </Link>
-          <span className="text-nowrap">
+          <div className="badge mr-3 border-secondary bg-secondary hover:bg-primary">
+            <Link href={props.sourceLink || "#"} target="_blank" className="text-neutral hover:text-white">
+              {props.source || "anonymous"}
+            </Link>
+          </div>
+          <span className="text-nowrap text-neutral">
             {props.sourceCreateTime ? utcLocal(props.sourceCreateTime) : new Date().toLocaleString()}
           </span>
         </div>
@@ -57,16 +59,17 @@ export function Article(props: ArticlePropType) {
             </div>
           </div>
         )}
-        <div className="flex text-sm">
+        <div className="flex text-sm items-start justify-between w-full flex-col text-neutral">
           {viewDetails ? (
             parse(props.content || "")
           ) : (
-            <>
+            <div>
               {parse(props.subject || "")}
-              <span className="text-primary ml-2 flex cursor-pointer" onClick={() => setViewDetails(true)}>
-                more <img src="/downArrow.svg" alt="" className="inline w-5" />
+              <span className="text-primary ml-2 cursor-pointer text-left inline" onClick={() => setViewDetails(true)}>
+                <span>more </span>
+                <img src="/downArrow.svg" alt="" className="inline w-5" />
               </span>
-            </>
+            </div>
           )}
         </div>
       </div>

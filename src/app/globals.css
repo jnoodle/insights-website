@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 83, 100, 113;
+  --foreground-rgb: 15, 20, 25;
   --background-rgb: 255, 255, 255;
+  /*color-scheme: light !important;*/
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 15, 20, 25;
-  }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --foreground-rgb: 255, 255, 255;*/
+/*    --background-rgb: 15, 20, 25;*/
+/*  }*/
+/*}*/
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -82,4 +83,24 @@ a {
 
 .drawer-side {
   z-index: 100;
+}
+
+.collapse-title,
+:where(.collapse > input[type="checkbox"]),
+:where(.collapse > input[type="radio"]) {
+  min-height: auto !important;
+}
+.collapse-title:hover {
+  text-decoration: underline;
+}
+.collapse-content {
+  padding: 0;
+}
+.collapse[open] > :where(.collapse-content),
+.collapse-open > :where(.collapse-content),
+.collapse:focus:not(.collapse-close) > :where(.collapse-content),
+.collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-content),
+.collapse:not(.collapse-close) > :where(input[type="radio"]:checked ~ .collapse-content) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
