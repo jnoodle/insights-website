@@ -1,6 +1,7 @@
 import numeral from "numeral";
 import { formatEther, formatUnits } from "viem";
 import { Slide } from "react-toastify";
+import dayjs from "dayjs";
 
 export function ellipseAddress(address = "", width = 4): string {
   return `${address.slice(0, width)}...${address.slice(-width)}`;
@@ -10,11 +11,11 @@ export const bigIntMax = (...args: any[]) => args.reduce((m, e) => (e > m ? e : 
 export const bigintMin = (...args: any[]) => args.reduce((m, e) => (e < m ? e : m));
 
 // convert date to local date
-export const utcLocal = (date: string) => {
+export const dateFormat = (date: string) => {
   // const d = new Date(date);
   // const utc = new Date(d.getTime() + d.getTimezoneOffset() * 60000);
   // return utc.toLocaleString();
-  return new Date(date).toLocaleString();
+  return dayjs(date).format("YYYY-MM-DD HH:mm:ss");
 };
 
 // remove emoji
@@ -66,9 +67,11 @@ export const formatPrice = (price: number | string | undefined | null) => {
   if (!price) {
     return "-";
   } else if (+price < 0.1) {
-    const arr = (price + "").split(".")[1];
+    // fix low price
+    const priceStr = Number(price).toFixed(100);
+    const arr = priceStr.split(".")[1];
     const zeros = arr.length - arr.replace(/0+/, "").length;
-    return numeral(price).format("0." + new Array(zeros + 5).join("0"));
+    return priceStr.substring(0, zeros + 6);
   } else if (+price < 100) {
     return numeral(price).format("0.000");
   } else {

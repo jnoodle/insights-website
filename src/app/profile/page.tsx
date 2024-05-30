@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ProfileTab } from "@/components/ProfileTab";
+import ProfileTab from "@/components/ProfileTab";
 import { ellipseAddress, filterString, toastConfig } from "@/app/utils";
-import { useAccount } from "wagmi";
+import { useAccount, useAccountEffect } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import Link from "next/link";
 import { getMyProfile, Login } from "@/api/user";
@@ -33,17 +33,35 @@ export default function Home() {
   const [currentUser, setCurrentUser]: [InsightsUser, any] = useState({});
   const effectRef = useRef(false);
   const [isPredictionModalOpen, setIsPredictionModalOpen] = useState(false);
+  const profileTabRef = useRef();
 
   useEffect((): any => {
-    if (!effectRef.current) {
-      getMyProfile().then((res) => {
-        if (res.data) {
-          setCurrentUser(res.data);
-        }
+    if (address) {
+      Login(address).then(() => {
+        getMyProfile().then((res) => {
+          if (res.data) {
+            setCurrentUser(res.data);
+          }
+        });
       });
     }
-    return () => (effectRef.current = true);
-  }, []);
+  }, [address]);
+
+  // useAccountEffect({
+  //   async onConnect(data) {
+  //     console.log("profile page");
+  //     console.log(data);
+  //     if (data.address) {
+  //       console.log("profile login");
+  //       await Login(data.address);
+  //       const profile = await getMyProfile();
+  //       console.log("profile get info", profile);
+  //       if (profile && profile.data) {
+  //         setCurrentUser(profile.data);
+  //       }
+  //     }
+  //   },
+  // });
 
   const openAddPrediction = () => {
     // TODO
@@ -60,6 +78,7 @@ export default function Home() {
   const [coinValue, setCoinValue] = useState<CoinValue | null>(null);
   const [predictionTime, setPredictionTime] = useState("");
   const [predictionTrend, setPredictionTrend] = useState("rise");
+  const [predictionTweetUrl, setPredictionTweetUrl] = useState("");
   const [predictionExplanation, setPredictionExplanation] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [addLoading, setAddLoading] = useState(false);
@@ -69,6 +88,7 @@ export default function Home() {
     setPredictionTime("");
     setPredictionTrend("rise");
     setPredictionExplanation("");
+    setPredictionTweetUrl("");
     setErrorMsg("");
   };
 
@@ -86,6 +106,7 @@ export default function Home() {
       resultAchievementTime: predictionTime,
       trend: predictionTrend,
       explanation: predictionExplanation,
+      tweetUrl: predictionTweetUrl,
     };
 
     console.log(prediction);
@@ -108,6 +129,10 @@ export default function Home() {
           if (res.data.code === 0) {
             resetPredictionForm();
             toast.success("Adding prediction success.", toastConfig);
+            if (profileTabRef.current) {
+              // @ts-ignore
+              profileTabRef.current.refreshPredictions();
+            }
           } else {
             setErrorMsg(`Code ${res.data.code} Error` || "Internal error.");
           }
@@ -141,7 +166,7 @@ export default function Home() {
                 {currentUser.avatarUrl ? (
                   <img src={currentUser.avatarUrl} alt={currentUser.name ? currentUser.name : "Anonymous"} />
                 ) : (
-                  parse(multiavatar(currentUser.name ? filterString(currentUser.name) : "Anonymous"))
+                  parse(multiavatar(currentUser.alias || "Anonymous"))
                 )}
               </div>
             </div>
@@ -174,7 +199,7 @@ export default function Home() {
                 <Link href={"/user/" + currentUser.alias} className="btn btn-primary btn-sm text-white font-normal">
                   Go to My Page
                 </Link>
-                {currentUser.tweet && currentUser.tweet.name && (
+                {((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator) && (
                   <button className="btn btn-primary btn-sm text-white font-normal" onClick={openAddPrediction}>
                     Add Prediction
                   </button>
@@ -187,7 +212,7 @@ export default function Home() {
       )}
       {isConnected && (
         <div className="flex items-center w-full mt-6">
-          {currentUser && currentUser.alias && <ProfileTab alias={currentUser.alias} />}
+          {currentUser && currentUser.alias && <ProfileTab alias={currentUser.alias} ref={profileTabRef} />}
         </div>
       )}
       <Modal title="Add Prediction" open={isPredictionModalOpen} footer={null} onCancel={closeAddPrediction}>
@@ -201,6 +226,14 @@ export default function Home() {
               setCoinValue(newValue as CoinValue);
             }}
             style={{ width: "100%" }}
+            dropdownRender={(menu) => (
+              <>
+                {menu}
+                <div className="border-t border-secondary py-2 px-4 text-xs italic text-neutral">
+                  Coin Symbol (Coin Name) (Coin UniqueId)
+                </div>
+              </>
+            )}
           />{" "}
           <DatePicker
             showTime
@@ -211,12 +244,22 @@ export default function Home() {
           />
           <Radio.Group onChange={(e) => setPredictionTrend(e.target.value)} value={predictionTrend}>
             <span>Trend Prediction: </span>
-            <Radio value="rise">Rise ↗</Radio>
-            <Radio value="fall">Fall ↘</Radio>
+            <Radio value="rise">
+              <span className="text-success">Rise ↗</span>
+            </Radio>
+            <Radio value="fall">
+              <span className="text-error">Fall ↘</span>
+            </Radio>
           </Radio.Group>
           <TextArea
+            value={predictionTweetUrl}
+            onChange={(e) => setPredictionTweetUrl(e.target.value.trim())}
+            placeholder="Prediction source tweet URL: https://x.com/xxx (optional)"
+            autoSize
+          />
+          <TextArea
             value={predictionExplanation}
-            onChange={(e) => setPredictionExplanation(e.target.value)}
+            onChange={(e) => setPredictionExplanation(e.target.value.trim())}
             placeholder="Prediction explanation (optional)"
             autoSize
           />

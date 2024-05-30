@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Loading } from "@/components/Loading";
 import { Tweet, TweetPropType } from "@/components/Tweet";
@@ -13,7 +13,7 @@ export type ProfileTabPropType = {
   alias?: string;
 };
 
-export function ProfileTab(props: ProfileTabPropType) {
+const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const [activeTab, setActiveTab] = useState(0);
   const [tweets, setTweets]: [TweetPropType[], any] = useState([]);
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
@@ -33,6 +33,12 @@ export function ProfileTab(props: ProfileTabPropType) {
     }
     return () => (effectRef.current = true);
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    refreshPredictions() {
+      fetchMorePredictionsData(true);
+    },
+  }));
 
   const handleTabClick = (tabIndex: number) => {
     if (tabIndex !== activeTab) {
@@ -62,12 +68,17 @@ export function ProfileTab(props: ProfileTabPropType) {
       });
   };
 
-  const fetchMorePredictionsData = () => {
+  const fetchMorePredictionsData = (isReset?: boolean) => {
     if (predictionsIsLoading) return;
+    if (isReset) {
+      setPredictions([]);
+      setPredictionsFromIndex(0);
+      setPredictionsHasMore(true);
+    }
 
     setPredictionsIsLoading(true);
     axios
-      .get(`/v0/public/predictions?from=${predictionsFromIndex}&size=${pageSize}&alias=${props.alias}`)
+      .get(`/v0/public/predictions?from=${isReset ? 0 : predictionsFromIndex}&size=${pageSize}&alias=${props.alias}`)
       .then((res) => {
         if (res.data && res.data.code === 0 && res.data.data.length > 0) {
           setPredictions((prevItems: ArticlePropType[]) => [...prevItems, ...res.data.data]);
@@ -127,4 +138,7 @@ export function ProfileTab(props: ProfileTabPropType) {
       </div>
     </div>
   );
-}
+});
+ProfileTab.displayName = "ProfileTab";
+
+export default ProfileTab;

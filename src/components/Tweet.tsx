@@ -4,7 +4,7 @@ import Link from "next/link";
 import twitter from "twitter-text";
 import parse from "html-react-parser";
 import numeral from "numeral";
-import { filterString, utcLocal } from "@/app/utils";
+import { filterString, dateFormat } from "@/app/utils";
 import multiavatar from "@multiavatar/multiavatar/esm";
 
 export type TwitterUser = {
@@ -24,6 +24,8 @@ export type InsightsUser = {
   updateTime?: string;
   id?: string;
   wallet?: string;
+  isOperator?: boolean;
+  operationalRole?: string;
 };
 
 // export type TweetMedia = {
@@ -64,7 +66,7 @@ export function Tweet(props: TweetPropType) {
   const tweetAuthor = props.retweet && props.retweet.user ? props.retweet.user : props.userView.tweet;
 
   return (
-    <div className="flex flex-col w-full px-2 pt-4 pb-4 text-sm border-b border-b-secondary">
+    <div className="flex flex-col w-full px-2 pt-4 pb-4 text-sm border-b border-b-secondary hover:bg-base-200">
       <div className="author flex w-full justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="avatar">
@@ -87,7 +89,7 @@ export function Tweet(props: TweetPropType) {
           </div>
         </div>
         <div className="date hidden md:block text-neutral">
-          {props.createAt ? utcLocal(props.createAt) : new Date().toLocaleString()}
+          {props.createAt ? dateFormat(props.createAt) : new Date().toLocaleString()}
         </div>
       </div>
       <div className="tweet flex justify-between items-center md:border-l border-l-secondary mt-2 ml-0 md:ml-5 pl-1 md:pl-5">
@@ -134,7 +136,7 @@ export function Tweet(props: TweetPropType) {
               </div>
             </div>
             <Link
-              href={"https://twitter.com/i/web/status/" + props.tweetId}
+              href={`https://twitter.com/${tweetAuthor.screenName}/status/${props.tweetId}`}
               className="link hidden md:block"
               target="_blank"
             >
@@ -191,9 +193,13 @@ export function Tweet(props: TweetPropType) {
           </div>
           <div className="flex w-full justify-between md:hidden">
             <div className="date text-xs text-neutral">
-              {props.createAt ? utcLocal(props.createAt) : new Date().toLocaleString()}
+              {props.createAt ? dateFormat(props.createAt) : new Date().toLocaleString()}
             </div>
-            <Link href={"https://twitter.com/i/web/status/" + props.tweetId} className="link" target="_blank">
+            <Link
+              href={`https://twitter.com/${tweetAuthor.screenName}/status/${props.tweetId}`}
+              className="link"
+              target="_blank"
+            >
               View more
             </Link>
           </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { filterString, formatPrice, utcLocal } from "@/app/utils";
+import { filterString, formatPrice, dateFormat } from "@/app/utils";
 import * as React from "react";
 import parse from "html-react-parser";
 import multiavatar from "@multiavatar/multiavatar/esm";
@@ -30,6 +30,7 @@ export type PredictionPropType = {
   resultPrice?: string;
   trend?: string;
   explanation?: string;
+  tweetUrl?: string;
   price?: string;
   priceDayOne?: string;
   priceDayThree?: string;
@@ -44,15 +45,22 @@ export function Prediction(props: PredictionPropType) {
 
   const resultIcon = () =>
     props.success === true ? (
-      <Image src="/success.svg" width={42} height={42} priority alt="success" />
+      <Image src="/success.svg" width={48} height={48} priority alt="success" />
     ) : props.success === false ? (
-      <Image src="/failure.svg" width={42} height={42} priority alt="failure" />
+      <Image src="/failure.svg" width={48} height={48} priority alt="failure" />
     ) : (
-      <Image src="/unknown.svg" width={42} height={42} priority alt="unknown" />
+      <Image src="/unknown.svg" width={48} height={48} priority alt="unknown" />
     );
 
+  const getTextColor = (currentPrice: any) => {
+    return currentPrice && props.price ? (currentPrice >= props.price ? "text-success" : "text-error") : "text-accent";
+  };
+
   return (
-    <div className="flex flex-col w-full px-2 pt-3 pb-4 text-sm border-b border-b-secondary" key={props.id}>
+    <div
+      className="flex flex-col w-full px-2 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
+      key={props.id}
+    >
       <div className="author flex w-full justify-between items-center">
         <div className="flex items-center gap-4">
           <div className="avatar">
@@ -83,7 +91,7 @@ export function Prediction(props: PredictionPropType) {
           </div>
         </div>
         <div className="date hidden md:block">
-          {props.createTime ? utcLocal(props.createTime) : new Date().toLocaleString()}
+          {props.createTime ? dateFormat(props.createTime) : new Date().toLocaleString()}
         </div>
         <div className="flex items-center md:hidden">{resultIcon()}</div>
       </div>
@@ -97,10 +105,10 @@ export function Prediction(props: PredictionPropType) {
           <Link
             href={`https://coinmarketcap.com/currencies/${props.coin.slug}/`}
             target="_blank"
-            className="link text-primary text-base font-bold flex flex-col"
+            className="link text-primary text-2xl font-bold flex flex-col"
           >
             <span>{props.coin.symbol}</span>
-            <span className="text-xs font-normal">({props.coin.name})</span>
+            <span className="text-xs font-normal">{props.coin.name}</span>
           </Link>
         </div>
         <div className="flex flex-col items-start gap-2 grow">
@@ -108,28 +116,53 @@ export function Prediction(props: PredictionPropType) {
             <span>
               Price at prediction creation: <span className="font-bold text-accent">{formatPrice(props.price)}</span>
             </span>
-            <span className="ml-1 text-xs md:text-sm">({props.createTime && utcLocal(props.createTime)})</span>
+            <span className="ml-1 text-xs md:text-sm">({props.createTime && dateFormat(props.createTime)})</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center">
             <span>
               Price at prediction fulfillment:{" "}
-              <span className="font-bold text-accent">{formatPrice(props.resultPrice)}</span>
+              <span className={`font-bold ${getTextColor(props.resultPrice)}`}>{formatPrice(props.resultPrice)}</span>
             </span>
             <span className="ml-1 text-xs md:text-sm">
-              ({props.resultAchievementTime && utcLocal(props.resultAchievementTime)})
+              ({props.resultAchievementTime && dateFormat(props.resultAchievementTime)})
             </span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center">
             <span>
-              Price (1d): <span className="font-bold text-accent">{formatPrice(props.priceDayOne)}</span>
+              Price (1d):{" "}
+              <span className={`font-bold ${getTextColor(props.priceDayOne)}`}>{formatPrice(props.priceDayOne)}</span>
             </span>
             <span className="md:ml-2">
-              Price (3d): <span className="font-bold text-accent">{formatPrice(props.priceDayThree)}</span>
+              Price (3d):{" "}
+              <span className={`font-bold ${getTextColor(props.priceDayThree)}`}>
+                {formatPrice(props.priceDayThree)}
+              </span>
             </span>
             <span className="md:ml-2">
-              Price (7d): <span className="font-bold text-accent">{formatPrice(props.priceDaySeven)}</span>
+              Price (5d):{" "}
+              <span className={`font-bold ${getTextColor(props.priceDayFive)}`}>{formatPrice(props.priceDayFive)}</span>
+            </span>
+            <span className="md:ml-2">
+              Price (7d):{" "}
+              <span className={`font-bold ${getTextColor(props.priceDaySeven)}`}>
+                {formatPrice(props.priceDaySeven)}
+              </span>
             </span>
           </div>
+          {(props.tweetUrl || props.explanation) && (
+            <div className="flex flex-col md:flex-row md:items-center">
+              {props.explanation && (
+                <div className="tooltip" data-tip={props.explanation}>
+                  <span className="link text-primary mr-2">View explanation</span>
+                </div>
+              )}
+              {props.tweetUrl && (
+                <a href={props.tweetUrl} target="_blank">
+                  Open source tweet
+                </a>
+              )}
+            </div>
+          )}
         </div>
         <div className="flex items-center hidden md:block">{resultIcon()}</div>
       </div>

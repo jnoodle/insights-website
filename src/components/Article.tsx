@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { utcLocal } from "@/app/utils";
+import { dateFormat } from "@/app/utils";
 import parse from "html-react-parser";
 
 export type ArticlePropType = {
@@ -26,12 +26,15 @@ export type ArticlePropType = {
 export function Article(props: ArticlePropType) {
   const [viewDetails, setViewDetails] = useState(false);
   return (
-    <div className="flex flex-col w-full px-2 pt-3 pb-4 text-sm border-b border-b-secondary" key={props.id}>
+    <div
+      className="flex flex-col w-full px-4 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
+      key={props.id}
+    >
       <div className="flex w-full flex-col md:flex-row justify-between items-start md:items-center">
         <div className="flex items-center gap-4">
           <div className="text-base font-bold">
-            <Link href={props.originalLink || "#"} target="_blank" className="link text-accent">
-              {props.title || "Mfer创始人Sartoshi在Base链发行mfercoin"}
+            <Link href={props.originalLink || "#"} target="_blank" className="text-accent link">
+              {props.title || "Null"}
             </Link>
           </div>
         </div>
@@ -42,7 +45,7 @@ export function Article(props: ArticlePropType) {
             </Link>
           </div>
           <span className="text-nowrap text-neutral">
-            {props.sourceCreateTime ? utcLocal(props.sourceCreateTime) : new Date().toLocaleString()}
+            {props.sourceCreateTime ? dateFormat(props.sourceCreateTime) : new Date().toLocaleString()}
           </span>
         </div>
       </div>

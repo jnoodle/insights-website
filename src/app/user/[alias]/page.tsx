@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ellipseAddress, filterString } from "@/app/utils";
 import Link from "next/link";
-import { ProfileTab } from "@/components/ProfileTab";
+import ProfileTab from "@/components/ProfileTab";
 import multiavatar from "@multiavatar/multiavatar/esm";
 import parse from "html-react-parser";
 import { getUserProfile } from "@/api/user";
