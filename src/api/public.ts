@@ -1,20 +1,34 @@
 import { toast } from "react-toastify";
 import { dateFormat, toastConfig } from "@/app/utils";
 import axios from "axios";
-import { CoinInfo } from "@/components/Prediction";
+import { CmcCoinInfo, DexCoinInfo } from "@/components/Prediction";
 import { CoinValue } from "@/app/profile/page";
 import { XMLParser } from "fast-xml-parser";
 import dayjs from "dayjs";
 import { TopTopicType } from "@/components/TopTopics";
 
 export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
-  if (keyword) {
-    return axios.get(`/v0/public/coins?keyword=${keyword}&from=0&size=50`).then((res) =>
-      res.data.data.map((c: CoinInfo) => ({
-        label: `${c.symbol} (${c.name}) (${c.slug})`,
-        value: c.id + "",
-      })),
-    );
+  if (keyword && keyword.length > 1) {
+    // return axios.get(`/v0/public/coins?keyword=${keyword}&from=0&size=50`).then((res) =>
+    //   res.data.data.map((c: CoinInfo) => ({
+    //     label: `${c.symbol} (${c.name}) (${c.slug})`,
+    //     value: c.id + "",
+    //   })),
+    // );
+    return axios.get(`https://api.dexscreener.com/latest/dex/search/?q=${keyword}`).then((res) => {
+      if (res && res.data && res.data.pairs && res.data.pairs.length > 0)
+        return res.data.pairs.map((c: DexCoinInfo) => ({
+          label: `${c.baseToken.symbol} (${c.baseToken.name}) (${c.chainId}:${c.baseToken.address})`,
+          value: JSON.stringify({
+            chainId: c.chainId,
+            address: c.baseToken.address,
+            symbol: c.baseToken.symbol,
+            name: c.baseToken.name,
+            url: c.url,
+            price: c.priceUsd,
+          }),
+        }));
+    });
   } else {
     return [];
   }

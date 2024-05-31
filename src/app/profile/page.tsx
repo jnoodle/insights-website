@@ -12,7 +12,7 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 import parse from "html-react-parser";
 import { InsightsUser } from "@/components/Tweet";
 import { DatePicker, Radio, Select, Input, Modal } from "antd";
-import { CoinInfo } from "@/components/Prediction";
+import { CmcCoinInfo } from "@/components/Prediction";
 import DebounceSelect from "@/components/DebounceSelect";
 import { getCoins } from "@/api/public";
 import dayjs from "dayjs";
@@ -101,9 +101,14 @@ export default function Home() {
       setErrorMsg("Please select the currency for prediction.");
       return;
     }
+    if (!predictionTime) {
+      setErrorMsg("Please select the latest time of the price prediction result achievement.");
+      return;
+    }
     setAddLoading(true);
+    console.log(coinValue);
     const prediction = {
-      coinId: +coinValue!.value,
+      coin: coinValue!.value,
       resultAchievementTime: predictionTime,
       trend: predictionTrend,
       explanation: predictionExplanation,
@@ -114,7 +119,7 @@ export default function Home() {
 
     axios
       .post(
-        "/v0/api/user/prediction/create",
+        "/v0/api/user/prediction/create1",
         {
           ...prediction,
         },
@@ -227,52 +232,74 @@ export default function Home() {
       )}
       <Modal title="Add Prediction" open={isPredictionModalOpen} footer={null} onCancel={closeAddPrediction}>
         <div className="flex w-full flex-col gap-4 py-2">
-          <DebounceSelect
-            showSearch
-            value={coinValue}
-            placeholder="Search Coin Name / Symbol"
-            fetchOptions={getCoins}
-            onChange={(newValue) => {
-              setCoinValue(newValue as CoinValue);
-            }}
-            style={{ width: "100%" }}
-            dropdownRender={(menu) => (
-              <>
-                {menu}
-                <div className="border-t border-secondary py-2 px-4 text-xs italic text-neutral">
-                  Coin Symbol (Coin Name) (Coin UniqueId)
-                </div>
-              </>
-            )}
-          />{" "}
-          <DatePicker
-            showTime
-            placeholder="Select price prediction result achievement time (optional)"
-            onOk={(value) => setPredictionTime(value.format("YYYY-MM-DDTHH:mm:ss"))}
-            minDate={dayjs(dayjs(new Date()).add(1, "day"), "YYYY-MM-DD")}
-            maxDate={dayjs(dayjs(new Date()).add(10, "day"), "YYYY-MM-DD")}
-          />
+          <div className="flex flex-col">
+            <DebounceSelect
+              showSearch
+              value={coinValue}
+              placeholder="Search Token by Name / Symbol / Address"
+              fetchOptions={getCoins}
+              onChange={(newValue) => {
+                setCoinValue(newValue as CoinValue);
+              }}
+              // allowClear={true}
+              style={{ width: "100%", height: 70 }}
+              dropdownRender={(menu) => (
+                <>
+                  {menu}
+                  <div className="border-t border-secondary py-2 px-4 text-xs italic text-neutral">
+                    Coin Symbol (Coin Name) (Coin UniqueId)
+                  </div>
+                </>
+              )}
+            />
+            <span className="text-gray-500 mt-0 text-xs mb-1">
+              If you cannot find the token, please contact the admin.
+            </span>
+          </div>
+          <div className="flex flex-col">
+            <DatePicker
+              showTime
+              placeholder="Select the latest time of the price prediction result achievement"
+              onOk={(value) => setPredictionTime(value.format("YYYY-MM-DDTHH:mm:ss"))}
+              minDate={dayjs(dayjs(new Date()).add(1, "day"), "YYYY-MM-DD")}
+              maxDate={dayjs(dayjs(new Date()).add(8, "day"), "YYYY-MM-DD")}
+            />
+            <span className="text-gray-500 mt-0 text-xs mb-1">
+              You can manually complete the prediction at any time before this time, and we will judge the accuracy
+              based on the price at the time of manual completion. If not manually completed, the accuracy will be
+              judged based on the price at this time.
+            </span>
+          </div>
           <Radio.Group onChange={(e) => setPredictionTrend(e.target.value)} value={predictionTrend}>
             <span>Trend Prediction: </span>
             <Radio value="rise">
-              <span className="text-success">Rise ↗</span>
+              <span className="text-success text-lg">Rise ↗</span>
             </Radio>
             <Radio value="fall">
-              <span className="text-error">Fall ↘</span>
+              <span className="text-error text-lg">Fall ↘</span>
             </Radio>
           </Radio.Group>
-          <TextArea
-            value={predictionTweetUrl}
-            onChange={(e) => setPredictionTweetUrl(e.target.value.trim())}
-            placeholder="Prediction source tweet URL: https://x.com/xxx (optional)"
-            autoSize
-          />
-          <TextArea
-            value={predictionExplanation}
-            onChange={(e) => setPredictionExplanation(e.target.value.trim())}
-            placeholder="Prediction explanation (optional)"
-            autoSize
-          />
+
+          <div className="flex flex-col">
+            <TextArea
+              value={predictionTweetUrl}
+              onChange={(e) => setPredictionTweetUrl(e.target.value.trim())}
+              placeholder="Prediction source tweet URL: https://x.com/xxx (optional)"
+              autoSize
+            />
+            <span className="text-gray-500 mt-0 text-xs mb-1">
+              You can input the link to your prediction-related tweet.
+            </span>
+          </div>
+          <div className="flex flex-col">
+            <TextArea
+              value={predictionExplanation}
+              onChange={(e) => setPredictionExplanation(e.target.value.trim())}
+              placeholder="Prediction explanation (optional)"
+              autoSize
+            />
+            <span className="text-gray-500 mt-0 text-xs mb-1">You can input the prediction explanation.</span>
+          </div>
           {errorMsg && <div className="text-error text-xs">{errorMsg}</div>}
           <div>
             <button className="btn btn-primary btn-sm text-white font-normal max-w-36" onClick={addPrediction}>

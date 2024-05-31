@@ -64,6 +64,7 @@ export function Tweet(props: TweetPropType) {
   const insightUser = props.userView;
   const tweetUser = props.userView.tweet;
   const tweetAuthor = props.retweet && props.retweet.user ? props.retweet.user : props.userView.tweet;
+  const currentUserIsOperator = sessionStorage.getItem("insights_user_r") === "op";
 
   return (
     <div className="flex flex-col w-full px-2 pt-4 pb-4 text-sm border-b border-b-secondary hover:bg-base-200">
@@ -203,6 +204,11 @@ export function Tweet(props: TweetPropType) {
               View more
             </Link>
           </div>
+          {currentUserIsOperator && (
+            <div className="flex flex-col md:flex-row md:items-center gap-2">
+              <button className="btn btn-warning btn-xs font-normal">Delete</button>
+            </div>
+          )}
         </div>
       </div>
       {/*<div>{JSON.stringify(props)}</div>*/}

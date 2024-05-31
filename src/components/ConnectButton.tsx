@@ -1,13 +1,21 @@
 "use client";
 
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { useAccount, useSignTypedData, useSwitchChain, useAccountEffect, useDisconnect, useSignMessage } from "wagmi";
+import {
+  useAccount,
+  useSignTypedData,
+  useSwitchChain,
+  useAccountEffect,
+  useDisconnect,
+  useSignMessage,
+  useSwitchAccount,
+} from "wagmi";
 import { ellipseAddress, toastConfig } from "@/app/utils";
 import { SiweMessage } from "siwe";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { Login } from "@/api/user";
+import { getMyProfile, getUserProfile, Login } from "@/api/user";
 import Image from "next/image";
 import * as React from "react";
 
@@ -19,6 +27,9 @@ export default function ConnectButton() {
   const { signMessageAsync } = useSignMessage();
   const { chains, switchChain } = useSwitchChain();
   const [isSigning, setIsSigning] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  // change address
+  const [preAddress, setPreAddress] = useState("");
   const handleConnect = () => {
     if (!address) {
       // connect wallet
@@ -35,75 +46,114 @@ export default function ConnectButton() {
 
   useAccountEffect({
     // sign-in with wallet after connect
-    async onConnect(data) {
-      console.log("Connected!", data);
-
-      // https://1.x.wagmi.sh/examples/sign-in-with-ethereum
-      // Sign-In with Ethereum: eip-4361
-      try {
-        const { address, chainId } = data;
-        // get address from session, if already signed, do not need to sign in again
-        const res = await fetch("/api/me");
-        const json = await res.json();
-        console.log(json);
-        if (address === json.address) {
-          console.log("Sign-In-Success with session", json);
-          await Login(address);
-          return;
-        }
-
-        setIsSigning(true);
-        const nonceRes = await fetch("/api/nonce");
-        const nonce = await nonceRes.text();
-        if (!address || !chainId) {
-          console.error("Wallet connected error!");
-          toast.error("Wallet connected error!", toastConfig);
-          return;
-        }
-
-        // Create SIWE message with pre-fetched nonce and sign with wallet
-        const message = new SiweMessage({
-          domain: window.location.host,
-          address,
-          statement: "Sign in to Insights.",
-          uri: window.location.origin,
-          version: "1",
-          chainId,
-          nonce,
-        });
-
-        const signature = await signMessageAsync({
-          message: message.prepareMessage(),
-        });
-
-        // Verify signature
-        // TODO set referral
-        const verifyRes = await fetch("/api/verify", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ message, signature }),
-        });
-
-        if (!verifyRes.ok) {
-          throw new Error("Error verifying message");
-        }
-
-        console.log("Sign-In-Success", message, signature);
-        localStorage.setItem("insights_signin_message", JSON.stringify(message));
-        localStorage.setItem("insights_signin_signature", signature);
-
-        // Login
-        await Login(address);
-        setIsSigning(false);
-      } catch (error) {
-        console.error(error);
-        setIsSigning(false);
-        disconnect();
-      }
+    onConnect(data) {
+      const { address, chainId } = data;
+      addressConnect(address, chainId);
+    },
+    onDisconnect() {
+      clearStorage();
     },
   });
+
+  useEffect(() => {
+    if (preAddress && address && chainId && address !== preAddress) {
+      console.log("address change", preAddress, address, chainId);
+      setPreAddress(address);
+      clearStorage();
+      addressConnect(address, chainId);
+    }
+  }, [address]);
+
+  const addressConnect = async (address: string, chainId: number) => {
+    if (!address || !chainId || isLoading) return;
+    setIsLoading(true);
+    console.log("Connected!", address, chainId);
+
+    // https://1.x.wagmi.sh/examples/sign-in-with-ethereum
+    // Sign-In with Ethereum: eip-4361
+    try {
+      // get address from session, if already signed, do not need to sign in again
+      const res = await fetch("/api/me");
+      const json = await res.json();
+      console.log(json);
+      if (address === json.address && localStorage.getItem("insights_signin_message")) {
+        console.log("Sign-In-Success with session", json);
+        // Login
+        await Login(address);
+        // get user profile
+        await getMyProfile();
+        setPreAddress(address);
+        setIsLoading(false);
+        return;
+      }
+
+      setIsSigning(true);
+      const nonceRes = await fetch("/api/nonce");
+      const nonce = await nonceRes.text();
+      if (!address || !chainId) {
+        console.error("Wallet connected error!");
+        toast.error("Wallet connected error!", toastConfig);
+        setIsLoading(false);
+        return;
+      }
+
+      // Create SIWE message with pre-fetched nonce and sign with wallet
+      const message = new SiweMessage({
+        domain: window.location.host,
+        address,
+        statement: "Sign in to Insights.",
+        uri: window.location.origin,
+        version: "1",
+        chainId,
+        nonce,
+      });
+
+      const signature = await signMessageAsync({
+        message: message.prepareMessage(),
+      });
+
+      // Verify signature
+      // TODO set referral
+      const verifyRes = await fetch("/api/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message, signature }),
+      });
+
+      if (!verifyRes.ok) {
+        throw new Error("Error verifying message");
+      }
+
+      console.log("Sign-In-Success", message, signature);
+      localStorage.setItem("insights_signin_message", JSON.stringify(message));
+      localStorage.setItem("insights_signin_signature", signature);
+
+      // Login
+      await Login(address);
+      // get user profile
+      await getMyProfile();
+      setIsSigning(false);
+    } catch (error) {
+      console.error(error);
+      setIsSigning(false);
+      disconnect();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const clearStorage = () => {
+    localStorage.removeItem("insights_signin_message");
+    localStorage.removeItem("insights_signin_signature");
+    localStorage.removeItem("insights_address");
+    localStorage.removeItem("insights_token");
+    localStorage.removeItem("insights_token_timeout");
+    localStorage.removeItem("insights_user");
+    localStorage.removeItem("insights_user_alias");
+    sessionStorage.removeItem("insights_user_r");
+  };
 
   return (
     <>
@@ -113,7 +163,9 @@ export default function ConnectButton() {
         }`}
         onClick={handleConnect}
       >
-        {isConnected ? (
+        {isSigning ? (
+          "Signing In..."
+        ) : isConnected ? (
           chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
             isSigning ? (
               "Signing In..."
@@ -139,6 +191,9 @@ export default function ConnectButton() {
           "Connect Wallet"
         )}
       </button>
+      {/*isConnected: {isConnected + ""}*/}
+      {/*isSigning: {isSigning + ""}*/}
+      {/*isLoading: {isLoading + ""}*/}
       {/*{isConnected + ""}*/}
       {/*<w3m-button />*/}
     </>

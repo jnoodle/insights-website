@@ -12,13 +12,24 @@ import { Accuracy } from "@/components/Accuracy";
 import numeral from "numeral";
 import dayjs from "dayjs";
 
-export type CoinInfo = {
+export type CmcCoinInfo = {
   id?: number;
   last_updated?: string;
   name?: string;
   slug?: string;
   symbol?: string;
   quote?: any;
+};
+
+export type DexCoinInfo = {
+  baseToken: {
+    address: string;
+    name: string;
+    symbol: string;
+  };
+  priceUsd: string;
+  url: string;
+  chainId: string;
 };
 export type PredictionPropType = {
   id?: string;
@@ -38,7 +49,7 @@ export type PredictionPropType = {
   priceDaySeven?: string;
   success?: boolean;
   over?: boolean;
-  coin: CoinInfo;
+  coin: CmcCoinInfo;
 };
 export function Prediction(props: PredictionPropType) {
   const [viewDetails, setViewDetails] = useState(false);
@@ -55,6 +66,9 @@ export function Prediction(props: PredictionPropType) {
   const getTextColor = (currentPrice: any) => {
     return currentPrice && props.price ? (currentPrice >= props.price ? "text-success" : "text-error") : "text-accent";
   };
+
+  const currentUserAlias = localStorage.getItem("insights_user_alias");
+  const currentUserIsOperator = sessionStorage.getItem("insights_user_r") === "op";
 
   return (
     <div
@@ -127,28 +141,28 @@ export function Prediction(props: PredictionPropType) {
               ({props.resultAchievementTime && dateFormat(props.resultAchievementTime)})
             </span>
           </div>
-          <div className="flex flex-col md:flex-row md:items-center">
-            <span>
-              Price (1d):{" "}
-              <span className={`font-bold ${getTextColor(props.priceDayOne)}`}>{formatPrice(props.priceDayOne)}</span>
-            </span>
-            <span className="md:ml-2">
-              Price (3d):{" "}
-              <span className={`font-bold ${getTextColor(props.priceDayThree)}`}>
-                {formatPrice(props.priceDayThree)}
-              </span>
-            </span>
-            <span className="md:ml-2">
-              Price (5d):{" "}
-              <span className={`font-bold ${getTextColor(props.priceDayFive)}`}>{formatPrice(props.priceDayFive)}</span>
-            </span>
-            <span className="md:ml-2">
-              Price (7d):{" "}
-              <span className={`font-bold ${getTextColor(props.priceDaySeven)}`}>
-                {formatPrice(props.priceDaySeven)}
-              </span>
-            </span>
-          </div>
+          {/*<div className="flex flex-col md:flex-row md:items-center">*/}
+          {/*  <span>*/}
+          {/*    Price (1d):{" "}*/}
+          {/*    <span className={`font-bold ${getTextColor(props.priceDayOne)}`}>{formatPrice(props.priceDayOne)}</span>*/}
+          {/*  </span>*/}
+          {/*  <span className="md:ml-2">*/}
+          {/*    Price (3d):{" "}*/}
+          {/*    <span className={`font-bold ${getTextColor(props.priceDayThree)}`}>*/}
+          {/*      {formatPrice(props.priceDayThree)}*/}
+          {/*    </span>*/}
+          {/*  </span>*/}
+          {/*  <span className="md:ml-2">*/}
+          {/*    Price (5d):{" "}*/}
+          {/*    <span className={`font-bold ${getTextColor(props.priceDayFive)}`}>{formatPrice(props.priceDayFive)}</span>*/}
+          {/*  </span>*/}
+          {/*  <span className="md:ml-2">*/}
+          {/*    Price (7d):{" "}*/}
+          {/*    <span className={`font-bold ${getTextColor(props.priceDaySeven)}`}>*/}
+          {/*      {formatPrice(props.priceDaySeven)}*/}
+          {/*    </span>*/}
+          {/*  </span>*/}
+          {/*</div>*/}
           {(props.tweetUrl || props.explanation) && (
             <div className="flex flex-col md:flex-row md:items-center">
               {props.explanation && (
@@ -161,6 +175,17 @@ export function Prediction(props: PredictionPropType) {
                   Open source tweet
                 </a>
               )}
+            </div>
+          )}
+          {props.userView && props.userView.alias === currentUserAlias && (
+            <div className="flex flex-col md:flex-row md:items-center">
+              <button className="btn btn-primary btn-xs text-white font-normal">Complete My Prediction Now</button>
+            </div>
+          )}
+          {currentUserIsOperator && (
+            <div className="flex flex-col md:flex-row md:items-center gap-2">
+              <button className="btn btn-warning btn-xs font-normal">Complete This Prediction Now</button>
+              <button className="btn btn-warning btn-xs font-normal">Delete</button>
             </div>
           )}
         </div>

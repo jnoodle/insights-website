@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { dateFormat } from "@/app/utils";
 import parse from "html-react-parser";
+import * as React from "react";
 
 export type ArticlePropType = {
   id?: string;
@@ -25,6 +26,8 @@ export type ArticlePropType = {
 };
 export function Article(props: ArticlePropType) {
   const [viewDetails, setViewDetails] = useState(false);
+  const currentUserIsOperator = sessionStorage.getItem("insights_user_r") === "op";
+
   return (
     <div
       className="flex flex-col w-full px-4 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
@@ -75,6 +78,11 @@ export function Article(props: ArticlePropType) {
             </div>
           )}
         </div>
+        {currentUserIsOperator && (
+          <div className="flex flex-col md:flex-row md:items-center gap-2">
+            <button className="btn btn-warning btn-xs font-normal">Delete</button>
+          </div>
+        )}
       </div>
     </div>
   );

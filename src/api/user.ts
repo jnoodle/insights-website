@@ -46,8 +46,17 @@ export const getMyProfile = async () => {
       },
     });
 
-    console.log(res);
-    return res && res.data ? res.data : {};
+    // console.log(res);
+    if (res && res.data && res.data.code === 0) {
+      localStorage.setItem("insights_user", JSON.stringify(res.data.data));
+      localStorage.setItem("insights_user_alias", res.data.data.alias);
+      if (res.data.data.isOperator) {
+        sessionStorage.setItem("insights_user_r", "op");
+      }
+      return res && res.data ? res.data : {};
+    } else {
+      return {};
+    }
   } catch (err) {
     console.error(err);
     return {};

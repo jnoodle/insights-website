@@ -104,3 +104,10 @@ a {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+
+.ant-select-selection-item,
+.ant-select-item-option-content {
+  line-height: 1.4 !important;
+  word-break: break-all !important;
+  white-space: break-spaces !important;
+}
