@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ProfileTab from "@/components/ProfileTab";
 import { ellipseAddress, filterString, toastConfig } from "@/app/utils";
 import { useAccount, useAccountEffect } from "wagmi";
@@ -171,7 +172,16 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col gap-1 md:w-auto w-11/12">
-              <div className="text-xl font-bold text-accent">{currentUser.name}</div>
+              <div className="flex items-center gap-1">
+                <span className={`text-xl font-bold ${currentUser.isOperator ? "text-orange-600" : "text-accent"}`}>
+                  {currentUser.name}
+                </span>
+                {currentUser.isOperator && (
+                  <div className="tooltip" data-tip="Operations Administrator">
+                    <Image src="/operation.svg" alt="Operations Administrator" width={32} height={32} priority />
+                  </div>
+                )}
+              </div>
               <div className="">@{currentUser.alias}</div>
               {/*<div className="">*/}
               {/*  <Accuracy accuracy={currentUser.accuracy} />*/}
