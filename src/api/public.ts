@@ -61,21 +61,39 @@ export const getTopTopics = async () => {
       // })
       .then((res) => {
         if (res && res.data && res.data.code === 0) {
-          const parser = new XMLParser();
+          const parser = new XMLParser({
+            ignoreAttributes: false,
+          });
           return (
             res.data.data
               .map((e: any) => {
                 const summaryObj = parser.parse(e.summary);
-                // console.log(summaryObj);
-                return {
-                  title: e.title,
-                  updated: dateFormat(e.updated),
-                  summary: summaryObj.p[0],
-                  mentions: +summaryObj.span.mention,
-                  source: summaryObj.p[1].div[0].a,
-                };
+                console.log("summaryObj", summaryObj);
+                try {
+                  if (summaryObj.span) {
+                    return {
+                      title: e.title,
+                      updated: dateFormat(e.updated),
+                      summary: summaryObj.p[0] || e.title,
+                      mentions: +summaryObj.span?.mention || 0,
+                      source: summaryObj.div?.a["@_href"] || "#",
+                    };
+                  } else {
+                    return {
+                      title: e.title,
+                      updated: dateFormat(e.updated),
+                      summary: summaryObj.p?.p[0] || e.title,
+                      mentions: +summaryObj.p?.span?.mention || 0,
+                      source: summaryObj.p?.div?.a["@_href"] || "#",
+                    };
+                  }
+                } catch (e) {
+                  console.error(e);
+                  return null;
+                }
               })
               // .sort((a: any, b: any) => b.mentions - a.mentions)
+              .filter((a: any) => a !== null)
               .slice(0, 10)
           );
         } else {

@@ -50,6 +50,7 @@ export type PredictionPropType = {
   userId?: string;
   coinId?: string;
   resultAchievementTime?: string;
+  actualCompletionTime?: string;
   resultPrice?: string;
   trend?: string;
   explanation?: string;
@@ -68,6 +69,7 @@ export function Prediction(props: PredictionPropType) {
   const [predictionResult, setPredictionResult] = useState(props.success);
   const [predictionResultPrice, setPredictionResultPrice] = useState(props.resultPrice || "");
   const [predictionResultTime, setPredictionResultTime] = useState(props.resultAchievementTime || "");
+  const [predictionResultActualTime, setPredictionResultActualTime] = useState(props.actualCompletionTime || "");
 
   const [isDeleted, setIsDeleted] = useState(false);
   const [btnDeleteLoading, setBtnDeleteLoading] = useState(false);
@@ -94,9 +96,12 @@ export function Prediction(props: PredictionPropType) {
       completePrediction(id)
         .then((res: any) => {
           toast.success("Complete prediction success.", toastConfig);
-          setPredictionResult(res.success);
-          setPredictionResultPrice(res.resultPrice);
-          setPredictionResultTime(res.resultAchievementTime);
+          if (res.data) {
+            setPredictionResult(res.data.success);
+            setPredictionResultPrice(res.data.resultPrice);
+            setPredictionResultTime(res.data.resultAchievementTime);
+            setPredictionResultActualTime(res.data.actualCompletionTime);
+          }
         })
         .catch((e) => {
           toast.error("Complete prediction failed.", toastConfig);
@@ -194,7 +199,13 @@ export function Prediction(props: PredictionPropType) {
                 </span>
               </span>
               <span className="ml-1 text-xs md:text-sm">
-                ({predictionResultTime && dateFormat(predictionResultTime)})
+                (
+                {predictionResultActualTime
+                  ? dateFormat(predictionResultActualTime)
+                  : predictionResultTime
+                    ? dateFormat(predictionResultTime)
+                    : "-"}
+                )
               </span>
             </div>
             {/*<div className="flex flex-col md:flex-row md:items-center">*/}

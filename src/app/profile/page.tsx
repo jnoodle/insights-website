@@ -15,7 +15,7 @@ import { DatePicker, Radio, Select, Input, Modal } from "antd";
 import { CmcCoinInfo } from "@/components/Prediction";
 import DebounceSelect from "@/components/DebounceSelect";
 import { getCoins } from "@/api/public";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -77,7 +77,7 @@ export default function Home() {
   };
 
   const [coinValue, setCoinValue] = useState<CoinValue | null>(null);
-  const [predictionTime, setPredictionTime] = useState("");
+  const [predictionTime, setPredictionTime] = useState<Dayjs | null>(null);
   const [predictionTrend, setPredictionTrend] = useState("rise");
   const [predictionTweetUrl, setPredictionTweetUrl] = useState("");
   const [predictionExplanation, setPredictionExplanation] = useState("");
@@ -86,7 +86,7 @@ export default function Home() {
 
   const resetPredictionForm = () => {
     setCoinValue(null);
-    setPredictionTime("");
+    setPredictionTime(null);
     setPredictionTrend("rise");
     setPredictionExplanation("");
     setPredictionTweetUrl("");
@@ -98,7 +98,7 @@ export default function Home() {
     setAddLoading(false);
     // form valid
     if (!coinValue || (coinValue && !coinValue.value)) {
-      setErrorMsg("Please select the currency for prediction.");
+      setErrorMsg("Please select the token for prediction.");
       return;
     }
     if (!predictionTime) {
@@ -109,7 +109,7 @@ export default function Home() {
     // console.log(coinValue);
     const prediction = {
       coin: JSON.parse(coinValue!.value),
-      resultAchievementTime: predictionTime,
+      resultAchievementTime: predictionTime.format("YYYY-MM-DDTHH:mm:ss"),
       trend: predictionTrend,
       explanation: predictionExplanation,
       tweetUrl: predictionTweetUrl,
@@ -268,8 +268,10 @@ export default function Home() {
           <div className="flex flex-col">
             <DatePicker
               showTime
+              value={predictionTime}
               placeholder="Select the latest time of the price prediction result achievement"
-              onOk={(value) => setPredictionTime(value.format("YYYY-MM-DDTHH:mm:ss"))}
+              onOk={(value) => setPredictionTime(value)}
+              onChange={(value) => setPredictionTime(value)}
               minDate={dayjs(dayjs(new Date()).add(1, "day"), "YYYY-MM-DD")}
               maxDate={dayjs(dayjs(new Date()).add(8, "day"), "YYYY-MM-DD")}
             />

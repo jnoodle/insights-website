@@ -161,7 +161,7 @@ export function Tweet(props: TweetPropType) {
                 </div>
               </div>
               <Link
-                href={`https://twitter.com/${tweetAuthor.screenName}/status/${props.tweetId}`}
+                href={`https://twitter.com/${tweetUser?.screenName}/status/${props.tweetId}`}
                 className="link hidden md:block"
                 target="_blank"
               >

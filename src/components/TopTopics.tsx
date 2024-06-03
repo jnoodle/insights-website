@@ -11,6 +11,7 @@ export type TopTopicType = {
 
 export const TopTopics = () => {
   const [topics, setTopics] = useState<TopTopicType[]>([]);
+  const [isTopTopicsLoading, setIsTopTopicsLoading] = useState(false);
   const effectRef = useRef(false);
 
   useEffect((): any => {
@@ -20,17 +21,24 @@ export const TopTopics = () => {
     return () => (effectRef.current = true);
   }, []);
   const getTopics = () => {
-    getTopTopics().then((res) => {
-      if (res && res.length > 0) {
-        setTopics(res);
-      }
-    });
+    if (isTopTopicsLoading) return;
+    setIsTopTopicsLoading(true);
+    getTopTopics()
+      .then((res) => {
+        if (res && res.length > 0) {
+          setTopics(res);
+        }
+      })
+      .finally(() => {
+        setIsTopTopicsLoading(false);
+      });
   };
   return (
     <div className="flex flex-col items-center justify-center w-full my-2 py-4 px-4 border rounded-lg border-secondary">
       <h1 className="text-accent font-bold text-lg border-b  border-secondary w-full text-center pb-2">
         24-Hour Hot Topics
       </h1>
+      {isTopTopicsLoading && <span className="loading loading-dots loading-sm mt-2"></span>}
       <ol className="text-left w-full list-decimal pl-6 text-neutral text-sm mt-2">
         {topics.map((t, i) => (
           <li key={i} className="p-2 hover:bg-base-200">

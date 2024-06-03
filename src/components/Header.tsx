@@ -25,13 +25,13 @@ export function Header() {
               <Image src="/twitter.svg" alt="X" width={20} height={20} priority />
             </Link>
           </li>
+          {/*<li>*/}
+          {/*  <Link href="#" target="_blank" className="px-3 md:px-4">*/}
+          {/*    <Image src="/discord.svg" alt="Discord" width={20} height={20} priority />*/}
+          {/*  </Link>*/}
+          {/*</li>*/}
           <li>
-            <Link href="#" target="_blank" className="px-3 md:px-4">
-              <Image src="/discord.svg" alt="Discord" width={20} height={20} priority />
-            </Link>
-          </li>
-          <li>
-            <Link href="#" target="_blank" className="px-3 md:px-4">
+            <Link href="https://docs.web3insights.news" target="_blank" className="px-3 md:px-4">
               <Image src="/docs.svg" alt="Whitepaper" width={20} height={20} priority />
             </Link>
           </li>
