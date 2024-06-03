@@ -38,13 +38,13 @@ export default function Home() {
 
   useEffect((): any => {
     if (address) {
-      Login(address).then(() => {
-        getMyProfile().then((res) => {
-          if (res.data) {
-            setCurrentUser(res.data);
-          }
-        });
+      // Login(address).then(() => {
+      getMyProfile().then((res) => {
+        if (res.data) {
+          setCurrentUser(res.data);
+        }
       });
+      // });
     }
   }, [address]);
 
@@ -106,20 +106,20 @@ export default function Home() {
       return;
     }
     setAddLoading(true);
-    console.log(coinValue);
+    // console.log(coinValue);
     const prediction = {
-      coin: coinValue!.value,
+      coin: JSON.parse(coinValue!.value),
       resultAchievementTime: predictionTime,
       trend: predictionTrend,
       explanation: predictionExplanation,
       tweetUrl: predictionTweetUrl,
     };
 
-    console.log(prediction);
+    // console.log(prediction);
 
     axios
       .post(
-        "/v0/api/user/prediction/create1",
+        "/v0/api/user/prediction/create",
         {
           ...prediction,
         },
@@ -219,6 +219,12 @@ export default function Home() {
                     Add Prediction
                   </button>
                 )}
+                {/*TODO*/}
+                {/*{(!currentUser.tweet || !currentUser.tweet.name) && (*/}
+                {/*  <a href="#" target="_blank" className="btn btn-success btn-sm text-white font-normal">*/}
+                {/*    Apply to bind Twitter and join Insights &gt;&gt;*/}
+                {/*  </a>*/}
+                {/*)}*/}
                 {/*<button className="btn btn-primary btn-sm text-white">Add Tweet</button>*/}
               </div>
             </div>
@@ -247,13 +253,16 @@ export default function Home() {
                 <>
                   {menu}
                   <div className="border-t border-secondary py-2 px-4 text-xs italic text-neutral">
-                    Coin Symbol (Coin Name) (Coin UniqueId)
+                    Symbol (PriceUsd) (Name) (Chain: Contract Address)
                   </div>
                 </>
               )}
             />
             <span className="text-gray-500 mt-0 text-xs mb-1">
-              If you cannot find the token, please contact the admin.
+              <a href="https://dexscreener.com/" target="_blank">
+                DEX Screener
+              </a>{" "}
+              provides the search service.
             </span>
           </div>
           <div className="flex flex-col">

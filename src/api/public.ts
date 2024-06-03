@@ -18,7 +18,7 @@ export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
     return axios.get(`https://api.dexscreener.com/latest/dex/search/?q=${keyword}`).then((res) => {
       if (res && res.data && res.data.pairs && res.data.pairs.length > 0)
         return res.data.pairs.map((c: DexCoinInfo) => ({
-          label: `${c.baseToken.symbol} (${c.baseToken.name}) (${c.chainId}:${c.baseToken.address})`,
+          label: `${c.baseToken.symbol} (price: ${c.priceUsd}) (${c.baseToken.name}) (${c.chainId}: ${c.baseToken.address})`,
           value: JSON.stringify({
             chainId: c.chainId,
             address: c.baseToken.address,
