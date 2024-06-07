@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { filterString, formatPrice, dateFormat, toastConfig } from "@/app/utils";
+import { filterString, formatPrice, dateFormat, toastConfig, ROI } from "@/app/utils";
 import * as React from "react";
 import parse from "html-react-parser";
 import multiavatar from "@multiavatar/multiavatar/esm";
@@ -186,20 +186,22 @@ export function Prediction(props: PredictionPropType) {
           </div>
           <div className="flex flex-col items-start gap-2 grow">
             <div className="flex flex-col md:flex-row md:items-center">
-              <span>
-                Price at prediction creation: <span className="font-bold text-accent">{formatPrice(props.price)}</span>
+              <span>Price at prediction creation: &nbsp;</span>
+              <span className="text-xs md:text-sm">
+                <span className="font-bold text-accent text-sm">{formatPrice(props.price)}</span> (
+                {props.createTime && dateFormat(props.createTime)})
               </span>
-              <span className="ml-1 text-xs md:text-sm">({props.createTime && dateFormat(props.createTime)})</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-center">
-              <span>
-                Price at prediction fulfillment:{" "}
-                <span className={`font-bold ${getTextColor(predictionResultPrice)}`}>
+              <span>Price at prediction fulfillment: &nbsp;</span>
+              <span className="text-xs md:text-sm">
+                <span className={`font-bold text-sm ${getTextColor(predictionResultPrice)}`}>
                   {formatPrice(predictionResultPrice)}
+                  {predictionResult != null &&
+                    predictionResultPrice &&
+                    " (ROI:" + ROI(props.price, predictionResultPrice) + "%)"}
                 </span>
-              </span>
-              <span className="ml-1 text-xs md:text-sm">
-                (
+                &nbsp;(
                 {predictionResultActualTime
                   ? dateFormat(predictionResultActualTime)
                   : predictionResultTime
@@ -231,7 +233,7 @@ export function Prediction(props: PredictionPropType) {
             {/*  </span>*/}
             {/*</div>*/}
             {(props.tweetUrl || props.explanation) && (
-              <div className="flex flex-col md:flex-row md:items-center">
+              <div className="flex md:items-center gap-2">
                 {props.explanation && (
                   <div className="tooltip" data-tip={props.explanation}>
                     <span className="link text-primary mr-2">View explanation</span>
@@ -239,7 +241,7 @@ export function Prediction(props: PredictionPropType) {
                 )}
                 {props.tweetUrl && (
                   <a href={props.tweetUrl} target="_blank">
-                    Open source tweet
+                    Open tweet
                   </a>
                 )}
               </div>

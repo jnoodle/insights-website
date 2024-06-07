@@ -2,6 +2,7 @@ import numeral from "numeral";
 import { formatEther, formatUnits } from "viem";
 import { Slide } from "react-toastify";
 import dayjs from "dayjs";
+import BigNumber from "bignumber.js";
 
 export function ellipseAddress(address = "", width = 4): string {
   return `${address.slice(0, width)}...${address.slice(-width)}`;
@@ -77,6 +78,15 @@ export const formatPrice = (price: number | string | undefined | null) => {
   } else {
     return numeral(price).format("0.00");
   }
+};
+
+export const ROI = (source: string | number | undefined | null, target: string | number | undefined | null) => {
+  if (source && target) {
+    const _source = new BigNumber(source);
+    const _target = new BigNumber(target);
+    return _target.minus(_source).multipliedBy(100).dividedBy(_source).toPrecision(2);
+  }
+  return "-";
 };
 
 export const pageSize = 120;
