@@ -29,9 +29,19 @@ export type DexCoinInfo = {
     name: string;
     symbol: string;
   };
+  quoteToken: {
+    address: string;
+    name: string;
+    symbol: string;
+  };
   priceUsd: string;
-  url: string;
+  url: string; // dex url
   chainId: string;
+  dexId: string; // dex id
+  pairAddress: string;
+  labels: string;
+  dexscreenerPair?: any;
+  priceChange?: any;
 };
 
 export type CoinInfo = {

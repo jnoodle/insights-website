@@ -4,8 +4,7 @@ import axios from "axios";
 import { CmcCoinInfo, DexCoinInfo } from "@/components/Prediction";
 import { CoinValue } from "@/app/profile/page";
 import { XMLParser } from "fast-xml-parser";
-import dayjs from "dayjs";
-import { TopTopicType } from "@/components/TopTopics";
+import { TokenLabel } from "@/components/TokenLabel";
 
 export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
   if (keyword && keyword.length > 1) {
@@ -16,9 +15,12 @@ export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
     //   })),
     // );
     return axios.get(`https://api.dexscreener.com/latest/dex/search/?q=${keyword}`).then((res) => {
+      let pairs;
       if (res && res.data && res.data.pairs && res.data.pairs.length > 0)
-        return res.data.pairs.map((c: DexCoinInfo) => ({
-          label: `${c.baseToken.symbol} (price: ${c.priceUsd}) (${c.baseToken.name}) (${c.chainId}: ${c.baseToken.address})`,
+        pairs = res.data.pairs.map((c: DexCoinInfo) => ({
+          // option format
+          label: TokenLabel(c),
+          // option value
           value: JSON.stringify({
             chainId: c.chainId,
             address: c.baseToken.address,
@@ -26,8 +28,14 @@ export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
             name: c.baseToken.name,
             url: c.url,
             price: c.priceUsd,
+            dexId: c.dexId,
+            pairAddress: c.pairAddress,
+            labels: c.labels ? Array.from(c.labels).join(",") : "",
+            dexscreenerPair: JSON.stringify(c),
           }),
         }));
+      // console.log("pairs", pairs);
+      return pairs;
     });
   } else {
     return [];

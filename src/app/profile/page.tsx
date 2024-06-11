@@ -12,13 +12,14 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 import parse from "html-react-parser";
 import { InsightsUser } from "@/components/Tweet";
 import { DatePicker, Radio, Select, Input, Modal } from "antd";
-import { CmcCoinInfo } from "@/components/Prediction";
+import { CmcCoinInfo, DexCoinInfo } from "@/components/Prediction";
 import DebounceSelect from "@/components/DebounceSelect";
 import { getCoins } from "@/api/public";
 import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { TokenDropdownRender } from "@/components/TokenLabel";
 
 dayjs.extend(customParseFormat);
 
@@ -249,14 +250,7 @@ export default function Home() {
               }}
               // allowClear={true}
               style={{ width: "100%", height: 70 }}
-              dropdownRender={(menu) => (
-                <>
-                  {menu}
-                  <div className="border-t border-secondary py-2 px-4 text-xs italic text-neutral">
-                    Symbol (PriceUsd) (Name) (Chain: Contract Address)
-                  </div>
-                </>
-              )}
+              dropdownRender={TokenDropdownRender}
             />
             <span className="text-gray-500 mt-0 text-xs mb-1">
               <a href="https://dexscreener.com/" target="_blank">
