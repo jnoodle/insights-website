@@ -208,8 +208,8 @@ export function Tweet(props: TweetPropType) {
               </span>
               {props.hashtags && props.hashtags.length > 0 && (
                 <span className="ml-3 text-primary">
-                  {props.hashtags.map((h) => (
-                    <Link href={"https://twitter.com/hashtag/" + h} target="_blank" className="mr-2" key={h}>
+                  {props.hashtags.map((h, i) => (
+                    <Link href={"https://twitter.com/hashtag/" + h} target="_blank" className="mr-2" key={i}>
                       #{h}
                     </Link>
                   ))}

@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { dateFormat, toastConfig } from "@/app/utils";
 import axios from "axios";
 import { CmcCoinInfo, DexCoinInfo } from "@/components/Prediction";
-import { CoinValue } from "@/app/profile/page";
+import { CoinValue } from "@/components/AddPrediction";
 import { XMLParser } from "fast-xml-parser";
 import { TokenLabel } from "@/components/TokenLabel";
 

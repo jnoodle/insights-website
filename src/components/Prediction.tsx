@@ -86,9 +86,19 @@ export function Prediction(props: PredictionPropType) {
 
   const resultIcon = () =>
     predictionResult === true ? (
-      <Image src="/success.svg" width={48} height={48} priority alt="success" />
+      <div className="tooltip tooltip-left" data-tip="ROI (Return on Investment)">
+        <span className="text-lg text-success font-bold md:text-2xl">
+          {ROI(props.price, predictionResultPrice)}
+          <span className="text-base">%</span>
+        </span>
+      </div>
     ) : predictionResult === false ? (
-      <Image src="/failure.svg" width={48} height={48} priority alt="failure" />
+      <div className="tooltip tooltip-left" data-tip="ROI (Return on Investment)">
+        <span className="text-lg text-error font-bold md:text-2xl">
+          ﹣{ROI(props.price, predictionResultPrice)}
+          <span className="text-base">%</span>
+        </span>
+      </div>
     ) : (
       <Image src="/unknown.svg" width={48} height={48} priority alt="unknown" />
     );
@@ -207,9 +217,9 @@ export function Prediction(props: PredictionPropType) {
               <span className="text-xs md:text-sm">
                 <span className={`font-bold text-sm ${getTextColor(predictionResultPrice)}`}>
                   {formatPrice(predictionResultPrice)}
-                  {predictionResult != null &&
-                    predictionResultPrice &&
-                    " (ROI:" + ROI(props.price, predictionResultPrice) + "%)"}
+                  {/*{predictionResult != null &&*/}
+                  {/*  predictionResultPrice &&*/}
+                  {/*  " (ROI:" + ROI(props.price, predictionResultPrice) + "%)"}*/}
                 </span>
                 &nbsp;(
                 {predictionResultActualTime

@@ -80,13 +80,14 @@ export const formatPrice = (price: number | string | undefined | null) => {
   }
 };
 
+// ROI abs
 export const ROI = (source: string | number | undefined | null, target: string | number | undefined | null) => {
   if (source && target) {
     const _source = new BigNumber(source);
     const _target = new BigNumber(target);
-    return _target.minus(_source).multipliedBy(100).dividedBy(_source).toPrecision(2);
+    return _target.minus(_source).multipliedBy(100).dividedBy(_source).abs().toPrecision(2);
   }
-  return "-";
+  return "";
 };
 
 export const pageSize = 120;

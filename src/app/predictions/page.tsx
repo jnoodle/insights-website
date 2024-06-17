@@ -7,6 +7,7 @@ import axios from "axios";
 import { Loading } from "@/components/Loading";
 import { pageSize } from "@/app/utils";
 import { Prediction, PredictionPropType } from "@/components/Prediction";
+import { AddPrediction } from "@/components/AddPrediction";
 
 export default function Home() {
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
@@ -56,6 +57,9 @@ export default function Home() {
     >
       <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="predictions" />
+        <div className="w-full text-right mt-2">
+          <AddPrediction />
+        </div>
         {predictions.map((t) => (
           <Prediction key={t.id} {...t} />
         ))}

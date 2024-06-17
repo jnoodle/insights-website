@@ -49,9 +49,9 @@ export default function RootLayout({
         {/*  ></coingecko-coin-price-marquee-widget>*/}
         {/*</div>*/}
         {/*<Script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js" />*/}
-        <div className="gtranslate_wrapper"></div>
-        <Script id="gtranslate">{`window.gtranslateSettings = {"default_language":"xx","languages":["en","zh-CN","zh-TW","fr","de","ja","ko"],"native_language_names":true,"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right"}`}</Script>
-        <Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></Script>
+        {/*<div className="gtranslate_wrapper"></div>*/}
+        {/*<Script id="gtranslate">{`window.gtranslateSettings = {"default_language":"xx","languages":["en","zh-CN","zh-TW","fr","de","ja","ko"],"native_language_names":true,"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right"}`}</Script>*/}
+        {/*<Script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></Script>*/}
       </body>
     </html>
   );

@@ -44,6 +44,7 @@ export default function ConnectButton() {
     }
   };
 
+  // TODO address change
   useAccountEffect({
     // sign-in with wallet after connect
     onConnect(data) {
