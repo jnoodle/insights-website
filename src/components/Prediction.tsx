@@ -13,6 +13,7 @@ import numeral from "numeral";
 import dayjs from "dayjs";
 import { completePrediction, deleteItem } from "@/api/func";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 export type CmcCoinInfo = {
   id?: number;
@@ -75,6 +76,7 @@ export type PredictionPropType = {
   coin: CoinInfo;
 };
 export function Prediction(props: PredictionPropType) {
+  const t = useTranslations("Prediction");
   const [btnCompleteLoading, setBtnCompleteLoading] = useState(false);
   const [predictionResult, setPredictionResult] = useState(props.success);
   const [predictionResultPrice, setPredictionResultPrice] = useState(props.resultPrice || "");
@@ -86,21 +88,21 @@ export function Prediction(props: PredictionPropType) {
 
   const resultIcon = () =>
     predictionResult === true ? (
-      <div className="tooltip tooltip-left" data-tip="ROI (Return on Investment)">
+      <div className="tooltip tooltip-left" data-tip={t("ROI")}>
         <span className="text-lg text-success font-bold md:text-2xl">
           {ROI(props.price, predictionResultPrice)}
           <span className="text-base">%</span>
         </span>
       </div>
     ) : predictionResult === false ? (
-      <div className="tooltip tooltip-left" data-tip="ROI (Return on Investment)">
+      <div className="tooltip tooltip-left" data-tip={t("ROI")}>
         <span className="text-lg text-error font-bold md:text-2xl">
           ﹣{ROI(props.price, predictionResultPrice)}
           <span className="text-base">%</span>
         </span>
       </div>
     ) : (
-      <Image src="/unknown.svg" width={48} height={48} priority alt="unknown" />
+      <Image src="/unknown.svg" width={48} height={48} priority alt={t("Unknown")} />
     );
 
   const getTextColor = (currentPrice: any) => {
@@ -111,11 +113,11 @@ export function Prediction(props: PredictionPropType) {
   const currentUserIsOperator = sessionStorage.getItem("insights_user_r") === "op";
 
   const CompletePrediction = (id: string) => {
-    if (window.confirm("Confirm complete this prediction?")) {
+    if (window.confirm(t("ConfirmComplete"))) {
       setBtnCompleteLoading(true);
       completePrediction(id)
         .then((res: any) => {
-          toast.success("Complete prediction success.", toastConfig);
+          toast.success(t("CompleteSuccess"), toastConfig);
           if (res.data) {
             setPredictionResult(res.data.success);
             setPredictionResultPrice(res.data.resultPrice);
@@ -124,7 +126,7 @@ export function Prediction(props: PredictionPropType) {
           }
         })
         .catch((e) => {
-          toast.error("Complete prediction failed.", toastConfig);
+          toast.error(t("CompleteFailure"), toastConfig);
         })
         .finally(() => {
           setBtnCompleteLoading(false);
@@ -133,15 +135,15 @@ export function Prediction(props: PredictionPropType) {
   };
 
   const handleDeletePrediction = (id: string) => {
-    if (window.confirm("Confirm delete this prediction?")) {
+    if (window.confirm(t("ConfirmDelete"))) {
       setBtnDeleteLoading(true);
       deleteItem(id, "prediction")
         .then(() => {
-          toast.success("Delete prediction success.", toastConfig);
+          toast.success(t("DeleteSuccess"), toastConfig);
           setIsDeleted(true);
         })
         .catch((e) => {
-          toast.error("Delete prediction failed.", toastConfig);
+          toast.error(t("DeleteFailure"), toastConfig);
         })
         .finally(() => {
           setBtnDeleteLoading(false);
@@ -163,12 +165,12 @@ export function Prediction(props: PredictionPropType) {
                 {props.userView && props.userView.avatarUrl ? (
                   <img
                     src={props.userView.avatarUrl}
-                    alt={props.userView && props.userView.name ? props.userView.name : "Anonymous"}
+                    alt={props.userView && props.userView.name ? props.userView.name : t("Anonymous")}
                   />
                 ) : (
                   parse(
                     multiavatar(
-                      props.userView && props.userView.name ? filterString(props.userView.name) : "Anonymous",
+                      props.userView && props.userView.name ? filterString(props.userView.name) : t("Anonymous"),
                     ),
                   )
                 )}
@@ -178,7 +180,7 @@ export function Prediction(props: PredictionPropType) {
               <div className="text-base font-bold">
                 {/*TODO alias*/}
                 <Link href={"/user/" + props.userView?.alias} className="link">
-                  {props.userView && props.userView.name ? props.userView.name : "Anonymous"}
+                  {props.userView && props.userView.name ? props.userView.name : t("Anonymous")}
                 </Link>
               </div>
               {/*<div>@{props.userView && props.userView.screenName ? props.userView.screenName : "anonymous"}</div>*/}
@@ -195,9 +197,9 @@ export function Prediction(props: PredictionPropType) {
         <div className="prediction flex w-full flex-col md:flex-row justify-between items-start md:items-center md:pl-5">
           <div className="flex items-center gap-2 min-w-60" title={props.explanation}>
             {props.trend === "rise" ? (
-              <Image src="/rise.svg" width={64} height={64} priority alt="rise" />
+              <Image src="/rise.svg" width={64} height={64} priority alt={t("Rise")} />
             ) : (
-              <Image src="/fall.svg" width={64} height={64} priority alt="fall" />
+              <Image src="/fall.svg" width={64} height={64} priority alt={t("Fall")} />
             )}
             <Link href={props.coin.url} target="_blank" className="link text-primary text-2xl font-bold flex flex-col">
               <span>{props.coin.symbol}</span>
@@ -206,14 +208,14 @@ export function Prediction(props: PredictionPropType) {
           </div>
           <div className="flex flex-col items-start gap-2 grow">
             <div className="flex flex-col md:flex-row md:items-center">
-              <span>Price at prediction creation: &nbsp;</span>
+              <span>{t("PriceAtCreate")}&nbsp;</span>
               <span className="text-xs md:text-sm">
                 <span className="font-bold text-accent text-sm">{formatPrice(props.price)}</span> (
                 {props.createTime && dateFormat(props.createTime)})
               </span>
             </div>
             <div className="flex flex-col md:flex-row md:items-center">
-              <span>Price at prediction fulfillment: &nbsp;</span>
+              <span>{t("PriceAtFinish")}&nbsp;</span>
               <span className="text-xs md:text-sm">
                 <span className={`font-bold text-sm ${getTextColor(predictionResultPrice)}`}>
                   {formatPrice(predictionResultPrice)}
@@ -256,12 +258,12 @@ export function Prediction(props: PredictionPropType) {
               <div className="flex md:items-center gap-2">
                 {props.explanation && (
                   <div className="tooltip" data-tip={props.explanation}>
-                    <span className="link text-primary mr-2">View explanation</span>
+                    <span className="link text-primary mr-2">{t("ViewExplanation")}</span>
                   </div>
                 )}
                 {props.tweetUrl && (
                   <a href={props.tweetUrl} target="_blank">
-                    Open tweet
+                    {t("OpenTweet")}
                   </a>
                 )}
               </div>
@@ -273,7 +275,7 @@ export function Prediction(props: PredictionPropType) {
                   onClick={() => CompletePrediction(props.id)}
                   disabled={btnCompleteLoading}
                 >
-                  Complete My Prediction Now
+                  {t("CompleteMyNow")}
                   {btnCompleteLoading && <span className="loading loading-spinner loading-xs"></span>}
                 </button>
               </div>
@@ -286,7 +288,7 @@ export function Prediction(props: PredictionPropType) {
                     onClick={() => CompletePrediction(props.id)}
                     disabled={btnCompleteLoading}
                   >
-                    Complete This Prediction Now
+                    {t("CompleteNow")}
                     {btnCompleteLoading && <span className="loading loading-spinner loading-xs"></span>}
                   </button>
                 )}
@@ -295,7 +297,8 @@ export function Prediction(props: PredictionPropType) {
                   disabled={btnDeleteLoading}
                   onClick={() => handleDeletePrediction(props.id)}
                 >
-                  Delete{btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
+                  {t("Delete")}
+                  {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
                 </button>
               </div>
             )}

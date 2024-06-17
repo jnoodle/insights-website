@@ -1,7 +1,62 @@
 {
+  "LocaleSwitcher": {
+    "locale": "{locale, select, zh_CN {中文（简体）} zh_TW {中文（繁體）} en {English} other {Unknown}}",
+    "localeShort": "{locale, select, zh_CN {简中} zh_TW {繁中} en {EN} other {Unknown}}"
+  },
   "Nav": {
     "Posts": "推文",
     "Predictions": "预测",
     "News": "新闻"
-  }
+  },
+  "Tweet": {
+    "Anonymous": "匿名",
+    "Insights": "洞察",
+    "reposted": "被转推",
+    "ViewMore": "查看更多",
+    "Views": "浏览量",
+    "Reply": "回复",
+    "Like": "点赞",
+    "Delete": "删除"
+  },
+  "TopTopic": {
+    "Title": "24小时热门话题",
+    "ViewOriginal": "查看原文",
+    "mentions": "提及"
+  },
+  "TokenLabel": {
+    "24HChange": "24小时价格变化："
+  },
+  "TokenDropdownRender": {
+    "Section1": "符号（名称）",
+    "Section2": "价格（美元）, 24小时价格变化, 去中心化交易所",
+    "Section3": "区块链：合约地址",
+    "Section4": "交易对：交易对地址"
+  },
+  "ProfileTab": {
+    "Posts": "推文",
+    "Predictions": "预测",
+    "PostsEndMessage": "耶！你已经看完所有内容了",
+    "PredictionsEndMessage": "耶！你已经看完所有内容了"
+  },
+  "Prediction": {
+    "ConfirmComplete": "确认完成这个预测吗？",
+    "CompleteSuccess": "预测完成成功。",
+    "CompleteFailure": "预测完成失败。",
+    "ConfirmDelete": "确认删除这个预测吗？",
+    "DeleteSuccess": "预测删除成功。",
+    "DeleteFailure": "预测删除失败。",
+    "Anonymous": "匿名",
+    "Rise": "上升",
+    "Fall": "下降",
+    "PriceAtCreate": "预测创建时的价格：",
+    "PriceAtFinish": "预测完成时的价格：",
+    "ViewExplanation": "查看解释",
+    "OpenTweet": "打开推文",
+    "CompleteMyNow": "现在完成我的预测",
+    "CompleteNow": "现在完成这个预测",
+    "Delete": "删除",
+    "Unknown": "未知",
+    "ROI": "投资回报率（ROI）"
+  },
+  "Loading": "加载中"
 }

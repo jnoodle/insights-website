@@ -8,12 +8,14 @@ import axios from "axios";
 import { pageSize } from "@/app/utils";
 import { ArticlePropType } from "@/components/Article";
 import { Prediction, PredictionPropType } from "@/components/Prediction";
+import { useTranslations } from "next-intl";
 
 export type ProfileTabPropType = {
   alias?: string;
 };
 
 const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
+  const t = useTranslations("ProfileTab");
   const [activeTab, setActiveTab] = useState(0);
   const [tweets, setTweets]: [TweetPropType[], any] = useState([]);
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
@@ -99,10 +101,10 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
     <div className="flex w-full flex-col">
       <div role="tablist" className="tabtitle tabs tabs-bordered w-full max-w-5xl px-2 pt-2">
         <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
-          Posts
+          {t("Posts")}
         </div>
         <div role="tab" className={`tab ${activeTab === 1 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
-          Predictions
+          {t("Predictions")}
         </div>
       </div>
       <div className="w-full">
@@ -112,7 +114,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             next={fetchMoreTweetsData}
             hasMore={tweetsHasMore}
             loader={<Loading />}
-            endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
+            endMessage={<p className="text-center py-2">{t("PostsEndMessage")}</p>}
           >
             <div className="flex flex-col items-center justify-between w-full pt-2">
               {tweets.map((t, i) => (
@@ -126,7 +128,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             next={fetchMorePredictionsData}
             hasMore={predictionsHasMore}
             loader={<Loading />}
-            endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
+            endMessage={<p className="text-center py-2">{t("PredictionsEndMessage")}</p>}
           >
             <div className="flex flex-col items-center justify-between w-full pt-2">
               {predictions.map((t, i) => (

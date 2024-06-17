@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAccount } from "wagmi";
 import { InsightsUser } from "@/components/Tweet";
 import { getMyProfile } from "@/api/user";
+import { useTranslations } from "next-intl";
 
 dayjs.extend(customParseFormat);
 
@@ -22,6 +23,8 @@ export interface CoinValue {
 }
 
 export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any; currentUserInfo?: InsightsUser }) {
+  const t = useTranslations("AddPrediction");
+  const tTokenLabel = useTranslations("TokenLabel");
   const { address, isConnected } = useAccount();
   const [currentUser, setCurrentUser]: [InsightsUser, any] = useState(currentUserInfo || {});
 
@@ -148,7 +151,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
               showSearch
               value={coinValue}
               placeholder="Search Token by Name / Symbol / Address"
-              fetchOptions={getCoins}
+              fetchOptions={(keywords) => getCoins(keywords, tTokenLabel)}
               onChange={(newValue) => {
                 setCoinValue(newValue as CoinValue);
               }}

@@ -6,7 +6,7 @@ import { CoinValue } from "@/components/AddPrediction";
 import { XMLParser } from "fast-xml-parser";
 import { TokenLabel } from "@/components/TokenLabel";
 
-export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
+export const getCoins = async (keyword: string, t?: any): Promise<CoinValue[]> => {
   if (keyword && keyword.length > 1) {
     // return axios.get(`/v0/public/coins?keyword=${keyword}&from=0&size=50`).then((res) =>
     //   res.data.data.map((c: CoinInfo) => ({
@@ -19,7 +19,7 @@ export const getCoins = async (keyword: string): Promise<CoinValue[]> => {
       if (res && res.data && res.data.pairs && res.data.pairs.length > 0)
         pairs = res.data.pairs.map((c: DexCoinInfo) => ({
           // option format
-          label: TokenLabel(c),
+          label: TokenLabel(c, t),
           // option value
           value: JSON.stringify({
             chainId: c.chainId,

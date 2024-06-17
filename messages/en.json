@@ -1,7 +1,62 @@
 {
+  "LocaleSwitcher": {
+    "locale": "{locale, select, zh_CN {中文（简体）} zh_TW {中文（繁體）} en {English} other {Unknown}}",
+    "localeShort": "{locale, select, zh_CN {简中} zh_TW {繁中} en {EN} other {Unknown}}"
+  },
   "Nav": {
-    "Posts": "Posts",
+    "Posts": "Tweets",
     "Predictions": "Predictions",
     "News": "News"
-  }
+  },
+  "Tweet": {
+    "Anonymous": "Anonymous",
+    "Insights": "Insights",
+    "reposted": "reposted",
+    "ViewMore": "View more",
+    "Views": "Views",
+    "Reply": "Reply",
+    "Like": "Like",
+    "Delete": "Delete"
+  },
+  "TopTopic": {
+    "Title": "24-Hour Hot Topics",
+    "ViewOriginal": "View Original",
+    "mentions": "mentions"
+  },
+  "TokenLabel": {
+    "24HChange": "24H Price Change:"
+  },
+  "TokenDropdownRender": {
+    "Section1": "Symbol (Name)",
+    "Section2": "Price Usd, 24H Price Change, Dex",
+    "Section3": "Chain: Contract Address",
+    "Section4": "Pair: Pair Address"
+  },
+  "ProfileTab": {
+    "Posts": "Posts",
+    "Predictions": "Predictions",
+    "PostsEndMessage": "Yay! You have seen it all",
+    "PredictionsEndMessage": "Yay! You have seen it all"
+  },
+  "Prediction": {
+    "ConfirmComplete": "Confirm complete this prediction?",
+    "CompleteSuccess": "Complete prediction success.",
+    "CompleteFailure": "Complete prediction failed.",
+    "ConfirmDelete": "Confirm complete this prediction?",
+    "DeleteSuccess": "Delete prediction success.",
+    "DeleteFailure": "Delete prediction failed.",
+    "Anonymous": "Anonymous",
+    "Rise": "Rise",
+    "Fall": "Fall",
+    "PriceAtCreate": "Price at prediction creation: ",
+    "PriceAtFinish": "Price at prediction fulfillment: ",
+    "ViewExplanation": "View explanation",
+    "OpenTweet": "Open tweet",
+    "CompleteMyNow": "Complete My Prediction Now",
+    "CompleteNow": "Complete This Prediction Now",
+    "Delete": "Delete",
+    "Unknown": "Unknown",
+    "ROI": "ROI (Return on Investment)"
+  },
+  "Loading": "Loading"
 }

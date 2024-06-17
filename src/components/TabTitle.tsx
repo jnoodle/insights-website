@@ -12,7 +12,7 @@ export function TabTitle({ isFixed = true, ...props }: TabTitlePropType) {
   return (
     <div
       role="tablist"
-      className={`tabtitle tabs tabs-bordered ${!isFixed ? "" : "fixed top-16 z-50"} w-full max-w-5xl px-2 pt-2`}
+      className={`tabtitle tabs tabs-bordered ${!isFixed ? "" : "fixed top-16 z-40"} w-full max-w-5xl px-2 pt-2`}
     >
       <Link
         href={props.active === "posts" ? "" : "/"}

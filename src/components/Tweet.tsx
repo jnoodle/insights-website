@@ -9,6 +9,7 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 import { useState } from "react";
 import { deleteItem } from "@/api/func";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 export type TwitterUser = {
   id?: string;
@@ -64,6 +65,7 @@ export type TweetPropType = {
   coins?: string[];
 };
 export function Tweet(props: TweetPropType) {
+  const t = useTranslations("Tweet");
   const insightUser = props.userView;
   const tweetUser = props.userView.tweet;
   const tweetAuthor = props.retweet && props.retweet.user ? props.retweet.user : props.userView.tweet;
@@ -97,9 +99,9 @@ export function Tweet(props: TweetPropType) {
             <div className="avatar">
               <div className="w-12 rounded-full">
                 {insightUser.avatarUrl ? (
-                  <img src={insightUser.avatarUrl} alt={insightUser.name ? insightUser.name : "Anonymous"} />
+                  <img src={insightUser.avatarUrl} alt={insightUser.name ? insightUser.name : t("Anonymous")} />
                 ) : (
-                  parse(multiavatar(insightUser.name ? filterString(insightUser.name) : "Anonymous"))
+                  parse(multiavatar(insightUser.name ? filterString(insightUser.name) : t("Anonymous")))
                 )}
               </div>
             </div>
@@ -107,7 +109,7 @@ export function Tweet(props: TweetPropType) {
               <div className="text-base font-bold">
                 {/*TODO alias*/}
                 <Link href={"/user/" + insightUser?.alias} className="link">
-                  {insightUser.name ? insightUser.name : "Anonymous"}
+                  {insightUser.name ? insightUser.name : t("Anonymous")}
                 </Link>
               </div>
               {/*<div>@{props.user && props.user.screenName ? props.user.screenName : "anonymous"}</div>*/}
@@ -121,7 +123,7 @@ export function Tweet(props: TweetPropType) {
           <div className="flex w-full flex-col items-start justify-start gap-2">
             {props.coins && props.coins.length > 0 && (
               <div className="insights flex font-bold items-center py-1">
-                Insights:{" "}
+                {t("Insights")}:{" "}
                 {props.coins.map((c, i) => (
                   <span className="text-primary text-base mx-1" key={i}>
                     {c}
@@ -131,8 +133,8 @@ export function Tweet(props: TweetPropType) {
             )}
             {props.retweet && props.retweet.user && (
               <div className="reposted flex font-bold">
-                <Image src="/reposted.svg" alt="reposted" width={12} height={12} priority className="mr-2" />
-                {tweetUser && tweetUser.name ? tweetUser.name : "Anonymous"} reposted
+                <Image src="/reposted.svg" alt={t("reposted")} width={12} height={12} priority className="mr-2" />
+                {tweetUser && tweetUser.name ? tweetUser.name : t("Anonymous")} {t("reposted")}
               </div>
             )}
             <div className="flex w-full items-center justify-between gap-2">
@@ -141,7 +143,7 @@ export function Tweet(props: TweetPropType) {
                   <div className="w-7 rounded-full">
                     <img
                       src={tweetAuthor && tweetAuthor.profileImageUrl ? tweetAuthor.profileImageUrl : "/X_black.svg"}
-                      alt={tweetAuthor && tweetAuthor.name ? tweetAuthor.name : "Anonymous"}
+                      alt={tweetAuthor && tweetAuthor.name ? tweetAuthor.name : t("Anonymous")}
                     />
                   </div>
                 </div>
@@ -152,7 +154,7 @@ export function Tweet(props: TweetPropType) {
                       target="_blank"
                       className="link text-accent"
                     >
-                      {tweetAuthor && tweetAuthor.name ? tweetAuthor.name : "Anonymous"}
+                      {tweetAuthor && tweetAuthor.name ? tweetAuthor.name : t("Anonymous")}
                     </Link>
                   </div>
                   <div className="text-neutral">
@@ -165,7 +167,7 @@ export function Tweet(props: TweetPropType) {
                 className="link hidden md:block"
                 target="_blank"
               >
-                View more
+                {t("ViewMore")}
               </Link>
             </div>
             <div>
@@ -197,14 +199,14 @@ export function Tweet(props: TweetPropType) {
             </div>
             <div className="flex w-full text-xs text-neutral items-center border-t border-t-base-100 pt-2">
               <span className="text-neutral">{numeral(props.viewCount || 0).format("0a")}</span>
-              <span className="ml-1">Views</span>
+              <span className="ml-1">{t("Views")}</span>
               <span className="ml-3 text-neutral">{numeral(props.replayCount || 0).format("0a")}</span>
               <span className="ml-1">
-                <Image src="/reply.svg" width={12} height={12} priority alt="Reply" />
+                <Image src="/reply.svg" width={12} height={12} priority alt={t("Reply")} />
               </span>
               <span className="ml-3 text-neutral">{numeral(props.favoriteCount || 0).format("0a")}</span>
               <span className="ml-1">
-                <Image src="/like.svg" width={12} height={12} priority alt="Like" />
+                <Image src="/like.svg" width={12} height={12} priority alt={t("Like")} />
               </span>
               {props.hashtags && props.hashtags.length > 0 && (
                 <span className="ml-3 text-primary">
@@ -225,7 +227,7 @@ export function Tweet(props: TweetPropType) {
                 className="link"
                 target="_blank"
               >
-                View more
+                {t("ViewMore")}
               </Link>
             </div>
             {currentUserIsOperator && (
@@ -235,7 +237,7 @@ export function Tweet(props: TweetPropType) {
                   disabled={btnDeleteLoading}
                   onClick={() => handleDeleteTweet(props.id)}
                 >
-                  Delete{btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
+                  {t("Delete")} {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
                 </button>
               </div>
             )}

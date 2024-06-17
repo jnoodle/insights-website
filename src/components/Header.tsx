@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ConnectButton from "@/components/ConnectButton";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 export function Header() {
   return (
@@ -36,6 +37,7 @@ export function Header() {
             </Link>
           </li>
         </ul>
+        <LocaleSwitcher />
         <div className="px-3 md:px-4">
           <ConnectButton />
         </div>
