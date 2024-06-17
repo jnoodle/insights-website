@@ -1,12 +1,14 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export type TabTitlePropType = {
   active: "posts" | "predictions" | "news";
   isFixed?: boolean;
 };
 export function TabTitle({ isFixed = true, ...props }: TabTitlePropType) {
+  const t = useTranslations("Nav");
   return (
     <div
       role="tablist"
@@ -17,21 +19,21 @@ export function TabTitle({ isFixed = true, ...props }: TabTitlePropType) {
         role="tab"
         className={`tab ${props.active === "posts" ? "tab-active" : ""}`}
       >
-        Posts
+        {t("Posts")}
       </Link>
       <Link
         href={props.active === "predictions" ? "" : "/predictions"}
         role="tab"
         className={`tab ${props.active === "predictions" ? "tab-active" : ""}`}
       >
-        Predictions
+        {t("Predictions")}
       </Link>
       <Link
         href={props.active === "news" ? "" : "/news"}
         role="tab"
         className={`tab ${props.active === "news" ? "tab-active" : ""}`}
       >
-        News
+        {t("News")}
       </Link>
     </div>
   );

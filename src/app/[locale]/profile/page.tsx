@@ -11,15 +11,8 @@ import { getMyProfile, Login } from "@/api/user";
 import multiavatar from "@multiavatar/multiavatar/esm";
 import parse from "html-react-parser";
 import { InsightsUser } from "@/components/Tweet";
-import { DatePicker, Radio, Select, Input, Modal } from "antd";
-import { CmcCoinInfo, DexCoinInfo } from "@/components/Prediction";
-import DebounceSelect from "@/components/DebounceSelect";
-import { getCoins } from "@/api/public";
 import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { TokenDropdownRender } from "@/components/TokenLabel";
 import { AddPrediction } from "@/components/AddPrediction";
 
 dayjs.extend(customParseFormat);
@@ -28,20 +21,28 @@ export default function Home() {
   const { address, isConnected } = useAccount();
   const { open } = useWeb3Modal();
   const [currentUser, setCurrentUser]: [InsightsUser, any] = useState({});
+  const [loading, setLoading] = useState(false);
   const effectRef = useRef(false);
   const profileTabRef = useRef();
 
   useEffect((): any => {
     if (address) {
-      // Login(address).then(() => {
-      getMyProfile().then((res) => {
-        if (res.data) {
-          setCurrentUser(res.data);
-        }
-      });
+      if (!loading) {
+        // Login(address).then(() => {
+        setLoading(true);
+        getMyProfile()
+          .then((res) => {
+            if (res.data) {
+              setCurrentUser(res.data);
+            }
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      }
       // });
     } else {
-      setCurrentUser({});
+      // setCurrentUser({});
     }
   }, [address]);
 
@@ -76,6 +77,11 @@ export default function Home() {
         <div role="alert" className="alert alert-warning">
           <span>Please connect wallet!</span>
         </div>
+      )}
+      {loading && (
+        <h1>
+          <span className="loading loading-spinner loading-lg"></span>
+        </h1>
       )}
       {isConnected && currentUser && currentUser.alias && (
         <>
