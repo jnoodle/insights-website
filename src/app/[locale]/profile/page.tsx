@@ -14,10 +14,12 @@ import { InsightsUser } from "@/components/Tweet";
 import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { AddPrediction } from "@/components/AddPrediction";
+import { useTranslations } from "next-intl";
 
 dayjs.extend(customParseFormat);
 
 export default function Home() {
+  const t = useTranslations("Pages");
   const { address, isConnected } = useAccount();
   const { open } = useWeb3Modal();
   const [currentUser, setCurrentUser]: [InsightsUser, any] = useState({});
@@ -72,10 +74,10 @@ export default function Home() {
   // @ts-ignore
   return (
     <div className="flex flex-col items-center justify-between w-full pt-4">
-      <h1 className="text-xl text-accent font-bold md:mb-4 mb-2">My Profile</h1>
+      <h1 className="text-xl text-accent font-bold md:mb-4 mb-2">{t("MyProfileTitle")}</h1>
       {!isConnected && (
         <div role="alert" className="alert alert-warning">
-          <span>Please connect wallet!</span>
+          <span>{t("NotConnectWallet")}</span>
         </div>
       )}
       {loading && (
@@ -89,9 +91,9 @@ export default function Home() {
             <div className="avatar">
               <div className="w-20 md:w-32 rounded-full">
                 {currentUser.avatarUrl ? (
-                  <img src={currentUser.avatarUrl} alt={currentUser.name ? currentUser.name : "Anonymous"} />
+                  <img src={currentUser.avatarUrl} alt={currentUser.name ? currentUser.name : t("Anonymous")} />
                 ) : (
-                  parse(multiavatar(currentUser.alias || "Anonymous"))
+                  parse(multiavatar(currentUser.alias || t("Anonymous")))
                 )}
               </div>
             </div>
@@ -101,8 +103,8 @@ export default function Home() {
                   {currentUser.name}
                 </span>
                 {currentUser.isOperator && (
-                  <div className="tooltip" data-tip="Operations Administrator">
-                    <Image src="/operation.svg" alt="Operations Administrator" width={32} height={32} priority />
+                  <div className="tooltip" data-tip={t("AdministratorTip")}>
+                    <Image src="/operation.svg" alt={t("AdministratorTip")} width={32} height={32} priority />
                   </div>
                 )}
               </div>
@@ -117,11 +119,11 @@ export default function Home() {
                 </span>
               </div>
               <div className="">
-                Twitter:{" "}
+                {t("Twitter")}:{" "}
                 {currentUser.tweet && currentUser.tweet.name ? (
                   <span>
                     <Link href={"https://twitter.com/" + currentUser.tweet!.screenName} target="_blank">
-                      {currentUser.tweet && currentUser.tweet.name ? currentUser.tweet.name : "Anonymous"} @
+                      {currentUser.tweet && currentUser.tweet.name ? currentUser.tweet.name : t("Anonymous")} @
                       {currentUser.tweet && currentUser.tweet.screenName ? currentUser.tweet.screenName : "anonymous"}
                     </Link>
                   </span>
@@ -131,10 +133,10 @@ export default function Home() {
               </div>
               <div className="flex gap-2 mt-2 flex-col md:flex-row">
                 <Link href="/" className="btn btn-primary btn-sm text-white font-normal">
-                  Back to Home
+                  {t("BackToHome")}
                 </Link>
                 <Link href={"/user/" + currentUser.alias} className="btn btn-primary btn-sm text-white font-normal">
-                  Go to My Page
+                  {t("GoToMyPage")}
                 </Link>
                 <AddPrediction onSuccess={addPredictionSuccess} currentUserInfo={currentUser} />
                 {/*TODO*/}

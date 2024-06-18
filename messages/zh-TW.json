@@ -58,5 +58,66 @@
     "Unknown": "未知",
     "ROI": "投資回報率（ROI）"
   },
-  "Loading": "載入中"
+  "Loading": {
+    "Loading": "載入中"
+  },
+  "Accuracy": {
+    "Accuracy": "準確率："
+  },
+  "Header": {
+    "Insights": "Insights",
+    "Twitter": "Twitter",
+    "Whitepaper": "白皮書"
+  },
+  "ConnectButton": {
+    "ConnectError": "錢包連接出錯！",
+    "MyProfile": "我的個人資料",
+    "SigningIn": "登入中...",
+    "SwitchChain": "切換鏈",
+    "Connecting": "正在連接...",
+    "ConnectWallet": "連接錢包"
+  },
+  "Article": {
+    "ConfirmDelete": "確認刪除呢篇新聞嗎？",
+    "DeleteSuccess": "新聞刪除成功。",
+    "DeleteFailure": "新聞刪除失敗。",
+    "ViewMore": "更多",
+    "Delete": "刪除"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "請選擇預測嘅代幣。",
+    "ErrorMsgForm2": "請選擇價格預測結果達成嘅最遲時間。",
+    "ToastMsgAddSuccess": "添加預測成功。",
+    "ErrorMsgCode": "請求錯誤：{code}",
+    "ErrorMsgInternal": "內部錯誤。",
+    "ErrorMsgNetwork": "網絡錯誤。",
+    "ToastMsgErrorNoPermission": "呢個功能只支援已驗證用戶。",
+    "AddPredictionBtn": "添加預測",
+    "CancelBtn": "取消",
+    "AddPredictionModalTitle": "添加預測",
+    "TokenPlaceholder": "按名稱/符號/地址搜尋代幣",
+    "DEXScreenerTip1": "提供搜尋服務。",
+    "DatePlaceholder": "選擇價格預測結果達成嘅最遲時間",
+    "DateTip": "你可以喺此前任何時間手動完成預測，我哋將根據手動完成嗰陣嘅價格判斷預測準確性。如果唔手動完成，將根據呢個時間嘅價格判斷預測準確性。",
+    "TrendLabel": "趨勢預測",
+    "Rise": "上升",
+    "Fall": "下降",
+    "PredictionSourcePlaceholder": "預測源推文連結：https://x.com/xxx （可選）",
+    "PredictionSourceTip": "你可以輸入同你嘅預測相關嘅推文連結。",
+    "PredictionExplanationPlaceholder": "預測解釋（可選）",
+    "PredictionExplanationTip": "你可以輸入預測嘅解釋。"
+  },
+  "Metadata": {
+    "DefaultTitle": "Insights"
+  },
+  "Pages": {
+    "EndMessage": "耶！你已經看完所有內容了",
+    "NotConnectWallet": "請連接錢包！",
+    "MyProfileTitle": "我的個人資料",
+    "Anonymous": "匿名",
+    "AdministratorTip": "網站管理員",
+    "Twitter": "Twitter",
+    "BackToHome": "返回首頁",
+    "GoToMyPage": "前往我的主頁"
+  }
 }

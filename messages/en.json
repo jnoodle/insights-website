@@ -58,5 +58,66 @@
     "Unknown": "Unknown",
     "ROI": "ROI (Return on Investment)"
   },
-  "Loading": "Loading"
+  "Loading": {
+    "Loading": "Loading"
+  },
+  "Accuracy": {
+    "Accuracy": "Accuracy:"
+  },
+  "Header": {
+    "Insights": "Insights",
+    "Twitter": "Twitter",
+    "Whitepaper": "Whitepaper"
+  },
+  "ConnectButton": {
+    "ConnectError": "Wallet connected error!",
+    "MyProfile": "My Profile",
+    "SigningIn": "Signing In...",
+    "SwitchChain": "Switch Chain",
+    "Connecting": "Connecting...",
+    "ConnectWallet": "Connect Wallet"
+  },
+  "Article": {
+    "ConfirmDelete": "Confirm delete this news?",
+    "DeleteSuccess": "Delete news success.",
+    "DeleteFailure": "Delete news failed.",
+    "ViewMore": "more",
+    "Delete": "Delete"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "Please select the token for prediction.",
+    "ErrorMsgForm2": "Please select the latest time of the price prediction result achievement.",
+    "ToastMsgAddSuccess": "Adding prediction success.",
+    "ErrorMsgCode": "Code {code} Error",
+    "ErrorMsgInternal": "Internal error.",
+    "ErrorMsgNetwork": "Network error.",
+    "ToastMsgErrorNoPermission": "This feature only supports verified users.",
+    "AddPredictionBtn": "Add Prediction",
+    "CancelBtn": "Cancel",
+    "AddPredictionModalTitle": "Add Prediction",
+    "TokenPlaceholder": "Search Token by Name / Symbol / Address",
+    "DEXScreenerTip1": "provides the search service.",
+    "DatePlaceholder": "Select the latest time of the price prediction result achievement",
+    "DateTip": "You can manually complete the prediction at any time before this time, and we will judge the accuracy based on the price at the time of manual completion. If not manually completed, the accuracy will be judged based on the price at this time.",
+    "TrendLabel": "Trend Prediction",
+    "Rise": "Rise",
+    "Fall": "Fall",
+    "PredictionSourcePlaceholder": "Prediction source tweet URL: https://x.com/xxx (optional)",
+    "PredictionSourceTip": "You can input the link to your prediction-related tweet.",
+    "PredictionExplanationPlaceholder": "Prediction explanation (optional)",
+    "PredictionExplanationTip": "You can input the prediction explanation."
+  },
+  "Metadata": {
+    "DefaultTitle": "Insights"
+  },
+  "Pages": {
+    "EndMessage": "Yay! You have seen it all",
+    "NotConnectWallet": "Please connect wallet!",
+    "MyProfileTitle": "My Profile",
+    "Anonymous": "Anonymous",
+    "AdministratorTip": "Operations Administrator",
+    "Twitter": "Twitter",
+    "BackToHome": "Back to Home",
+    "GoToMyPage": "Go to My Page"
+  }
 }

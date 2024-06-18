@@ -18,8 +18,10 @@ import { toast } from "react-toastify";
 import { getMyProfile, getUserProfile, Login } from "@/api/user";
 import Image from "next/image";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 export default function ConnectButton() {
+  const t = useTranslations("ConnectButton");
   const router = useRouter();
   const { open } = useWeb3Modal();
   const { disconnect } = useDisconnect();
@@ -93,7 +95,7 @@ export default function ConnectButton() {
       const nonce = await nonceRes.text();
       if (!address || !chainId) {
         console.error("Wallet connected error!");
-        toast.error("Wallet connected error!", toastConfig);
+        toast.error(t("ConnectError"), toastConfig);
         setIsLoading(false);
         return;
       }
@@ -169,14 +171,15 @@ export default function ConnectButton() {
         ) : isConnected ? (
           chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
             isSigning ? (
-              "Signing In..."
+              t("SigningIn")
             ) : (
               <span className="flex">
                 {ellipseAddress(address)}
                 <Image
                   src="/profile.svg"
                   className="ml-1 w-4 md:w-6"
-                  alt="My Profile"
+                  alt={t("MyProfile")}
+                  title={t("MyProfile")}
                   width={24}
                   height={24}
                   priority
@@ -184,12 +187,12 @@ export default function ConnectButton() {
               </span>
             )
           ) : (
-            "Switch Chain"
+            t("SwitchChain")
           )
         ) : isConnecting ? (
-          "Connecting..."
+          t("Connecting")
         ) : (
-          "Connect Wallet"
+          t("ConnectWallet")
         )}
       </button>
       {/*isConnected: {isConnected + ""}*/}

@@ -58,5 +58,66 @@
     "Unknown": "未知",
     "ROI": "投资回报率（ROI）"
   },
-  "Loading": "加载中"
+  "Loading": {
+    "Loading": "加载中"
+  },
+  "Accuracy": {
+    "Accuracy": "准确率："
+  },
+  "Header": {
+    "Insights": "Insights",
+    "Twitter": "Twitter",
+    "Whitepaper": "白皮书"
+  },
+  "ConnectButton": {
+    "ConnectError": "钱包连接出错！",
+    "MyProfile": "我的个人资料",
+    "SigningIn": "登录中...",
+    "SwitchChain": "切换链",
+    "Connecting": "正在连接...",
+    "ConnectWallet": "连接钱包"
+  },
+  "Article": {
+    "ConfirmDelete": "确认删除这篇新闻吗？",
+    "DeleteSuccess": "新闻删除成功。",
+    "DeleteFailure": "新闻删除失败。",
+    "ViewMore": "更多",
+    "Delete": "删除"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "请选择预测的代币。",
+    "ErrorMsgForm2": "请选择价格预测结果达成的最晚时间。",
+    "ToastMsgAddSuccess": "添加预测成功。",
+    "ErrorMsgCode": "请求错误： {code}",
+    "ErrorMsgInternal": "内部错误。",
+    "ErrorMsgNetwork": "网络错误。",
+    "ToastMsgErrorNoPermission": "此功能仅支持已验证用户。",
+    "AddPredictionBtn": "添加预测",
+    "CancelBtn": "取消",
+    "AddPredictionModalTitle": "添加预测",
+    "TokenPlaceholder": "按名称/符号/合约地址搜索代币",
+    "DEXScreenerTip1": "提供搜索服务。",
+    "DatePlaceholder": "选择价格预测结果达成的最晚时间",
+    "DateTip": "你可以在此前任何时间手动完成预测，我们将根据手动完成时的价格判断预测准确性。如果不手动完成，将根据这个时间的价格判断预测准确性。",
+    "TrendLabel": "趋势预测",
+    "Rise": "上升",
+    "Fall": "下降",
+    "PredictionSourcePlaceholder": "预测来源推文链接：https://x.com/xxx （可选）",
+    "PredictionSourceTip": "你可以输入与你的预测相关的推文链接。",
+    "PredictionExplanationPlaceholder": "预测解释（可选）",
+    "PredictionExplanationTip": "你可以输入预测的解释。"
+  },
+  "Metadata": {
+    "DefaultTitle": "Insights - 洞察"
+  },
+  "Pages": {
+    "EndMessage": "耶！你已经看完所有内容了",
+    "NotConnectWallet": "请连接钱包！",
+    "MyProfileTitle": "我的个人资料",
+    "Anonymous": "匿名",
+    "AdministratorTip": "网站管理员",
+    "Twitter": "Twitter",
+    "BackToHome": "返回首页",
+    "GoToMyPage": "前往我的主页"
+  }
 }

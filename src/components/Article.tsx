@@ -8,6 +8,7 @@ import parse from "html-react-parser";
 import * as React from "react";
 import { deleteItem } from "@/api/func";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 export type ArticlePropType = {
   id: string;
@@ -27,6 +28,7 @@ export type ArticlePropType = {
   hot?: boolean;
 };
 export function Article(props: ArticlePropType) {
+  const t = useTranslations("Article");
   const [viewDetails, setViewDetails] = useState(false);
   const currentUserIsOperator = sessionStorage.getItem("insights_user_r") === "op";
 
@@ -34,15 +36,15 @@ export function Article(props: ArticlePropType) {
   const [btnDeleteLoading, setBtnDeleteLoading] = useState(false);
 
   const handleDeleteNews = (id: string) => {
-    if (window.confirm("Confirm delete this news?")) {
+    if (window.confirm(t("ConfirmDelete"))) {
       setBtnDeleteLoading(true);
       deleteItem(id, "news")
         .then(() => {
-          toast.success("Delete news success.", toastConfig);
+          toast.success(t("DeleteSuccess"), toastConfig);
           setIsDeleted(true);
         })
         .catch((e) => {
-          toast.error("Delete news failed.", toastConfig);
+          toast.error(t("DeleteFailure"), toastConfig);
         })
         .finally(() => {
           setBtnDeleteLoading(false);
@@ -98,7 +100,7 @@ export function Article(props: ArticlePropType) {
                   className="text-primary ml-2 cursor-pointer text-left inline"
                   onClick={() => setViewDetails(true)}
                 >
-                  <span>more </span>
+                  <span>{t("ViewMore")} </span>
                   <img src="/downArrow.svg" alt="" className="inline w-5" />
                 </span>
               </div>
@@ -111,7 +113,8 @@ export function Article(props: ArticlePropType) {
                 disabled={btnDeleteLoading}
                 onClick={() => handleDeleteNews(props.id)}
               >
-                Delete{btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
+                {t("Delete")}
+                {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
               </button>
             </div>
           )}

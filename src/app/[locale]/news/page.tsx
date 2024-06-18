@@ -8,8 +8,10 @@ import axios from "axios";
 import { Loading } from "@/components/Loading";
 import { pageSize } from "@/app/utils";
 import { TopTopics } from "@/components/TopTopics";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("Pages");
   const [articles, setArticles]: [ArticlePropType[], any] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [fromIndex, setFromIndex] = useState(0);
@@ -52,7 +54,7 @@ export default function Home() {
       next={fetchMoreData}
       hasMore={hasMore}
       loader={<Loading />}
-      endMessage={<p className="text-center py-2">Yay! You have seen it all</p>}
+      endMessage={<p className="text-center py-2">{t("EndMessage")}</p>}
     >
       <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="news" />

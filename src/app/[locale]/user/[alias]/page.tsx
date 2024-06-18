@@ -9,8 +9,10 @@ import parse from "html-react-parser";
 import { getUserProfile } from "@/api/user";
 import { InsightsUser } from "@/components/Tweet";
 import { Accuracy } from "@/components/Accuracy";
+import { useTranslations } from "next-intl";
 
 export default function Home({ params }: { params: { alias: string } }) {
+  const t = useTranslations("Pages");
   const [userInfo, setUserInfo]: [InsightsUser, any] = useState({});
   const effectRef = useRef(false);
 
@@ -33,7 +35,7 @@ export default function Home({ params }: { params: { alias: string } }) {
               (userInfo.avatarUrl ? (
                 <img src={userInfo.avatarUrl} alt={userInfo && userInfo.name ? userInfo.name : "Anonymous"} />
               ) : (
-                parse(multiavatar(params.alias || "Anonymous"))
+                parse(multiavatar(params.alias || t("Anonymous")))
               ))}
           </div>
         </div>
@@ -48,7 +50,7 @@ export default function Home({ params }: { params: { alias: string } }) {
             {userInfo.tweet && userInfo.tweet.name ? (
               <span>
                 <Link href={"https://twitter.com/" + userInfo.tweet!.screenName} target="_blank">
-                  {userInfo.tweet && userInfo.tweet.name ? userInfo.tweet.name : "Anonymous"} @
+                  {userInfo.tweet && userInfo.tweet.name ? userInfo.tweet.name : t("Anonymous")} @
                   {userInfo.tweet && userInfo.tweet.screenName ? userInfo.tweet.screenName : "anonymous"}
                 </Link>
               </span>

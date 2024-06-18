@@ -7,8 +7,8 @@ import { Web3Modal } from "@/context/Web3Modal";
 import { ToastContainer } from "react-toastify";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "react-toastify/dist/ReactToastify.css";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider, useTranslations } from "next-intl";
+import { getMessages, getTranslations } from "next-intl/server";
 
 const roboto = Roboto({
   weight: ["100", "400", "700"],
@@ -16,10 +16,20 @@ const roboto = Roboto({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Insights",
-  description: "",
-};
+// export const metadata: Metadata = {
+//   title: "Insights",
+//   description: "",
+// };
+
+// i18n metadata https://next-intl-docs.vercel.app/docs/environments/metadata-route-handlers
+// @ts-ignore
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("DefaultTitle"),
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -28,6 +38,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  const t = useTranslations("Pages");
   const messages = await getMessages();
 
   return (

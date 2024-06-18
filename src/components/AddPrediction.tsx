@@ -69,11 +69,11 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
     setAddLoading(false);
     // form valid
     if (!coinValue || (coinValue && !coinValue.value)) {
-      setErrorMsg("Please select the token for prediction.");
+      setErrorMsg(t("ErrorMsgForm1"));
       return;
     }
     if (!predictionTime) {
-      setErrorMsg("Please select the latest time of the price prediction result achievement.");
+      setErrorMsg(t("ErrorMsgForm2"));
       return;
     }
     setAddLoading(true);
@@ -105,15 +105,15 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
           console.log(res.data);
           if (res.data.code === 0) {
             resetPredictionForm();
-            toast.success("Adding prediction success.", toastConfig);
+            toast.success(t("ToastMsgAddSuccess"), toastConfig);
             if (onSuccess) {
               onSuccess();
             }
           } else {
-            setErrorMsg(`Code ${res.data.code} Error` || "Internal error.");
+            setErrorMsg(t("ErrorMsgCode", { code: res.data.code }) || t("ErrorMsgInternal"));
           }
         } else {
-          setErrorMsg("Network error.");
+          setErrorMsg(t("ErrorMsgNetwork"));
         }
       })
       .catch((err: any) => {
@@ -130,7 +130,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
     if (currentUser && ((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator)) {
       setIsPredictionModalOpen(true);
     } else {
-      toast.error("This feature only supports verified users.", toastConfig);
+      toast.error(t("ToastMsgErrorNoPermission"), toastConfig);
     }
   };
   const closeAddPrediction = () => {
@@ -141,16 +141,21 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
     <>
       {((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator) && (
         <button className="btn btn-primary btn-sm text-white font-normal" onClick={openAddPrediction}>
-          ＋ Add Prediction
+          ＋{t("AddPredictionBtn")}
         </button>
       )}
-      <Modal title="Add Prediction" open={isPredictionModalOpen} footer={null} onCancel={closeAddPrediction}>
+      <Modal
+        title={t("AddPredictionModalTitle")}
+        open={isPredictionModalOpen}
+        footer={null}
+        onCancel={closeAddPrediction}
+      >
         <div className="flex w-full flex-col gap-4 py-2">
           <div className="flex flex-col">
             <DebounceSelect
               showSearch
               value={coinValue}
-              placeholder="Search Token by Name / Symbol / Address"
+              placeholder={t("TokenPlaceholder")}
               fetchOptions={(keywords) => getCoins(keywords, tTokenLabel)}
               onChange={(newValue) => {
                 setCoinValue(newValue as CoinValue);
@@ -163,32 +168,28 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
               <a href="https://dexscreener.com/" target="_blank">
                 DEX Screener
               </a>{" "}
-              provides the search service.
+              {t("DEXScreenerTip1")}
             </span>
           </div>
           <div className="flex flex-col">
             <DatePicker
               showTime
               value={predictionTime}
-              placeholder="Select the latest time of the price prediction result achievement"
+              placeholder={t("DatePlaceholder")}
               onOk={(value) => setPredictionTime(value)}
               onChange={(value) => setPredictionTime(value)}
               minDate={dayjs(dayjs(new Date()).add(1, "day"), "YYYY-MM-DD")}
               maxDate={dayjs(dayjs(new Date()).add(91, "day"), "YYYY-MM-DD")}
             />
-            <span className="text-gray-500 mt-0 text-xs mb-1">
-              You can manually complete the prediction at any time before this time, and we will judge the accuracy
-              based on the price at the time of manual completion. If not manually completed, the accuracy will be
-              judged based on the price at this time.
-            </span>
+            <span className="text-gray-500 mt-0 text-xs mb-1">{t("DateTip")}</span>
           </div>
           <Radio.Group onChange={(e) => setPredictionTrend(e.target.value)} value={predictionTrend}>
-            <span>Trend Prediction: </span>
+            <span>{t("TrendLabel")}: </span>
             <Radio value="rise">
-              <span className="text-success text-lg">Rise ↗</span>
+              <span className="text-success text-lg">{t("Rise")} ↗</span>
             </Radio>
             <Radio value="fall">
-              <span className="text-error text-lg">Fall ↘</span>
+              <span className="text-error text-lg">{t("Fall")} ↘</span>
             </Radio>
           </Radio.Group>
 
@@ -196,29 +197,27 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
             <TextArea
               value={predictionTweetUrl}
               onChange={(e) => setPredictionTweetUrl(e.target.value.trim())}
-              placeholder="Prediction source tweet URL: https://x.com/xxx (optional)"
+              placeholder={t("PredictionSourcePlaceholder")}
               autoSize
             />
-            <span className="text-gray-500 mt-0 text-xs mb-1">
-              You can input the link to your prediction-related tweet.
-            </span>
+            <span className="text-gray-500 mt-0 text-xs mb-1">{t("PredictionSourceTip")}</span>
           </div>
           <div className="flex flex-col">
             <TextArea
               value={predictionExplanation}
               onChange={(e) => setPredictionExplanation(e.target.value.trim())}
-              placeholder="Prediction explanation (optional)"
+              placeholder={t("PredictionExplanationPlaceholder")}
               autoSize
             />
-            <span className="text-gray-500 mt-0 text-xs mb-1">You can input the prediction explanation.</span>
+            <span className="text-gray-500 mt-0 text-xs mb-1">{t("PredictionExplanationTip")}</span>
           </div>
           {errorMsg && <div className="text-error text-xs">{errorMsg}</div>}
           <div>
             <button className="btn btn-primary btn-sm text-white font-normal max-w-36" onClick={addPrediction}>
-              Add Prediction
+              {t("AddPredictionBtn")}
             </button>
             <button className="btn btn-sm ml-2 font-normal max-w-36" onClick={closeAddPrediction}>
-              Cancel
+              {t("CancelBtn")}
             </button>
           </div>
         </div>
