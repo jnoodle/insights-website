@@ -9,7 +9,7 @@ export const ironOptions = {
 };
 
 export const defaultLocale = "en" as const;
-export const locales = ["en", "zh-CN", "zh-TW"] as const;
+export const locales = ["en", "fr", "es", "ru", "zh-CN", "zh-TW", "ja", "ko"] as const;
 
 export const pathnames: Pathnames<typeof locales> = {
   "/": "/",

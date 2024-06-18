@@ -1,0 +1,123 @@
+{
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {English} fr {Français} es {Español} zh_CN {中文（简体）} zh_TW {中文（繁體）} ja {日本語} ko {한국어} ru {Pусский} other {Unknown}}",
+    "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
+  },
+  "Nav": {
+    "Posts": "Твиты",
+    "Predictions": "Прогнозы",
+    "News": "Новости"
+  },
+  "Tweet": {
+    "Anonymous": "Анонимно",
+    "Insights": "Инсайты",
+    "reposted": "перетвитил",
+    "ViewMore": "Посмотреть больше",
+    "Views": "Просмотры",
+    "Reply": "Ответить",
+    "Like": "Нравится",
+    "Delete": "Удалить"
+  },
+  "TopTopic": {
+    "Title": "Горящие темы за 24 часа",
+    "ViewOriginal": "Посмотреть оригинал",
+    "mentions": "упоминания"
+  },
+  "TokenLabel": {
+    "24HChange": "Изменение цены за 24 часа:"
+  },
+  "TokenDropdownRender": {
+    "Section1": "Символ (Название)",
+    "Section2": "Цена в USD, Изменение цены за 24 часа, Dex",
+    "Section3": "Цепь: Адрес контракта",
+    "Section4": "Пара: Адрес пары"
+  },
+  "ProfileTab": {
+    "Posts": "Публикации",
+    "Predictions": "Прогнозы",
+    "PostsEndMessage": "Ура! Вы видели все",
+    "PredictionsEndMessage": "Ура! Вы видели все"
+  },
+  "Prediction": {
+    "ConfirmComplete": "Подтвердить завершение этого прогноза?",
+    "CompleteSuccess": "Прогноз завершен успешно.",
+    "CompleteFailure": "Завершение прогноза не удалось.",
+    "ConfirmDelete": "Подтвердить удаление этого прогноза?",
+    "DeleteSuccess": "Прогноз успешно удален.",
+    "DeleteFailure": "Удаление прогноза не удалось.",
+    "Anonymous": "Анонимно",
+    "Rise": "Рост",
+    "Fall": "Падение",
+    "PriceAtCreate": "Цена при создании прогноза: ",
+    "PriceAtFinish": "Цена при исполнении прогноза: ",
+    "ViewExplanation": "Посмотреть объяснение",
+    "OpenTweet": "Открыть твит",
+    "CompleteMyNow": "Завершить мой прогноз сейчас",
+    "CompleteNow": "Завершить этот прогноз сейчас",
+    "Delete": "Удалить",
+    "Unknown": "Неизвестный",
+    "ROI": "ROI (Возврат по инвестициям)"
+  },
+  "Loading": {
+    "Loading": "Загрузка"
+  },
+  "Accuracy": {
+    "Accuracy": "Точность :"
+  },
+  "Header": {
+    "Insights": "Инсайты",
+    "Twitter": "Твиттер",
+    "Whitepaper": "Вeißbuch"
+  },
+  "ConnectButton": {
+    "ConnectError": "Ошибка подключения кошелька!",
+    "MyProfile": "Мой профиль",
+    "SigningIn": "Вход...",
+    "SwitchChain": "Сменить цепочку",
+    "Connecting": "Подключение...",
+    "ConnectWallet": "Подключить кошелек"
+  },
+  "Article": {
+    "ConfirmDelete": "Подтвердить удаление этой новости?",
+    "DeleteSuccess": "Новость успешно удалена.",
+    "DeleteFailure": "Удаление новости не удалось.",
+    "ViewMore": "еще",
+    "Delete": "Удалить"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "Пожалуйста, выберите токен для прогноза.",
+    "ErrorMsgForm2": "Пожалуйста, выберите последнее время достижения результата прогноза цены.",
+    "ToastMsgAddSuccess": "Добавление прогноза успешно.",
+    "ErrorMsgCode": "Ошибка кода {code}",
+    "ErrorMsgInternal": "Внутренняя ошибка.",
+    "ErrorMsgNetwork": "Ошибка сети.",
+    "ToastMsgErrorNoPermission": "Эта функция поддерживается только для верифицированных пользователей.",
+    "AddPredictionBtn": "Добавить прогноз",
+    "CancelBtn": "Отмена",
+    "AddPredictionModalTitle": "Добавить прогноз",
+    "TokenPlaceholder": "Поиск токена по Имени / Символу / Адресу",
+    "DEXScreenerTip1": "предоставляет сервис поиска.",
+    "DatePlaceholder": "Выберите последнее время достижения результата прогноза цены",
+    "DateTip": "Вы можете вручную завершить прогноз в любое время до этого момента, и мы будем судить о точности на основе цены в момент ручной финализации. Если не завершено вручную, точность будет судиться на основе цены в это время.",
+    "TrendLabel": "Прогноз тенденции",
+    "Rise": "Рост",
+    "Fall": "Падение",
+    "PredictionSourcePlaceholder": "URL твита источника прогноза: https://x.com/xxx (опционально)",
+    "PredictionSourceTip": "Вы можете ввести ссылку на ваш твит, связанный с прогнозом.",
+    "PredictionExplanationPlaceholder": "Объяснение прогноза (опционально)",
+    "PredictionExplanationTip": "Вы можете ввести объяснение прогноза."
+  },
+  "Metadata": {
+    "DefaultTitle": "Инсайты"
+  },
+  "Pages": {
+    "EndMessage": "Ура! Вы видели все",
+    "NotConnectWallet": "Пожалуйста, подключите кошелек!",
+    "MyProfileTitle": "Мой профиль",
+    "Anonymous": "Анонимно",
+    "AdministratorTip": "Администратор операций",
+    "Twitter": "Твиттер",
+    "BackToHome": "Вернуться на главную",
+    "GoToMyPage": "Перейти к моей странице"
+  }
+}

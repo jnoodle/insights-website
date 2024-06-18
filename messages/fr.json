@@ -1,0 +1,123 @@
+{
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {English} fr {Français} es {Español} zh_CN {中文（简体）} zh_TW {中文（繁體）} ja {日本語} ko {한국어} ru {Pусский} other {Unknown}}",
+    "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
+  },
+  "Nav": {
+    "Posts": "Tweets",
+    "Predictions": "Prédictions",
+    "News": "Actualités"
+  },
+  "Tweet": {
+    "Anonymous": "Anonyme",
+    "Insights": "Perspectives",
+    "reposted": "reposté",
+    "ViewMore": "Voir plus",
+    "Views": "Vues",
+    "Reply": "Répondre",
+    "Like": "Aimer",
+    "Delete": "Supprimer"
+  },
+  "TopTopic": {
+    "Title": "Thèmes chauds de 24 heures",
+    "ViewOriginal": "Voir l'original",
+    "mentions": "mentions"
+  },
+  "TokenLabel": {
+    "24HChange": "Variation de prix 24H :"
+  },
+  "TokenDropdownRender": {
+    "Section1": "Symbole (Nom)",
+    "Section2": "Prix USD, Variation de prix 24H, Dex",
+    "Section3": "Chaîne : Adresse du contrat",
+    "Section4": "Paire : Adresse de la paire"
+  },
+  "ProfileTab": {
+    "Posts": "Publications",
+    "Predictions": "Prédictions",
+    "PostsEndMessage": "Yay! Vous avez tout vu",
+    "PredictionsEndMessage": "Yay! Vous avez tout vu"
+  },
+  "Prediction": {
+    "ConfirmComplete": "Confirmez la finalisation de cette prédiction ?",
+    "CompleteSuccess": "Prédiction complétée avec succès.",
+    "CompleteFailure": "La finalisation de la prédiction a échoué.",
+    "ConfirmDelete": "Confirmez la suppression de cette prédiction ?",
+    "DeleteSuccess": "Prédiction supprimée avec succès.",
+    "DeleteFailure": "La suppression de la prédiction a échoué.",
+    "Anonymous": "Anonyme",
+    "Rise": "Augmentation",
+    "Fall": "Baisse",
+    "PriceAtCreate": "Prix à la création de la prédiction : ",
+    "PriceAtFinish": "Prix à la réalisation de la prédiction : ",
+    "ViewExplanation": "Voir l'explication",
+    "OpenTweet": "Ouvrir le tweet",
+    "CompleteMyNow": "Finaliser ma prédiction maintenant",
+    "CompleteNow": "Finaliser cette prédiction maintenant",
+    "Delete": "Supprimer",
+    "Unknown": "Inconnu",
+    "ROI": "Rendement sur investissement (ROI)"
+  },
+  "Loading": {
+    "Loading": "Chargement"
+  },
+  "Accuracy": {
+    "Accuracy": "Précision :"
+  },
+  "Header": {
+    "Insights": "Perspectives",
+    "Twitter": "Twitter",
+    "Whitepaper": "Livre blanc"
+  },
+  "ConnectButton": {
+    "ConnectError": "Erreur de connexion du portefeuille !",
+    "MyProfile": "Mon profil",
+    "SigningIn": "Connexion en cours...",
+    "SwitchChain": "Changer de chaîne",
+    "Connecting": "Connexion en cours...",
+    "ConnectWallet": "Connecter le portefeuille"
+  },
+  "Article": {
+    "ConfirmDelete": "Confirmez la suppression de cette actualité ?",
+    "DeleteSuccess": "Actualité supprimée avec succès.",
+    "DeleteFailure": "La suppression de l'actualité a échoué.",
+    "ViewMore": "plus",
+    "Delete": "Supprimer"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "Veuillez sélectionner le jeton pour la prédiction.",
+    "ErrorMsgForm2": "Veuillez sélectionner la dernière heure de réalisation du résultat de la prédiction du prix.",
+    "ToastMsgAddSuccess": "Ajout de la prédiction réussi.",
+    "ErrorMsgCode": "Erreur du code {code}",
+    "ErrorMsgInternal": "Erreur interne.",
+    "ErrorMsgNetwork": "Erreur réseau.",
+    "ToastMsgErrorNoPermission": "Cette fonctionnalité ne prend en charge que les utilisateurs vérifiés.",
+    "AddPredictionBtn": "Ajouter une prédiction",
+    "CancelBtn": "Annuler",
+    "AddPredictionModalTitle": "Ajouter une prédiction",
+    "TokenPlaceholder": "Rechercher un jeton par Nom / Symbole / Adresse",
+    "DEXScreenerTip1": "fournit le service de recherche.",
+    "DatePlaceholder": "Sélectionnez la dernière heure de réalisation du résultat de la prédiction du prix",
+    "DateTip": "Vous pouvez compléter manuellement la prédiction à tout moment avant ce moment, et nous jugerons la précision en se basant sur le prix au moment de la finalisation manuelle. Si elle n'est pas finalisée manuellement, la précision sera jugée en se basant sur le prix à ce moment.",
+    "TrendLabel": "Prédiction de tendance",
+    "Rise": "Augmentation",
+    "Fall": "Baisse",
+    "PredictionSourcePlaceholder": "URL du tweet source de la prédiction : https://x.com/xxx (facultatif)",
+    "PredictionSourceTip": "Vous pouvez saisir le lien de votre tweet lié à la prédiction.",
+    "PredictionExplanationPlaceholder": "Explication de la prédiction (facultatif)",
+    "PredictionExplanationTip": "Vous pouvez saisir l'explication de la prédiction."
+  },
+  "Metadata": {
+    "DefaultTitle": "Perspectives"
+  },
+  "Pages": {
+    "EndMessage": "Yay! Vous avez tout vu",
+    "NotConnectWallet": "Veuillez connecter votre portefeuille !",
+    "MyProfileTitle": "Mon profil",
+    "Anonymous": "Anonyme",
+    "AdministratorTip": "Administrateur des opérations",
+    "Twitter": "Twitter",
+    "BackToHome": "Retour à l'accueil",
+    "GoToMyPage": "Aller à ma page"
+  }
+}

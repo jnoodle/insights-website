@@ -1,0 +1,123 @@
+{
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {English} fr {Français} es {Español} zh_CN {中文（简体）} zh_TW {中文（繁體）} ja {日本語} ko {한국어} ru {Pусский} other {Unknown}}",
+    "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
+  },
+  "Nav": {
+    "Posts": "ツイート",
+    "Predictions": "予測",
+    "News": "ニュース"
+  },
+  "Tweet": {
+    "Anonymous": "匿名",
+    "Insights": "洞察",
+    "reposted": "リツイートされた",
+    "ViewMore": "もっと見る",
+    "Views": "表示回数",
+    "Reply": "返信",
+    "Like": "いいね",
+    "Delete": "削除"
+  },
+  "TopTopic": {
+    "Title": "24時間のホットトピック",
+    "ViewOriginal": "原文を表示",
+    "mentions": "言及"
+  },
+  "TokenLabel": {
+    "24HChange": "24時間の価格変動："
+  },
+  "TokenDropdownRender": {
+    "Section1": "シンボル（名前）",
+    "Section2": "価格（USD）, 24時間の価格変動, ディセントラリゼッドエクスチェンジ（DEX）",
+    "Section3": "チェーン：コントラクトアドレス",
+    "Section4": "ペア：ペアアドレス"
+  },
+  "ProfileTab": {
+    "Posts": "ツイート",
+    "Predictions": "予測",
+    "PostsEndMessage": "やったね！すべてを見たぞ",
+    "PredictionsEndMessage": "やったね！すべてを見たぞ"
+  },
+  "Prediction": {
+    "ConfirmComplete": "この予測を完了しますか？",
+    "CompleteSuccess": "予測完了しました。",
+    "CompleteFailure": "予測完了に失敗しました。",
+    "ConfirmDelete": "この予測を削除しますか？",
+    "DeleteSuccess": "予測の削除に成功しました。",
+    "DeleteFailure": "予測の削除に失敗しました。",
+    "Anonymous": "匿名",
+    "Rise": "上昇",
+    "Fall": "下降",
+    "PriceAtCreate": "予測作成時の価格：",
+    "PriceAtFinish": "予測完了時の価格：",
+    "ViewExplanation": "説明を見る",
+    "OpenTweet": "ツイートを開く",
+    "CompleteMyNow": "今、私の予測を完了する",
+    "CompleteNow": "今、この予測を完了する",
+    "Delete": "削除",
+    "Unknown": "不明",
+    "ROI": "ROI（投資利益率）"
+  },
+  "Loading": {
+    "Loading": "読み込み中"
+  },
+  "Accuracy": {
+    "Accuracy": "正確性："
+  },
+  "Header": {
+    "Insights": "Insights",
+    "Twitter": "Twitter",
+    "Whitepaper": "ホワイトペーパー"
+  },
+  "ConnectButton": {
+    "ConnectError": "ウォレット接続エラー！",
+    "MyProfile": "私のプロフィール",
+    "SigningIn": "サインイン中...",
+    "SwitchChain": "チェーンを切り替える",
+    "Connecting": "接続中...",
+    "ConnectWallet": "ウォレットを接続"
+  },
+  "Article": {
+    "ConfirmDelete": "このニュースを削除しますか？",
+    "DeleteSuccess": "ニュースの削除に成功しました。",
+    "DeleteFailure": "ニュースの削除に失敗しました。",
+    "ViewMore": "もっと見る",
+    "Delete": "削除"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "予測するためのトークンを選択してください。",
+    "ErrorMsgForm2": "価格予測結果の達成の最後の時間を選んでください。",
+    "ToastMsgAddSuccess": "予測の追加に成功しました。",
+    "ErrorMsgCode": "エラー：{code}",
+    "ErrorMsgInternal": "内部エラー。",
+    "ErrorMsgNetwork": "ネットワークエラー。",
+    "ToastMsgErrorNoPermission": "この機能は検証済みのユーザーのみ利用できます。",
+    "AddPredictionBtn": "予測を追加",
+    "CancelBtn": "キャンセル",
+    "AddPredictionModalTitle": "予測を追加",
+    "TokenPlaceholder": "名前/シンボル/アドレスでトークンを検索",
+    "DEXScreenerTip1": "検索サービスを提供します。",
+    "DatePlaceholder": "価格予測結果の達成の最後の時間を選んでください",
+    "DateTip": "この時間の前に手動で予測を完了することができます。手動で完了する場合、その時の価格に基づいて正確さを判断します。手動で完了しなかった場合、この時間の価格に基づいて正確さを判断します。",
+    "TrendLabel": "トレンド予測",
+    "Rise": "上昇",
+    "Fall": "下降",
+    "PredictionSourcePlaceholder": "予測ソースのツイートURL：https://x.com/xxx （オプション）",
+    "PredictionSourceTip": "あなたの予測に関連するツイートのリンクを入力できます。",
+    "PredictionExplanationPlaceholder": "予測の説明（オプション）",
+    "PredictionExplanationTip": "予測の説明を入力できます。"
+  },
+  "Metadata": {
+    "DefaultTitle": "Insights - 洞察"
+  },
+  "Pages": {
+    "EndMessage": "やったね！あなたはすべてを見ました",
+    "NotConnectWallet": "ウォレットを接続してください！",
+    "MyProfileTitle": "私のプロフィール",
+    "Anonymous": "匿名",
+    "AdministratorTip": "ウェブサイト管理者",
+    "Twitter": "Twitter",
+    "BackToHome": "ホームに戻る",
+    "GoToMyPage": "私のページへ行く"
+  }
+}

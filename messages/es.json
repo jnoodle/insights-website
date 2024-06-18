@@ -1,0 +1,123 @@
+{
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {English} fr {Français} es {Español} zh_CN {中文（简体）} zh_TW {中文（繁體）} ja {日本語} ko {한국어} ru {Pусский} other {Unknown}}",
+    "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
+  },
+  "Nav": {
+    "Posts": "Tweets",
+    "Predictions": "Predicciones",
+    "News": "Noticias"
+  },
+  "Tweet": {
+    "Anonymous": "Anónimo",
+    "Insights": "Insights",
+    "reposted": "reposteado",
+    "ViewMore": "Ver más",
+    "Views": "Vistas",
+    "Reply": "Responder",
+    "Like": "Me gusta",
+    "Delete": "Eliminar"
+  },
+  "TopTopic": {
+    "Title": "Temas calientes de 24 horas",
+    "ViewOriginal": "Ver original",
+    "mentions": "menciones"
+  },
+  "TokenLabel": {
+    "24HChange": "Cambio de precio en 24H:"
+  },
+  "TokenDropdownRender": {
+    "Section1": "Símbolo (Nombre)",
+    "Section2": "Precio USD, Cambio de precio en 24H, Dex",
+    "Section3": "Cadena: Dirección del contrato",
+    "Section4": "Par: Dirección del par"
+  },
+  "ProfileTab": {
+    "Posts": "Publicaciones",
+    "Predictions": "Predicciones",
+    "PostsEndMessage": "¡Eureka! Has visto todo",
+    "PredictionsEndMessage": "¡Eureka! Has visto todo"
+  },
+  "Prediction": {
+    "ConfirmComplete": "¿Confirmar la finalización de esta predicción?",
+    "CompleteSuccess": "Predicción completada con éxito.",
+    "CompleteFailure": "La finalización de la predicción falló.",
+    "ConfirmDelete": "¿Confirmar la eliminación de esta predicción?",
+    "DeleteSuccess": "Predicción eliminada con éxito.",
+    "DeleteFailure": "La eliminación de la predicción falló.",
+    "Anonymous": "Anónimo",
+    "Rise": "Aumento",
+    "Fall": "Disminución",
+    "PriceAtCreate": "Precio en la creación de la predicción: ",
+    "PriceAtFinish": "Precio en la cumplimentación de la predicción: ",
+    "ViewExplanation": "Ver explicación",
+    "OpenTweet": "Abrir tweet",
+    "CompleteMyNow": "Completar mi predicción ahora",
+    "CompleteNow": "Completar esta predicción ahora",
+    "Delete": "Eliminar",
+    "Unknown": "Desconocido",
+    "ROI": "ROI (Retorno de la inversión)"
+  },
+  "Loading": {
+    "Loading": "Cargando"
+  },
+  "Accuracy": {
+    "Accuracy": "Precisión :"
+  },
+  "Header": {
+    "Insights": "Insights",
+    "Twitter": "Twitter",
+    "Whitepaper": "Documento Blanco"
+  },
+  "ConnectButton": {
+    "ConnectError": "Error de conexión del monedero",
+    "MyProfile": "Mi perfil",
+    "SigningIn": "Iniciando sesión...",
+    "SwitchChain": "Cambiar cadena",
+    "Connecting": "Conectando...",
+    "ConnectWallet": "Conectar monedero"
+  },
+  "Article": {
+    "ConfirmDelete": "¿Confirmar la eliminación de esta noticia?",
+    "DeleteSuccess": "Noticia eliminada con éxito.",
+    "DeleteFailure": "La eliminación de la noticia falló.",
+    "ViewMore": "más",
+    "Delete": "Eliminar"
+  },
+  "AddPrediction": {
+    "ErrorMsgForm1": "Por favor, selecciona el token para la predicción.",
+    "ErrorMsgForm2": "Por favor, selecciona la última hora del logro del resultado de la predicción del precio.",
+    "ToastMsgAddSuccess": "Adición de predicción exitosa.",
+    "ErrorMsgCode": "Código {code} Error",
+    "ErrorMsgInternal": "Error interno.",
+    "ErrorMsgNetwork": "Error de red.",
+    "ToastMsgErrorNoPermission": "Esta función solo admite usuarios verificados.",
+    "AddPredictionBtn": "Añadir predicción",
+    "CancelBtn": "Cancelar",
+    "AddPredictionModalTitle": "Añadir predicción",
+    "TokenPlaceholder": "Buscar token por Nombre / Símbolo / Dirección",
+    "DEXScreenerTip1": "proporciona el servicio de búsqueda.",
+    "DatePlaceholder": "Selecciona la última hora del logro del resultado de la predicción del precio",
+    "DateTip": "Puedes completar manualmente la predicción en cualquier momento antes de esta hora, y nosotros juzgaremos la precisión basándonos en el precio en el momento de la finalización manual. Si no se completa manualmente, la precisión se juzgará basándose en el precio en esta hora.",
+    "TrendLabel": "Predicción de tendencia",
+    "Rise": "Aumento",
+    "Fall": "Disminución",
+    "PredictionSourcePlaceholder": "URL del tweet de la predicción: https://x.com/xxx (opcional)",
+    "PredictionSourceTip": "Puedes ingresar el enlace a tu tweet relacionado con la predicción.",
+    "PredictionExplanationPlaceholder": "Explicación de la predicción (opcional)",
+    "PredictionExplanationTip": "Puedes ingresar la explicación de la predicción."
+  },
+  "Metadata": {
+    "DefaultTitle": "Insights"
+  },
+  "Pages": {
+    "EndMessage": "¡Eureka! Has visto todo",
+    "NotConnectWallet": "Por favor, conecta tu billetera",
+    "MyProfileTitle": "Mi perfil",
+    "Anonymous": "Anónimo",
+    "AdministratorTip": "Administrador de operaciones",
+    "Twitter": "Twitter",
+    "BackToHome": "Volver a inicio",
+    "GoToMyPage": "Ir a mi página"
+  }
+}
