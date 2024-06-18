@@ -38,7 +38,6 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  const t = useTranslations("Pages");
   const messages = await getMessages();
 
   return (

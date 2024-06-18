@@ -6,7 +6,7 @@ export const Accuracy = ({ accuracy }: any) => {
   const t = useTranslations("Accuracy");
   return (
     <span className="">
-      {t("Accuracy")}{" "}
+      {t("Accuracy")}
       {accuracy && (accuracy.success || accuracy.failure) ? (
         <>
           <span className="font-bold">
