@@ -27,16 +27,22 @@ export default function Home() {
     return () => (effectRef.current = true);
   }, []);
 
-  const fetchMoreData = () => {
+  const fetchMoreData = (isReset = false) => {
     if (isLoading) return;
 
     setIsLoading(true);
+    if (isReset) {
+      setFromIndex(0);
+      setPredictions([]);
+    }
     axios
-      .get(`/v0/public/predictions?from=${fromIndex}&size=${pageSize}`)
+      .get(`/v0/public/predictions?from=${isReset ? 0 : fromIndex}&size=${pageSize}`)
       .then((res) => {
         if (res.data && res.data.code === 0 && res.data.data.length > 0) {
-          setPredictions((prevItems: PredictionPropType[]) => [...prevItems, ...res.data.data]);
-          setFromIndex((prevIndex) => prevIndex + res.data.data.length);
+          setPredictions((prevItems: PredictionPropType[]) =>
+            isReset ? res.data.data : [...prevItems, ...res.data.data],
+          );
+          setFromIndex((prevIndex) => (isReset ? 0 : prevIndex + res.data.data.length));
           // TODO has more
           setHasMore(res.data.data.length >= pageSize);
         } else {
@@ -47,6 +53,10 @@ export default function Home() {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const handerAddPredictionSuccess = () => {
+    fetchMoreData(true);
   };
 
   return (
@@ -60,7 +70,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="predictions" />
         <div className="w-full text-right mt-2">
-          <AddPrediction />
+          <AddPrediction onSuccess={handerAddPredictionSuccess} />
         </div>
         {predictions.map((t) => (
           <Prediction key={t.id} {...t} />

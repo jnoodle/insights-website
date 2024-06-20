@@ -75,9 +75,9 @@ export const getTopTopics = async () => {
           return (
             res.data.data
               .map((e: any) => {
-                const summaryObj = parser.parse(e.summary);
-                console.log("summaryObj", summaryObj);
                 try {
+                  const summaryObj = parser.parse(e.summary);
+                  console.log("summaryObj", summaryObj);
                   if (summaryObj.span) {
                     return {
                       title: e.title,

@@ -90,7 +90,7 @@ export const ROI = (source: string | number | undefined | null, target: string |
   return "";
 };
 
-export const pageSize = 120;
+export const pageSize = 30;
 
 export const toastConfig: any = {
   position: "top-right",

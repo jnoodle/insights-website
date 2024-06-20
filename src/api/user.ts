@@ -73,3 +73,27 @@ export const getUserProfile = async (alias: string) => {
     return {};
   }
 };
+
+// update username
+export const updateUserName = async (userName: string) => {
+  try {
+    // need login
+    if (!localStorage.getItem("insights_token")) {
+      return false;
+    }
+    const res = await axios.post(
+      "/v0/api/user/profile/update/name",
+      { name: userName },
+      {
+        headers: {
+          Authorization: localStorage.getItem("insights_token"),
+        },
+      },
+    );
+
+    return !!(res && res.data && res.data.code === 0);
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};

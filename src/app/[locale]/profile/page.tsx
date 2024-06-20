@@ -7,7 +7,7 @@ import { ellipseAddress, filterString, toastConfig } from "@/app/utils";
 import { useAccount, useAccountEffect } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import Link from "next/link";
-import { getMyProfile, Login } from "@/api/user";
+import { getMyProfile, Login, updateUserName } from "@/api/user";
 import multiavatar from "@multiavatar/multiavatar/esm";
 import parse from "html-react-parser";
 import { InsightsUser } from "@/components/Tweet";
@@ -15,6 +15,8 @@ import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { AddPrediction } from "@/components/AddPrediction";
 import { useTranslations } from "next-intl";
+import { reservedWords, userNameRegex } from "@/app/constants";
+import { toast } from "react-toastify";
 
 dayjs.extend(customParseFormat);
 
@@ -71,6 +73,26 @@ export default function Home() {
     }
   };
 
+  const editUserName = () => {
+    const userName = prompt(t("EditUserNamePrompt"), currentUser?.name || "");
+    if (userName) {
+      console.log("userName", userName, userName.length, userNameRegex.test(userName));
+      if (userName.length >= 3 && userNameRegex.test(userName) && reservedWords.indexOf(userName.toLowerCase()) < 0) {
+        updateUserName(userName).then((isSuccess) => {
+          console.log("isSuccess", isSuccess);
+          if (isSuccess) {
+            setCurrentUser({
+              ...currentUser,
+              name: userName,
+            });
+          }
+        });
+      } else {
+        toast.error(t("EditUserNameInvalid"), toastConfig);
+      }
+    }
+  };
+
   // @ts-ignore
   return (
     <div className="flex flex-col items-center justify-between w-full pt-4">
@@ -107,6 +129,9 @@ export default function Home() {
                     <Image src="/operation.svg" alt={t("AdministratorTip")} width={32} height={32} priority />
                   </div>
                 )}
+                <button className="btn btn-circle btn-sm" onClick={editUserName}>
+                  <Image src="/edit.svg" alt="" priority width={18} height={18} />
+                </button>
               </div>
               <div className="">@{currentUser.alias}</div>
               {/*<div className="">*/}

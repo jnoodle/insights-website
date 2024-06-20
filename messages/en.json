@@ -118,6 +118,8 @@
     "AdministratorTip": "Operations Administrator",
     "Twitter": "Twitter",
     "BackToHome": "Back to Home",
-    "GoToMyPage": "Go to My Page"
+    "GoToMyPage": "Go to My Page",
+    "EditUserNamePrompt": "Please enter a new username (Min length 3 characters, Permitted characters 0-9,a-z,A-Z,_, First character a-z,A-Z only)",
+    "EditUserNameInvalid": "The username does not comply with the rules or is a reserved word"
   }
 }
