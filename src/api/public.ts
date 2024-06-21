@@ -72,8 +72,9 @@ export const getTopTopics = async () => {
           const parser = new XMLParser({
             ignoreAttributes: false,
           });
+          const summaryArr = res.data.data ? (res.data.data.length === 1 ? res.data.data[0] : res.data.data) : [];
           return (
-            res.data.data
+            summaryArr
               .map((e: any) => {
                 try {
                   const summaryObj = parser.parse(e.summary);
@@ -84,7 +85,7 @@ export const getTopTopics = async () => {
                       updated: dateFormat(e.updated),
                       summary: summaryObj.p[0] || e.title,
                       mentions: +summaryObj.span?.mention || 0,
-                      source: summaryObj.div?.a["@_href"] || "#",
+                      source: summaryObj.link || "#",
                     };
                   } else {
                     return {
@@ -92,7 +93,7 @@ export const getTopTopics = async () => {
                       updated: dateFormat(e.updated),
                       summary: summaryObj.p?.p[0] || e.title,
                       mentions: +summaryObj.p?.span?.mention || 0,
-                      source: summaryObj.p?.div?.a["@_href"] || "#",
+                      source: summaryObj.link || "#",
                     };
                   }
                 } catch (e) {
