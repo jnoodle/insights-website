@@ -20,6 +20,17 @@ import Image from "next/image";
 import * as React from "react";
 import { useTranslations } from "next-intl";
 
+export const clearStorage = () => {
+  localStorage.removeItem("insights_signin_message");
+  localStorage.removeItem("insights_signin_signature");
+  localStorage.removeItem("insights_address");
+  localStorage.removeItem("insights_token");
+  localStorage.removeItem("insights_token_timeout");
+  localStorage.removeItem("insights_user");
+  localStorage.removeItem("insights_user_alias");
+  sessionStorage.removeItem("insights_user_r");
+};
+
 export default function ConnectButton() {
   const t = useTranslations("ConnectButton");
   const router = useRouter();
@@ -145,17 +156,6 @@ export default function ConnectButton() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const clearStorage = () => {
-    localStorage.removeItem("insights_signin_message");
-    localStorage.removeItem("insights_signin_signature");
-    localStorage.removeItem("insights_address");
-    localStorage.removeItem("insights_token");
-    localStorage.removeItem("insights_token_timeout");
-    localStorage.removeItem("insights_user");
-    localStorage.removeItem("insights_user_alias");
-    sessionStorage.removeItem("insights_user_r");
   };
 
   return (

@@ -174,20 +174,23 @@ export function Tweet(props: TweetPropType) {
               {parse(
                 twitter.autoLink(twitter.htmlEscape(props.text || "#hello < @world >"), {
                   targetBlank: true,
-                  urlEntities: props.media.map((m: any) => ({
-                    id: m.id,
-                    url: m.url,
-                    type: m.type,
-                    display_url: m.displayUrl,
-                    expanded_url: m.expandedUrl,
-                    media_key: m.mediaKey,
-                    media_url_https: m.mediaUrlHttps,
-                    indices: m.indices,
-                    sizes: m.sizes,
-                  })),
+                  urlEntities:
+                    props.media && props.media.length > 0
+                      ? props.media.map((m: any) => ({
+                          id: m.id,
+                          url: m.url,
+                          type: m.type,
+                          display_url: m.displayUrl,
+                          expanded_url: m.expandedUrl,
+                          media_key: m.mediaKey,
+                          media_url_https: m.mediaUrlHttps,
+                          indices: m.indices,
+                          sizes: m.sizes,
+                        }))
+                      : [],
                 }) || "",
               )}
-              {props.media.length > 0 ? (
+              {props.media && props.media.length > 0 ? (
                 <div className="flex gap-2 mt-1 w-full flex-wrap">
                   {props.media.map((m: any, i: any) =>
                     m.mediaUrlHttps ? (
@@ -198,18 +201,18 @@ export function Tweet(props: TweetPropType) {
               ) : null}
             </div>
             <div className="flex w-full text-xs text-neutral items-center border-t border-t-base-100 pt-2">
-              <span className="text-neutral">{numeral(props.viewCount || 0).format("0a")}</span>
-              <span className="ml-1">{t("Views")}</span>
-              <span className="ml-3 text-neutral">{numeral(props.replayCount || 0).format("0a")}</span>
-              <span className="ml-1">
-                <Image src="/reply.svg" width={12} height={12} priority alt={t("Reply")} />
-              </span>
-              <span className="ml-3 text-neutral">{numeral(props.favoriteCount || 0).format("0a")}</span>
-              <span className="ml-1">
-                <Image src="/like.svg" width={12} height={12} priority alt={t("Like")} />
-              </span>
+              {/*<span className="text-neutral">{numeral(props.viewCount || 0).format("0a")}</span>*/}
+              {/*<span className="ml-1">{t("Views")}</span>*/}
+              {/*<span className="ml-3 text-neutral">{numeral(props.replayCount || 0).format("0a")}</span>*/}
+              {/*<span className="ml-1">*/}
+              {/*  <Image src="/reply.svg" width={12} height={12} priority alt={t("Reply")} />*/}
+              {/*</span>*/}
+              {/*<span className="ml-3 text-neutral">{numeral(props.favoriteCount || 0).format("0a")}</span>*/}
+              {/*<span className="ml-1">*/}
+              {/*  <Image src="/like.svg" width={12} height={12} priority alt={t("Like")} />*/}
+              {/*</span>*/}
               {props.hashtags && props.hashtags.length > 0 && (
-                <span className="ml-3 text-primary">
+                <span className="text-primary">
                   {props.hashtags.map((h, i) => (
                     <Link href={"https://twitter.com/hashtag/" + h} target="_blank" className="mr-2" key={i}>
                       #{h}

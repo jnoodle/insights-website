@@ -3,6 +3,7 @@ import { formatEther, formatUnits } from "viem";
 import { Slide } from "react-toastify";
 import dayjs from "dayjs";
 import BigNumber from "bignumber.js";
+import { clearStorage } from "@/components/ConnectButton";
 
 export function ellipseAddress(address = "", width = 4): string {
   return `${address.slice(0, width)}...${address.slice(-width)}`;
@@ -50,7 +51,9 @@ export const isLogin = async () => {
       });
 
       if (!verifyRes.ok) {
-        throw new Error("Error verifying message");
+        console.error("Error verifying message");
+        clearStorage();
+        return false;
       }
 
       console.log(localStorage.getItem("insights_address") + " already Login");
@@ -60,6 +63,7 @@ export const isLogin = async () => {
     return false;
   } catch (err) {
     console.error(err);
+    clearStorage();
     return false;
   }
 };
