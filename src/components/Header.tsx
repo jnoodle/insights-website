@@ -24,7 +24,7 @@ export function Header() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-0 text-sm items-center">
           <li>
-            <Link href="https://twitter.com/web3insights" target="_blank" className="px-3 md:px-4">
+            <Link href="https://x.com/insightsofweb3" target="_blank" className="px-3 md:px-4">
               <Image src="/twitter.svg" alt={t("Twitter")} width={20} height={20} priority />
             </Link>
           </li>

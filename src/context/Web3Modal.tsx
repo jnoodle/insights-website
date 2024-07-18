@@ -11,6 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Chain } from "viem/chains";
 import { ReactNode } from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { confluxTestnet } from "@/context/Blockchains";
 
 // 0. Setup queryClient
 const queryClient = new QueryClient();
@@ -27,7 +28,7 @@ const metadata: any = {
   icons: ["https://insights.best/favicon.png"],
 };
 
-const chains: [Chain, ...Chain[]] = [mainnet];
+const chains: [Chain, ...Chain[]] = [mainnet, confluxTestnet];
 const wagmiConfig = defaultWagmiConfig({
   chains, // required
   projectId, // required
@@ -47,6 +48,19 @@ const modal = createWeb3Modal({
   wagmiConfig,
   includeWalletIds: ["c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96"],
   enableAnalytics: true,
+  // customWallets: [
+  //   {
+  //     id: "myCustomWallet",
+  //     name: "My Custom Wallet",
+  //     homepage: "www.mycustomwallet.com", // Optional
+  //     image_url: "my_custom_wallet_image", // Optional
+  //     mobile_link: "mobile_link", // Optional - Deeplink or universal
+  //     desktop_link: "desktop_link", // Optional - Deeplink
+  //     webapp_link: "webapp_link", // Optional
+  //     app_store: "app_store", // Optional
+  //     play_store: "play_store", // Optional
+  //   },
+  // ],
   projectId,
   defaultChain: mainnet,
 });
