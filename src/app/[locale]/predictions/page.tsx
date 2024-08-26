@@ -97,6 +97,8 @@ export default function Home() {
             placeholder={t("PredictionSearchPlaceholder")}
             allowClear
             onSearch={onSearch}
+            /*
+            // @ts-ignore */
             onClear={onClear}
             className="w-full max-w-96"
           />
