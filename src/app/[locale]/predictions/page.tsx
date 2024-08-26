@@ -9,6 +9,11 @@ import { pageSize } from "@/app/utils";
 import { Prediction, PredictionPropType } from "@/components/Prediction";
 import { AddPrediction } from "@/components/AddPrediction";
 import { useTranslations } from "next-intl";
+import { Input } from "antd";
+import type { GetProps } from "antd";
+
+type SearchProps = GetProps<typeof Input.Search>;
+const { Search } = Input;
 
 export default function Home() {
   const t = useTranslations("Pages");
@@ -16,6 +21,7 @@ export default function Home() {
   const [hasMore, setHasMore] = useState(true);
   const [fromIndex, setFromIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [keyword, setKeyword] = useState("");
   const effectRef = useRef(false);
 
   useEffect((): any => {
@@ -27,7 +33,7 @@ export default function Home() {
     return () => (effectRef.current = true);
   }, []);
 
-  const fetchMoreData = (isReset = false) => {
+  const fetchMoreData = (isReset = false, _keyword?: any) => {
     if (isLoading) return;
 
     setIsLoading(true);
@@ -36,7 +42,11 @@ export default function Home() {
       setPredictions([]);
     }
     axios
-      .get(`/v0/public/predictions?from=${isReset ? 0 : fromIndex}&size=${pageSize}`)
+      .get(
+        `/v0/public/predictions?from=${isReset ? 0 : fromIndex}&size=${pageSize}&keyword=${
+          typeof _keyword !== "undefined" ? _keyword : keyword
+        }`,
+      )
       .then((res) => {
         if (res.data && res.data.code === 0 && res.data.data.length > 0) {
           setPredictions((prevItems: PredictionPropType[]) =>
@@ -59,6 +69,16 @@ export default function Home() {
     fetchMoreData(true);
   };
 
+  const onSearch: SearchProps["onSearch"] = (value: any) => {
+    setKeyword(value + "");
+    fetchMoreData(true, value + "");
+  };
+
+  const onClear = () => {
+    setKeyword("");
+    fetchMoreData(true, "");
+  };
+
   return (
     <InfiniteScroll
       dataLength={predictions.length}
@@ -71,6 +91,15 @@ export default function Home() {
         <TabTitle active="predictions" />
         <div className="w-full text-right mt-2">
           <AddPrediction onSuccess={handerAddPredictionSuccess} />
+        </div>
+        <div className="w-full text-right mt-2">
+          <Search
+            placeholder={t("PredictionSearchPlaceholder")}
+            allowClear
+            onSearch={onSearch}
+            onClear={onClear}
+            className="w-full max-w-96"
+          />
         </div>
         {predictions.map((t) => (
           <Prediction key={t.id} {...t} />

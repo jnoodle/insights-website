@@ -120,6 +120,7 @@
     "BackToHome": "홈으로 돌아가기",
     "GoToMyPage": "제 페이지로 이동",
     "EditUserNamePrompt": "새 사용자 이름을 입력해주세요 (최소 길이 3자, 허용된 문자 0-9, a-z, A-Z, _, 첫 문자는 a-z, A-Z만 사용 가능)",
-    "EditUserNameInvalid": "사용자 이름이 규칙에 부합하지 않거나 예약어입니다"
+    "EditUserNameInvalid": "사용자 이름이 규칙에 부합하지 않거나 예약어입니다",
+    "PredictionSearchPlaceholder": "이름 / 기호 / 주소로 검색"
   }
 }

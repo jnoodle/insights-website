@@ -120,6 +120,7 @@
     "BackToHome": "Volver a inicio",
     "GoToMyPage": "Ir a mi página",
     "EditUserNamePrompt": "Ingrese un nuevo nombre de usuario (Longitud mínima de 3 caracteres, Caracteres permitidos 0-9,a-z,A-Z,_, Primer carácter a-z,A-Z solamente)",
-    "EditUserNameInvalid": "El nombre de usuario no cumple con las reglas o es una palabra reservada"
+    "EditUserNameInvalid": "El nombre de usuario no cumple con las reglas o es una palabra reservada",
+    "PredictionSearchPlaceholder": "Buscar por Nombre / Símbolo / Dirección"
   }
 }

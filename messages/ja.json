@@ -120,6 +120,7 @@
     "BackToHome": "ホームに戻る",
     "GoToMyPage": "私のページへ行く",
     "EditUserNamePrompt": "新しいユーザー名を入力してください（最小3文字、使用可能な文字は0-9、a-z、A-Z、そして下線_、最初の文字はa-z、A-Zのみ）",
-    "EditUserNameInvalid": "ユーザー名は規則に適合しないか、予約語です"
+    "EditUserNameInvalid": "ユーザー名は規則に適合しないか、予約語です",
+    "PredictionSearchPlaceholder": "名前 / シンボル / アドレスで検索"
   }
 }
