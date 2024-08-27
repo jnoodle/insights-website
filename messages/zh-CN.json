@@ -23,6 +23,9 @@
     "ViewOriginal": "查看原文",
     "mentions": "提及"
   },
+  "TopPrediction": {
+    "Title": "预测收益率排名"
+  },
   "TokenLabel": {
     "24HChange": "24小时价格变化："
   },
@@ -56,13 +59,12 @@
     "CompleteNow": "现在完成这个预测",
     "Delete": "删除",
     "Unknown": "未知",
-    "ROI": "投资回报率（ROI）"
+    "ROI": "投资回报率（ROI）",
+    "Accuracy": "准确率：",
+    "Roi": "平均 ROI："
   },
   "Loading": {
     "Loading": "加载中"
-  },
-  "Accuracy": {
-    "Accuracy": "准确率："
   },
   "Header": {
     "Insights": "Insights",

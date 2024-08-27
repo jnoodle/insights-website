@@ -23,6 +23,9 @@
     "ViewOriginal": "View Original",
     "mentions": "mentions"
   },
+  "TopPrediction": {
+    "Title": "Top Prediction ROI Ranking"
+  },
   "TokenLabel": {
     "24HChange": "24H Price Change:"
   },
@@ -56,13 +59,12 @@
     "CompleteNow": "Complete This Prediction Now",
     "Delete": "Delete",
     "Unknown": "Unknown",
-    "ROI": "ROI (Return on Investment)"
+    "ROI": "ROI (Return on Investment)",
+    "Accuracy": "Accuracy: ",
+    "Roi": "Average ROI: "
   },
   "Loading": {
     "Loading": "Loading"
-  },
-  "Accuracy": {
-    "Accuracy": "Accuracy:"
   },
   "Header": {
     "Insights": "Insights",

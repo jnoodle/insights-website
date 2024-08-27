@@ -111,3 +111,13 @@ export const getTopTopics = async () => {
       })
   );
 };
+
+export const getTopPredictions = async () => {
+  return axios.get(`/v0/public/prediction/ranking`).then((res) => {
+    if (res && res.data && res.data.code === 0) {
+      return res.data.data.slice(0, 5);
+    } else {
+      return [];
+    }
+  });
+};

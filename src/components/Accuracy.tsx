@@ -3,20 +3,32 @@ import numeral from "numeral";
 import { useTranslations } from "next-intl";
 
 export const Accuracy = ({ accuracy }: any) => {
-  const t = useTranslations("Accuracy");
+  const t = useTranslations("Prediction");
   return (
-    <span className="">
-      {t("Accuracy")}
-      {accuracy && (accuracy.success || accuracy.failure) ? (
-        <>
-          <span className="font-bold">
-            {numeral(accuracy.success / ((accuracy.success || 0) + (accuracy.failure || 0))).format("0.0%")}
-          </span>{" "}
-          ({accuracy.success || 0}/{(accuracy.success || 0) + (accuracy.failure || 0)})
-        </>
-      ) : (
-        "--"
+    <span className="flex flex-col md:flex-row md:gap-2">
+      {accuracy && typeof accuracy.roi !== "undefined" && (
+        <span>
+          {t("Roi")}
+          {accuracy.roi == null ? (
+            "--"
+          ) : (
+            <span className={`font-bold ${+accuracy.roi >= 0 ? "text-success" : "text-error"}`}>{accuracy.roi}%</span>
+          )}
+        </span>
       )}
+      <span>
+        {t("Accuracy")}
+        {accuracy && (accuracy.success || accuracy.failure) ? (
+          <>
+            <span className="font-bold">
+              {numeral(accuracy.success / ((accuracy.success || 0) + (accuracy.failure || 0))).format("0.0%")}
+            </span>{" "}
+            ({accuracy.success || 0}/{(accuracy.success || 0) + (accuracy.failure || 0)})
+          </>
+        ) : (
+          "--"
+        )}
+      </span>
     </span>
   );
 };

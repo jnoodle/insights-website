@@ -23,6 +23,9 @@
     "ViewOriginal": "Voir l'original",
     "mentions": "mentions"
   },
+  "TopPrediction": {
+    "Title": "Classement du rendement des prédictions"
+  },
   "TokenLabel": {
     "24HChange": "Variation de prix 24H :"
   },
@@ -56,13 +59,12 @@
     "CompleteNow": "Finaliser cette prédiction maintenant",
     "Delete": "Supprimer",
     "Unknown": "Inconnu",
-    "ROI": "Rendement sur investissement (ROI)"
+    "ROI": "Rendement sur investissement (ROI)",
+    "Accuracy": "Précision: ",
+    "Roi": "ROI moyen: "
   },
   "Loading": {
     "Loading": "Chargement"
-  },
-  "Accuracy": {
-    "Accuracy": "Précision :"
   },
   "Header": {
     "Insights": "Perspectives",

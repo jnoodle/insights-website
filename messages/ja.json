@@ -23,6 +23,9 @@
     "ViewOriginal": "原文を表示",
     "mentions": "言及"
   },
+  "TopPrediction": {
+    "Title": "予想投資利益率ランキング"
+  },
   "TokenLabel": {
     "24HChange": "24時間の価格変動："
   },
@@ -56,13 +59,12 @@
     "CompleteNow": "今、この予測を完了する",
     "Delete": "削除",
     "Unknown": "不明",
-    "ROI": "ROI（投資利益率）"
+    "ROI": "ROI（投資利益率）",
+    "Accuracy": "正確性：",
+    "Roi": "平均 ROI："
   },
   "Loading": {
     "Loading": "読み込み中"
-  },
-  "Accuracy": {
-    "Accuracy": "正確性："
   },
   "Header": {
     "Insights": "Insights",

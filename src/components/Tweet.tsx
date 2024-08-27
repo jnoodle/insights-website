@@ -22,7 +22,7 @@ export type InsightsUser = {
   alias?: string;
   avatarUrl?: string;
   name?: string;
-  accuracy?: string;
+  accuracy?: any;
   tweet?: TwitterUser;
   createTime?: string;
   updateTime?: string;

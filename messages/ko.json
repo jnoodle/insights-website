@@ -23,6 +23,9 @@
     "ViewOriginal": "원문보기",
     "mentions": "언급"
   },
+  "TopPrediction": {
+    "Title": "예측 수익률 순위"
+  },
   "TokenLabel": {
     "24HChange": "24시간 가격 변화:"
   },
@@ -56,13 +59,12 @@
     "CompleteNow": "지금 이 예측 완료",
     "Delete": "삭제",
     "Unknown": "알 수 없음",
-    "ROI": "ROI (투자 수익률)"
+    "ROI": "ROI (투자 수익률)",
+    "Accuracy": "정확도: ",
+    "Roi": "평균 ROI: "
   },
   "Loading": {
     "Loading": "로딩 중"
-  },
-  "Accuracy": {
-    "Accuracy": "정확도 :"
   },
   "Header": {
     "Insights": "Insights",

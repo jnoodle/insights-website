@@ -11,6 +11,7 @@ import { AddPrediction } from "@/components/AddPrediction";
 import { useTranslations } from "next-intl";
 import { Input } from "antd";
 import type { GetProps } from "antd";
+import { TopPredictions } from "@/components/TopPredictions";
 
 type SearchProps = GetProps<typeof Input.Search>;
 const { Search } = Input;
@@ -89,6 +90,7 @@ export default function Home() {
     >
       <div className="flex flex-col items-center justify-between w-full pt-14">
         <TabTitle active="predictions" />
+        <TopPredictions />
         <div className="w-full text-right mt-2">
           <AddPrediction onSuccess={handerAddPredictionSuccess} />
         </div>

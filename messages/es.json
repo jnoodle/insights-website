@@ -23,6 +23,9 @@
     "ViewOriginal": "Ver original",
     "mentions": "menciones"
   },
+  "TopPrediction": {
+    "Title": "Ranking de Rentabilidad de Predicciones"
+  },
   "TokenLabel": {
     "24HChange": "Cambio de precio en 24H:"
   },
@@ -56,13 +59,12 @@
     "CompleteNow": "Completar esta predicción ahora",
     "Delete": "Eliminar",
     "Unknown": "Desconocido",
-    "ROI": "ROI (Retorno de la inversión)"
+    "ROI": "ROI (Retorno de la inversión)",
+    "Accuracy": "Precisión: ",
+    "Roi": "ROI promedio: "
   },
   "Loading": {
     "Loading": "Cargando"
-  },
-  "Accuracy": {
-    "Accuracy": "Precisión :"
   },
   "Header": {
     "Insights": "Insights",
