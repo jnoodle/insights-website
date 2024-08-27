@@ -213,8 +213,13 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
           </div>
           {errorMsg && <div className="text-error text-xs">{errorMsg}</div>}
           <div>
-            <button className="btn btn-primary btn-sm text-white font-normal max-w-36" onClick={addPrediction}>
+            <button
+              className="btn btn-primary btn-sm text-white font-normal max-w-36"
+              onClick={addPrediction}
+              disabled={addLoading}
+            >
               {t("AddPredictionBtn")}
+              {addLoading && <span className="loading loading-spinner loading-xs"></span>}
             </button>
             <button className="btn btn-sm ml-2 font-normal max-w-36" onClick={closeAddPrediction}>
               {t("CancelBtn")}

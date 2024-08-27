@@ -14,6 +14,7 @@ import dayjs from "dayjs";
 import { completePrediction, deleteItem } from "@/api/func";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
+import { CompletePrediction as CompletePredictionBtn } from "@/components/CompletePrediction";
 
 export type CmcCoinInfo = {
   id?: number;
@@ -281,26 +282,31 @@ export function Prediction(props: PredictionPropType) {
               </div>
             )}
             {currentUserIsOperator && (
-              <div className="flex flex-col md:flex-row md:items-center gap-2">
-                {predictionResult == null && (
+              <>
+                <div className="flex flex-col md:flex-row md:items-center gap-2">
+                  {predictionResult == null && (
+                    <>
+                      <button
+                        className="btn btn-warning btn-xs font-normal"
+                        onClick={() => CompletePrediction(props.id)}
+                        disabled={btnCompleteLoading}
+                      >
+                        {t("CompleteNow")}
+                        {btnCompleteLoading && <span className="loading loading-spinner loading-xs"></span>}
+                      </button>
+                      <CompletePredictionBtn id={props.id} createTime={props.createTime + ""} />
+                    </>
+                  )}
                   <button
                     className="btn btn-warning btn-xs font-normal"
-                    onClick={() => CompletePrediction(props.id)}
-                    disabled={btnCompleteLoading}
+                    disabled={btnDeleteLoading}
+                    onClick={() => handleDeletePrediction(props.id)}
                   >
-                    {t("CompleteNow")}
-                    {btnCompleteLoading && <span className="loading loading-spinner loading-xs"></span>}
+                    {t("Delete")}
+                    {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
                   </button>
-                )}
-                <button
-                  className="btn btn-warning btn-xs font-normal"
-                  disabled={btnDeleteLoading}
-                  onClick={() => handleDeletePrediction(props.id)}
-                >
-                  {t("Delete")}
-                  {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
-                </button>
-              </div>
+                </div>
+              </>
             )}
           </div>
           <div className="flex items-center hidden md:block">{resultIcon()}</div>
