@@ -16,7 +16,7 @@ export type ProfileTabPropType = {
 
 const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const t = useTranslations("ProfileTab");
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(1);
   const [tweets, setTweets]: [TweetPropType[], any] = useState([]);
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
   const [tweetsHasMore, setTweetsHasMore] = useState(true);
@@ -100,11 +100,11 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   return (
     <div className="flex w-full flex-col">
       <div role="tablist" className="tabtitle tabs tabs-bordered w-full max-w-5xl px-2 pt-2">
-        <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
-          {t("Posts")}
-        </div>
         <div role="tab" className={`tab ${activeTab === 1 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
           {t("Predictions")}
+        </div>
+        <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
+          {t("Posts")}
         </div>
       </div>
       <div className="w-full">

@@ -1,6 +1,7 @@
 import React from "react";
 import numeral from "numeral";
 import { useTranslations } from "next-intl";
+import { formatPrice } from "@/app/utils";
 
 export const Accuracy = ({ accuracy }: any) => {
   const t = useTranslations("Prediction");
@@ -12,7 +13,9 @@ export const Accuracy = ({ accuracy }: any) => {
           {accuracy.roi == null ? (
             "--"
           ) : (
-            <span className={`font-bold ${+accuracy.roi >= 0 ? "text-success" : "text-error"}`}>{accuracy.roi}%</span>
+            <span className={`font-bold ${+accuracy.roi >= 0 ? "text-success" : "text-error"}`}>
+              {accuracy.roi > 10000 ? ">100X" : accuracy.roi + "%"}
+            </span>
           )}
         </span>
       )}

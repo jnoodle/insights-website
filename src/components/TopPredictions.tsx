@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import parse from "html-react-parser";
 import multiavatar from "@multiavatar/multiavatar/esm";
-import { filterString } from "@/app/utils";
+import { filterString, formatPrice } from "@/app/utils";
 import { Accuracy } from "@/components/Accuracy";
 import numeral from "numeral";
 
@@ -84,7 +84,14 @@ export const TopPredictions = () => {
             </div>
             {p.roiAverage && (
               <div className={`text-base font-bold ${+p.roiAverage >= 0 ? "text-success" : "text-error"}`}>
-                {p.roiAverage}%
+                {p.roiAverage > 10000 ? (
+                  <span className="flex items-center">
+                    <span>&gt; 100X</span>
+                    <img src="/star.svg" alt="Star" className="w-6 h-6" />
+                  </span>
+                ) : (
+                  p.roiAverage + "%"
+                )}
               </div>
             )}
           </li>
