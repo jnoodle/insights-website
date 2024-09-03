@@ -42,11 +42,11 @@ export const getCoins = async (keyword: string, t?: any): Promise<CoinValue[]> =
   }
 };
 
-export const getTopTopics = async () => {
+export const getTopTopics = async (lang: string) => {
   return (
     axios
       // .get(`/buzz/rss`)
-      .get(`/v0/public/chainbuzz?from=0&size=100`)
+      .get(`/v0/public/chainbuzz?from=0&size=100&lang=${lang}`)
       // .then((res) => res.data)
       // .then((text) => {
       //   const parser = new XMLParser();
@@ -77,25 +77,25 @@ export const getTopTopics = async () => {
             summaryArr
               .map((e: any) => {
                 try {
-                  const summaryObj = parser.parse(e.summary);
-                  console.log("summaryObj", summaryObj);
-                  if (summaryObj.span) {
-                    return {
-                      title: e.title,
-                      updated: dateFormat(e.updated),
-                      summary: summaryObj.p[0] || e.title,
-                      mentions: +summaryObj.span?.mention || 0,
-                      source: summaryObj.link || "#",
-                    };
-                  } else {
-                    return {
-                      title: e.title,
-                      updated: dateFormat(e.updated),
-                      summary: summaryObj.p?.p[0] || e.title,
-                      mentions: +summaryObj.p?.span?.mention || 0,
-                      source: summaryObj.link || "#",
-                    };
-                  }
+                  // const summaryObj = parser.parse(e.summary);
+                  // console.log("summaryObj", summaryObj);
+                  // if (summaryObj.span) {
+                  //   return {
+                  //     title: e.title,
+                  //     updated: dateFormat(e.updated),
+                  //     summary: e.summary,
+                  //     // mentions: +summaryObj.span?.mention || 0,
+                  //     source: summaryObj.link || "#",
+                  //   };
+                  // } else {
+                  return {
+                    title: e.title,
+                    updated: dateFormat(e.updated),
+                    summary: e.summary,
+                    // mentions: +summaryObj.p?.span?.mention || 0,
+                    source: e.link || "#",
+                  };
+                  // }
                 } catch (e) {
                   console.error(e);
                   return null;

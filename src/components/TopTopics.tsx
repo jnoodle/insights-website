@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getTopTopics } from "@/api/public";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export type TopTopicType = {
   title?: string;
@@ -15,6 +15,7 @@ export const TopTopics = () => {
   const [topics, setTopics] = useState<TopTopicType[]>([]);
   const [isTopTopicsLoading, setIsTopTopicsLoading] = useState(false);
   const effectRef = useRef(false);
+  const locale = useLocale();
 
   useEffect((): any => {
     if (!effectRef.current) {
@@ -25,7 +26,7 @@ export const TopTopics = () => {
   const getTopics = () => {
     if (isTopTopicsLoading) return;
     setIsTopTopicsLoading(true);
-    getTopTopics()
+    getTopTopics(locale.indexOf("zh") > -1 ? "zh-cn" : "en")
       .then((res) => {
         if (res && res.length > 0) {
           setTopics(res);
@@ -51,9 +52,9 @@ export const TopTopics = () => {
                 </a>
               </div>
             </details>
-            <span className="text-xs">
-              {topic.updated}&nbsp;&nbsp;&nbsp;{topic.mentions} {t("mentions")}
-            </span>
+            {/*<span className="text-xs">*/}
+            {/*  {topic.updated}&nbsp;&nbsp;&nbsp;{topic.mentions} {t("mentions")}*/}
+            {/*</span>*/}
           </li>
         ))}
       </ol>

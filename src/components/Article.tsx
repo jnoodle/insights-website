@@ -66,7 +66,7 @@ export function Article(props: ArticlePropType) {
               </Link>
             </div>
           </div>
-          <div className="date">
+          <div className="date whitespace-nowrap mt-1 md:mt-0">
             <div className="badge mr-3 border-secondary bg-secondary hover:bg-primary">
               <Link href={props.sourceLink || "#"} target="_blank" className="text-neutral hover:text-white">
                 {props.source || "anonymous"}

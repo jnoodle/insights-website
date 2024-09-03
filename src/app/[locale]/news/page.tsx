@@ -8,7 +8,7 @@ import axios from "axios";
 import { Loading } from "@/components/Loading";
 import { pageSize } from "@/app/utils";
 import { TopTopics } from "@/components/TopTopics";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Home() {
   const t = useTranslations("Pages");
@@ -17,6 +17,7 @@ export default function Home() {
   const [fromIndex, setFromIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const effectRef = useRef(false);
+  const locale = useLocale();
 
   useEffect((): any => {
     // fix react 18 strict mode: https://rishabhsharma.bio/next-js-issue-useeffect-hook-running-twice-in-client-9fb6712f6362
@@ -31,7 +32,7 @@ export default function Home() {
 
     setIsLoading(true);
     axios
-      .get(`/v0/public/news?from=${fromIndex}&size=${pageSize}`)
+      .get(`/v0/public/news?from=${fromIndex}&size=${pageSize}&lang=${locale.indexOf("zh") > -1 ? "zh-cn" : "en"}`)
       .then((res) => {
         if (res.data && res.data.code === 0 && res.data.data.length > 0) {
           setArticles((prevItems: ArticlePropType[]) => [...prevItems, ...res.data.data]);
