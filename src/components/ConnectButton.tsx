@@ -47,9 +47,9 @@ export default function ConnectButton() {
     if (!address) {
       // connect wallet
       open();
-    } else if (chainId !== +process.env.NEXT_PUBLIC_CorrectChainId!) {
-      // switch chain
-      switchChain({ chainId: +process.env.NEXT_PUBLIC_CorrectChainId! });
+      // } else if (chainId !== +process.env.NEXT_PUBLIC_CorrectChainId!) {
+      //   // switch chain
+      //   switchChain({ chainId: +process.env.NEXT_PUBLIC_CorrectChainId! });
     } else {
       // goto profile page
       router.push("/profile");
@@ -162,14 +162,16 @@ export default function ConnectButton() {
     <>
       <button
         className={`btn btn-primary px-6 btn-sm md:btn-md text-sm md:text-base text-white font-normal rounded-full ${
-          isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
+          // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
+          isConnected && !chainId ? "btn-error" : ""
         }`}
         onClick={handleConnect}
       >
         {isSigning ? (
           "Signing In..."
         ) : isConnected ? (
-          chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
+          // chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
+          chainId ? (
             isSigning ? (
               t("SigningIn")
             ) : (
