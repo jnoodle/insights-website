@@ -82,7 +82,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
       coin: JSON.parse(coinValue!.value),
       resultAchievementTime: predictionTime.format("YYYY-MM-DDTHH:mm:ss"),
       trend: predictionTrend,
-      explanation: predictionExplanation,
+      explanation: predictionExplanation.trim(),
       tweetUrl: predictionTweetUrl,
     };
 
@@ -109,6 +109,8 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
             if (onSuccess) {
               onSuccess();
             }
+          } else if (res.data.code === 5300) {
+            setErrorMsg(t("ErrorSelfTweet"));
           } else {
             setErrorMsg(t("ErrorMsgCode", { code: res.data.code }) || t("ErrorMsgInternal"));
           }
@@ -118,7 +120,11 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
       })
       .catch((err: any) => {
         console.error(err);
-        setErrorMsg(err.message);
+        if (err && err.code === 5300) {
+          setErrorMsg(t("ErrorSelfTweet"));
+        } else {
+          setErrorMsg(err.message);
+        }
       })
       .finally(() => {
         setAddLoading(false);
@@ -127,7 +133,8 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
 
   const openAddPrediction = () => {
     // TODO
-    if (currentUser && ((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator)) {
+    // if (currentUser && ((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator)) { FIXME
+    if (currentUser) {
       setIsPredictionModalOpen(true);
     } else {
       toast.error(t("ToastMsgErrorNoPermission"), toastConfig);
@@ -139,7 +146,8 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
 
   return (
     <>
-      {((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator) && (
+      {/*FIXME {((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator) && (*/}
+      {currentUser && (
         <button className="btn btn-primary btn-sm text-white font-normal" onClick={openAddPrediction}>
           ＋{t("AddPredictionBtn")}
         </button>
@@ -193,19 +201,21 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
             </Radio>
           </Radio.Group>
 
-          <div className="flex flex-col">
-            <TextArea
-              value={predictionTweetUrl}
-              onChange={(e) => setPredictionTweetUrl(e.target.value.trim())}
-              placeholder={t("PredictionSourcePlaceholder")}
-              autoSize
-            />
-            <span className="text-gray-500 mt-0 text-xs mb-1">{t("PredictionSourceTip")}</span>
-          </div>
+          {currentUser.tweet && currentUser.tweet.name && (
+            <div className="flex flex-col">
+              <TextArea
+                value={predictionTweetUrl}
+                onChange={(e) => setPredictionTweetUrl(e.target.value.trim())}
+                placeholder={t("PredictionSourcePlaceholder")}
+                autoSize
+              />
+              <span className="text-gray-500 mt-0 text-xs mb-1">{t("PredictionSourceTip")}</span>
+            </div>
+          )}
           <div className="flex flex-col">
             <TextArea
               value={predictionExplanation}
-              onChange={(e) => setPredictionExplanation(e.target.value.trim())}
+              onChange={(e) => setPredictionExplanation(e.target.value)}
               placeholder={t("PredictionExplanationPlaceholder")}
               autoSize
             />
@@ -214,7 +224,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
           {errorMsg && <div className="text-error text-xs">{errorMsg}</div>}
           <div>
             <button
-              className="btn btn-primary btn-sm text-white font-normal max-w-36"
+              className="btn btn-primary btn-sm text-white font-normal max-w-44"
               onClick={addPrediction}
               disabled={addLoading}
             >

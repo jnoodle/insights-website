@@ -97,6 +97,7 @@
     "ErrorMsgCode": "請求錯誤：{code}",
     "ErrorMsgInternal": "內部錯誤。",
     "ErrorMsgNetwork": "網絡錯誤。",
+    "ErrorSelfTweet": "請填寫自己的推文連結。",
     "ToastMsgErrorNoPermission": "呢個功能只支援已驗證用戶。",
     "AddPredictionBtn": "添加預測",
     "CancelBtn": "取消",

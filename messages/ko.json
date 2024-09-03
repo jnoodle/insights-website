@@ -97,6 +97,7 @@
     "ErrorMsgCode": "코드 {code} 오류",
     "ErrorMsgInternal": "내부 오류.",
     "ErrorMsgNetwork": "네트워크 오류.",
+    "ErrorSelfTweet": "자신의 트윗 링크를 입력해주세요.",
     "ToastMsgErrorNoPermission": "이 기능은 검증된 사용자만 지원합니다.",
     "AddPredictionBtn": "예측 추가",
     "CancelBtn": "취소",

@@ -97,6 +97,7 @@
     "ErrorMsgCode": "Ошибка кода {code}",
     "ErrorMsgInternal": "Внутренняя ошибка.",
     "ErrorMsgNetwork": "Ошибка сети.",
+    "ErrorSelfTweet": "Пожалуйста, введите ссылку на свой твит.",
     "ToastMsgErrorNoPermission": "Эта функция поддерживается только для верифицированных пользователей.",
     "AddPredictionBtn": "Добавить прогноз",
     "CancelBtn": "Отмена",

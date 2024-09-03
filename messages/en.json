@@ -97,6 +97,7 @@
     "ErrorMsgCode": "Code {code} Error",
     "ErrorMsgInternal": "Internal error.",
     "ErrorMsgNetwork": "Network error.",
+    "ErrorSelfTweet": "Please enter your own tweet link.",
     "ToastMsgErrorNoPermission": "This feature only supports verified users.",
     "AddPredictionBtn": "Add Prediction",
     "CancelBtn": "Cancel",
