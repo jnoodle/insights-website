@@ -83,7 +83,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
       resultAchievementTime: predictionTime.format("YYYY-MM-DDTHH:mm:ss"),
       trend: predictionTrend,
       explanation: predictionExplanation.trim(),
-      tweetUrl: predictionTweetUrl,
+      tweetUrl: (currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator ? predictionTweetUrl : "",
     };
 
     // console.log(prediction);
@@ -201,7 +201,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
             </Radio>
           </Radio.Group>
 
-          {currentUser.tweet && currentUser.tweet.name && (
+          {((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator) && (
             <div className="flex flex-col">
               <TextArea
                 value={predictionTweetUrl}
