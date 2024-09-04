@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Insights",
     "Twitter": "Twitter",
-    "Whitepaper": "Whitepaper"
+    "Whitepaper": "Whitepaper",
+    "Contact": "Contact Us"
   },
   "ConnectButton": {
     "ConnectError": "Wallet connected error!",

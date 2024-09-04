@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Insights",
     "Twitter": "Twitter",
-    "Whitepaper": "白皮書"
+    "Whitepaper": "白皮書",
+    "Contact": "聯絡我們"
   },
   "ConnectButton": {
     "ConnectError": "錢包連接出錯！",

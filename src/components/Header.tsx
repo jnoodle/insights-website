@@ -24,7 +24,7 @@ export function Header() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-0 text-sm items-center">
           <li>
-            <Link href="https://x.com/insightsofweb3" target="_blank" className="px-3 md:px-4">
+            <Link href="https://x.com/insightsofweb3" target="_blank" className="px-2 md:px-4">
               <Image src="/twitter.svg" alt={t("Twitter")} width={20} height={20} priority />
             </Link>
           </li>
@@ -34,13 +34,18 @@ export function Header() {
           {/*  </Link>*/}
           {/*</li>*/}
           <li>
-            <Link href="https://docs.web3insights.news" target="_blank" className="px-3 md:px-4">
+            <Link href="https://docs.web3insights.news" target="_blank" className="px-2 md:px-4">
               <Image src="/docs.svg" alt={t("Whitepaper")} width={20} height={20} priority />
+            </Link>
+          </li>
+          <li>
+            <Link href="mailto:sq30labs@gmail.com" target="_blank" className="px-2 md:px-4">
+              <Image src="/email.svg" alt={t("Contact")} width={20} height={20} priority />
             </Link>
           </li>
         </ul>
         <LocaleSwitcher />
-        <div className="px-3 md:px-4">
+        <div className="px-1 md:px-4">
           <ConnectButton />
         </div>
       </div>

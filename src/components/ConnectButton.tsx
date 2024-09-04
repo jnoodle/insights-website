@@ -161,7 +161,7 @@ export default function ConnectButton() {
   return (
     <>
       <button
-        className={`btn btn-primary px-6 btn-sm md:btn-md text-sm md:text-base text-white font-normal rounded-full ${
+        className={`btn btn-primary px-4 md:px-6 btn-sm md:btn-md text-sm md:text-base text-white font-normal rounded-full ${
           // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
           isConnected && !chainId ? "btn-error" : ""
         }`}

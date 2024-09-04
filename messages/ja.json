@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Insights",
     "Twitter": "Twitter",
-    "Whitepaper": "ホワイトペーパー"
+    "Whitepaper": "ホワイトペーパー",
+    "Contact": "お問い合わせ"
   },
   "ConnectButton": {
     "ConnectError": "ウォレット接続エラー！",

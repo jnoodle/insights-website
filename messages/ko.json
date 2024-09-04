@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Insights",
     "Twitter": "Twitter",
-    "Whitepaper": "화이트페이퍼"
+    "Whitepaper": "화이트페이퍼",
+    "Contact": "연락처"
   },
   "ConnectButton": {
     "ConnectError": "지갑 연결 오류!",

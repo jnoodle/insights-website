@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Insights",
     "Twitter": "Twitter",
-    "Whitepaper": "Documento Blanco"
+    "Whitepaper": "Documento Blanco",
+    "Contact": "Contáctenos"
   },
   "ConnectButton": {
     "ConnectError": "Error de conexión del monedero",

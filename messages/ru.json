@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Инсайты",
     "Twitter": "Твиттер",
-    "Whitepaper": "Вeißbuch"
+    "Whitepaper": "Вeißbuch",
+    "Contact": "Свяжитесь с нами"
   },
   "ConnectButton": {
     "ConnectError": "Ошибка подключения кошелька!",

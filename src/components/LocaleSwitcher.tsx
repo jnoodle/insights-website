@@ -26,7 +26,7 @@ export default function LocaleSwitcher() {
 
   return (
     <div className="dropdown dropdown-end">
-      <div tabIndex={0} className="btn btn-sm btn-ghost font-normal m-1 gap-0">
+      <div tabIndex={0} className="btn btn-sm btn-ghost font-normal m-1 gap-0 px-1 md:px-3">
         <span>{t("localeShort", { locale: locale.replaceAll("-", "_") })}</span>
         <img src="/downArrowBlack.svg" alt="" className="inline w-5" />
       </div>

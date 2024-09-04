@@ -73,7 +73,8 @@
   "Header": {
     "Insights": "Perspectives",
     "Twitter": "Twitter",
-    "Whitepaper": "Livre blanc"
+    "Whitepaper": "Livre blanc",
+    "Contact": "Contactez-nous"
   },
   "ConnectButton": {
     "ConnectError": "Erreur de connexion du portefeuille !",
