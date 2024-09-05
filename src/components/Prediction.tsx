@@ -75,6 +75,7 @@ export type PredictionPropType = {
   success?: boolean;
   over?: boolean;
   coin: CoinInfo;
+  roi: string;
 };
 export function Prediction(props: PredictionPropType) {
   const t = useTranslations("Prediction");
@@ -91,14 +92,22 @@ export function Prediction(props: PredictionPropType) {
     predictionResult === true ? (
       <div className="tooltip tooltip-left" data-tip={t("ROI")}>
         <span className="text-lg text-success font-bold md:text-2xl">
-          {ROI(props.price, predictionResultPrice)}
-          <span className="text-base">%</span>
+          {/*{ROI(props.price, predictionResultPrice)}*/}
+          {+props.roi > 10000 ? (
+            <span>&gt; 100X</span>
+          ) : (
+            <>
+              <span>{props.roi}</span>
+              <span className="text-base">%</span>
+            </>
+          )}
         </span>
       </div>
     ) : predictionResult === false ? (
       <div className="tooltip tooltip-left" data-tip={t("ROI")}>
         <span className="text-lg text-error font-bold md:text-2xl">
-          ﹣{ROI(props.price, predictionResultPrice)}
+          {/*﹣{ROI(props.price, predictionResultPrice)}*/}
+          {props.roi}
           <span className="text-base">%</span>
         </span>
       </div>
