@@ -129,6 +129,10 @@
     "GoToMyPage": "前往我的主页",
     "EditUserNamePrompt": "请输入新用户名（最小长度3个字符，允许的字符包括0-9、a-z、A-Z和下划线_，第一个字符只能使用a-z、A-Z）",
     "EditUserNameInvalid": "用户名不符合规则或者用户名为保留词",
-    "PredictionSearchPlaceholder": "按名称/符号/合约地址搜索"
+    "PredictionSearchPlaceholder": "按名称/符号/合约地址搜索",
+    "BindTwitter": "绑定 Twitter 账户",
+    "BindTwitterLoading": "Twitter 账户绑定中...",
+    "GetBindTwitterUriError": "获取绑定服务出错",
+    "BindTwitterSuccess": "Twitter 账户绑定成功"
   }
 }

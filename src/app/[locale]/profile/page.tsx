@@ -7,7 +7,7 @@ import { ellipseAddress, filterString, toastConfig } from "@/app/utils";
 import { useAccount, useAccountEffect } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import Link from "next/link";
-import { getMyProfile, Login, updateUserName } from "@/api/user";
+import { getMyProfile, Login, updateUserName, getBindTwitterUri } from "@/api/user";
 import multiavatar from "@multiavatar/multiavatar/esm";
 import parse from "html-react-parser";
 import { InsightsUser } from "@/components/Tweet";
@@ -26,6 +26,7 @@ export default function Home() {
   const { open } = useWeb3Modal();
   const [currentUser, setCurrentUser]: [InsightsUser, any] = useState({});
   const [loading, setLoading] = useState(false);
+  const [bindTwitterLoading, setBindTwitterLoading] = useState(false);
   const effectRef = useRef(false);
   const profileTabRef = useRef();
 
@@ -93,6 +94,27 @@ export default function Home() {
     }
   };
 
+  // bind twitter step1: get twitter uri
+  const bindTwitterAccount = () => {
+    if (bindTwitterLoading || (currentUser.tweet && currentUser.tweet.name)) return;
+
+    setBindTwitterLoading(true);
+    getBindTwitterUri()
+      .then((uri) => {
+        if (uri) {
+          window.location.href = uri;
+        } else {
+          setBindTwitterLoading(false);
+          toast.error(t("GetBindTwitterUriError"), toastConfig);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setBindTwitterLoading(false);
+        toast.error(t("GetBindTwitterUriError"), toastConfig);
+      });
+  };
+
   // @ts-ignore
   return (
     <div className="flex flex-col items-center justify-between w-full pt-4">
@@ -153,7 +175,17 @@ export default function Home() {
                     </Link>
                   </span>
                 ) : (
-                  "/"
+                  <>
+                    --
+                    <button
+                      onClick={bindTwitterAccount}
+                      disabled={bindTwitterLoading}
+                      className="btn btn-primary btn-sm text-white font-normal ml-2"
+                    >
+                      {t("BindTwitter")}
+                      {bindTwitterLoading ? <span className="loading loading-spinner loading-xs"></span> : ""}
+                    </button>
+                  </>
                 )}
               </div>
               <div className="flex gap-2 mt-2 flex-col md:flex-row">

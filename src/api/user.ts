@@ -97,3 +97,50 @@ export const updateUserName = async (userName: string) => {
     return false;
   }
 };
+
+export const getBindTwitterUri = async () => {
+  try {
+    // need login
+    if (!localStorage.getItem("insights_token")) {
+      return null;
+    }
+    const res = await axios.get(`/v0/api/user/twitter/bind/request`, {
+      headers: {
+        Authorization: localStorage.getItem("insights_token"),
+      },
+    });
+
+    if (res && res.data && res.data.code === 0) {
+      return res.data.data;
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
+
+// bind twitter
+export const bindTwitterWithUser = async (oauth_token: string, oauth_verifier: string) => {
+  try {
+    // need login
+    if (!localStorage.getItem("insights_token")) {
+      return false;
+    }
+    const res = await axios.post(
+      "/v0/api/user/twitter/bind",
+      { oauthToken: oauth_token, oauthVerifier: oauth_verifier },
+      {
+        headers: {
+          Authorization: localStorage.getItem("insights_token"),
+        },
+      },
+    );
+
+    return !!(res && res.data && res.data.code === 0);
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};

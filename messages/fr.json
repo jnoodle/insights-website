@@ -129,6 +129,10 @@
     "GoToMyPage": "Aller à ma page",
     "EditUserNamePrompt": "Veuillez saisir un nouveau nom d'utilisateur (Longueur minimale de 3 caractères, Caractères autorisés 0-9,a-z,A-Z,_, Premier caractère a-z,A-Z seulement)",
     "EditUserNameInvalid": "Le nom d'utilisateur ne respecte pas les règles ou est un mot réservé",
-    "PredictionSearchPlaceholder": "Rechercher par Nom / Symbole / Adresse"
+    "PredictionSearchPlaceholder": "Rechercher par Nom / Symbole / Adresse",
+    "BindTwitter": "Lier le compte Twitter",
+    "BindTwitterLoading": "Liaison du compte Twitter en cours...",
+    "GetBindTwitterUriError": "Erreur lors de l'obtention du service de liaison",
+    "BindTwitterSuccess": "Compte Twitter lié avec succès"
   }
 }
