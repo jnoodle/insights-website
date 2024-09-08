@@ -40,11 +40,14 @@ export const TopTopics = () => {
     <div className="flex flex-col items-center justify-center w-full my-2 py-4 px-4 border rounded-lg border-secondary">
       <h1 className="text-accent font-bold text-lg border-b  border-secondary w-full text-center pb-2">{t("Title")}</h1>
       {isTopTopicsLoading && <span className="loading loading-dots loading-sm mt-2"></span>}
-      <ol className="text-left w-full list-decimal pl-6 text-neutral text-sm mt-2">
+      <ol className="text-left w-full list-decimal text-neutral text-sm mt-2">
         {topics.map((topic, i) => (
-          <li key={i} className="p-2 hover:bg-base-200">
+          <li key={i} className="p-2 hover:bg-base-200 list-none">
             <details className="collapse rounded-none outline-0 text-accent">
-              <summary className="collapse-title font-bold text-base p-0 min-h-0 link">{topic.title}</summary>
+              <summary className="collapse-title font-bold text-base p-0 min-h-0 link">
+                <span className="text-sm font-normal text-neutral w-12 text-right">{i + 1}. </span>
+                {topic.title}
+              </summary>
               <div className="collapse-content">
                 {topic.summary}{" "}
                 <a href={topic.source} target="_blank">
