@@ -57,7 +57,11 @@ export const TopPredictions = () => {
               <div className="avatar">
                 <div className="w-6 rounded-full">
                   {p.avatarUrl ? (
-                    <img src={p.avatarUrl} alt={p.name ? p.name : t("Anonymous")} />
+                    <img
+                      src={p.avatarUrl}
+                      alt={p.name ? p.name : t("Anonymous")}
+                      onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
+                    />
                   ) : (
                     parse(multiavatar(p.name ? filterString(p.name) : t("Anonymous")))
                   )}

@@ -99,7 +99,11 @@ export function Tweet(props: TweetPropType) {
             <div className="avatar">
               <div className="w-12 rounded-full">
                 {insightUser.avatarUrl ? (
-                  <img src={insightUser.avatarUrl} alt={insightUser.name ? insightUser.name : t("Anonymous")} />
+                  <img
+                    src={insightUser.avatarUrl}
+                    alt={insightUser.name ? insightUser.name : t("Anonymous")}
+                    onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
+                  />
                 ) : (
                   parse(multiavatar(insightUser.name ? filterString(insightUser.name) : t("Anonymous")))
                 )}
@@ -144,6 +148,7 @@ export function Tweet(props: TweetPropType) {
                     <img
                       src={tweetAuthor && tweetAuthor.profileImageUrl ? tweetAuthor.profileImageUrl : "/X_black.svg"}
                       alt={tweetAuthor && tweetAuthor.name ? tweetAuthor.name : t("Anonymous")}
+                      onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
                     />
                   </div>
                 </div>

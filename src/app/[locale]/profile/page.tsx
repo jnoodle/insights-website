@@ -135,7 +135,11 @@ export default function Home() {
             <div className="avatar">
               <div className="w-20 md:w-32 rounded-full">
                 {currentUser.avatarUrl ? (
-                  <img src={currentUser.avatarUrl} alt={currentUser.name ? currentUser.name : t("Anonymous")} />
+                  <img
+                    src={currentUser.avatarUrl}
+                    alt={currentUser.name ? currentUser.name : t("Anonymous")}
+                    onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
+                  />
                 ) : (
                   parse(multiavatar(currentUser.alias || t("Anonymous")))
                 )}

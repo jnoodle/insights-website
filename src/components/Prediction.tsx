@@ -176,6 +176,7 @@ export function Prediction(props: PredictionPropType) {
                   <img
                     src={props.userView.avatarUrl}
                     alt={props.userView && props.userView.name ? props.userView.name : t("Anonymous")}
+                    onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
                   />
                 ) : (
                   parse(

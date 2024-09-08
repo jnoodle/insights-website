@@ -33,7 +33,11 @@ export default function Home({ params }: { params: { alias: string } }) {
             {userInfo &&
               userInfo.alias &&
               (userInfo.avatarUrl ? (
-                <img src={userInfo.avatarUrl} alt={userInfo && userInfo.name ? userInfo.name : "Anonymous"} />
+                <img
+                  src={userInfo.avatarUrl}
+                  alt={userInfo && userInfo.name ? userInfo.name : "Anonymous"}
+                  onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
+                />
               ) : (
                 parse(multiavatar(params.alias || t("Anonymous")))
               ))}
