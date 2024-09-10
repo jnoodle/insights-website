@@ -9,7 +9,6 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import "react-toastify/dist/ReactToastify.css";
 import { NextIntlClientProvider, useTranslations } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { Root } from "@/components/Root";
 
 const roboto = Roboto({
   weight: ["100", "400", "700"],
