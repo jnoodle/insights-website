@@ -38,6 +38,12 @@
   "ProfileTab": {
     "Posts": "트윗",
     "Predictions": "예측",
+    "Invitation": "초대",
+    "InvitationLink": "내 초대 링크",
+    "InvitationList": "초대 기록",
+    "CopyLink": "초대 링크 복사",
+    "Copied": "초대 링크가 복사되었습니다",
+    "MyInvitations": "초대한 사용자",
     "PostsEndMessage": "와우! 다 봤어요",
     "PredictionsEndMessage": "와우! 다 봤어요"
   },

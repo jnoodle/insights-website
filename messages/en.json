@@ -38,6 +38,12 @@
   "ProfileTab": {
     "Posts": "Posts",
     "Predictions": "Predictions",
+    "Invitation": "Invitation",
+    "InvitationLink": "My Invitation Link",
+    "InvitationList": "Invitation History",
+    "CopyLink": "Copy Invitation Link",
+    "Copied": "Invitation link copied",
+    "MyInvitations": "Invited Users",
     "PostsEndMessage": "Yay! You have seen it all",
     "PredictionsEndMessage": "Yay! You have seen it all"
   },

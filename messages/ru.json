@@ -38,6 +38,12 @@
   "ProfileTab": {
     "Posts": "Публикации",
     "Predictions": "Прогнозы",
+    "Invitation": "Приглашение",
+    "InvitationLink": "Мой ссылка-приглашение",
+    "InvitationList": "История приглашений",
+    "CopyLink": "Скопировать ссылку-приглашение",
+    "Copied": "Ссылка-приглашение скопирована",
+    "MyInvitations": "Приглашенные пользователи",
     "PostsEndMessage": "Ура! Вы видели все",
     "PredictionsEndMessage": "Ура! Вы видели все"
   },

@@ -38,6 +38,12 @@
   "ProfileTab": {
     "Posts": "Publicaciones",
     "Predictions": "Predicciones",
+    "Invitation": "Invitación",
+    "InvitationLink": "Mi enlace de invitación",
+    "InvitationList": "Historial de invitaciones",
+    "CopyLink": "Copiar enlace de invitación",
+    "Copied": "Enlace de invitación copiado",
+    "MyInvitations": "Usuarios invitados",
     "PostsEndMessage": "¡Eureka! Has visto todo",
     "PredictionsEndMessage": "¡Eureka! Has visto todo"
   },

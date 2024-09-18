@@ -38,6 +38,12 @@
   "ProfileTab": {
     "Posts": "ツイート",
     "Predictions": "予測",
+    "Invitation": "招待",
+    "InvitationLink": "招待リンク",
+    "InvitationList": "招待履歴",
+    "CopyLink": "招待リンクをコピー",
+    "Copied": "招待リンクがコピーされました",
+    "MyInvitations": "招待したユーザー",
     "PostsEndMessage": "やったね！すべてを見たぞ",
     "PredictionsEndMessage": "やったね！すべてを見たぞ"
   },

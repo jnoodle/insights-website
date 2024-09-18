@@ -38,6 +38,12 @@
   "ProfileTab": {
     "Posts": "推文",
     "Predictions": "預測",
+    "Invitation": "邀請",
+    "InvitationLink": "我的邀請鏈接",
+    "InvitationList": "邀請記錄",
+    "CopyLink": "複製邀請鏈接",
+    "Copied": "邀請鏈接已複製",
+    "MyInvitations": "我邀請的用戶",
     "PostsEndMessage": "耶！你已經看完所有內容了",
     "PredictionsEndMessage": "耶！你已經看完所有內容了"
   },
