@@ -25,7 +25,7 @@ export default function Home({ params }: { params: { alias: string } }) {
     return () => (effectRef.current = true);
   }, []);
 
-  return (
+  return userInfo && userInfo.alias ? (
     <div className="flex flex-col items-center justify-between w-full pt-4 md:pt-8">
       <div className="flex items-center gap-2 md:gap-4 w-full md:flex-row flex-col">
         <div className="avatar md:mt-0 mt-4">
@@ -67,6 +67,10 @@ export default function Home({ params }: { params: { alias: string } }) {
       <div className="flex items-center w-full mt-6">
         <ProfileTab alias={params.alias} />
       </div>
+    </div>
+  ) : (
+    <div className="flex flex-col items-center justify-between w-full pt-4 md:pt-8">
+      <h1 className="text-error">{t("UserNotExist")}</h1>
     </div>
   );
 }

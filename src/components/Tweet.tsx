@@ -30,6 +30,9 @@ export type InsightsUser = {
   wallet?: string;
   isOperator?: boolean;
   operationalRole?: string;
+  invitationCode?: string;
+  invitedBy?: string;
+  uid?: string;
 };
 
 // export type TweetMedia = {

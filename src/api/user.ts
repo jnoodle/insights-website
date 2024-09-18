@@ -1,6 +1,9 @@
+"use client";
+
 import { toast } from "react-toastify";
 import { toastConfig } from "@/app/utils";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const Login = async (address: string) => {
   if (!localStorage.getItem("insights_signin_message")) {
@@ -9,8 +12,10 @@ export const Login = async (address: string) => {
     toast.error("A signing error occurred during login.", toastConfig);
     return false;
   }
+
   const loginResponse = await axios.post("/v0/public/login", {
     address: address,
+    invitationCode: Cookies.get("insights_invite_code") || "",
     message: localStorage.getItem("insights_signin_message"),
     signature: localStorage.getItem("insights_signin_signature"),
   });

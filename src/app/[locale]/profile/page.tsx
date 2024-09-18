@@ -214,7 +214,9 @@ export default function Home() {
       )}
       {isConnected && (
         <div className="flex items-center w-full mt-6">
-          {currentUser && currentUser.alias && <ProfileTab alias={currentUser.alias} ref={profileTabRef} />}
+          {currentUser && currentUser.alias && (
+            <ProfileTab alias={currentUser.alias} invitationCode={currentUser.invitationCode} ref={profileTabRef} />
+          )}
         </div>
       )}
     </div>
