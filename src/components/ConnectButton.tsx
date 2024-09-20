@@ -61,6 +61,7 @@ export default function ConnectButton() {
   useAccountEffect({
     // sign-in with wallet after connect
     onConnect(data) {
+      console.log("onConnect", data);
       const { address, chainId } = data;
       addressConnect(address, chainId);
     },

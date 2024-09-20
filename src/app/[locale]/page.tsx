@@ -19,7 +19,7 @@ export default function Home() {
   const effectRef = useRef(false);
 
   useEffect((): any => {
-    isLogin();
+    // isLogin(); // TODO login everytime
     // fix react 18 strict mode: https://rishabhsharma.bio/next-js-issue-useeffect-hook-running-twice-in-client-9fb6712f6362
     if (!effectRef.current) {
       fetchMoreData();

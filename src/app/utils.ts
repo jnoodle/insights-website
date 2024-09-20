@@ -33,6 +33,14 @@ export const filterString = (text: string) => {
 export const isLogin = async () => {
   try {
     if (
+      localStorage.getItem("insights_token_timeout") &&
+      Math.ceil(+new Date() / 1000) - +(localStorage.getItem("insights_token_timeout") || 0) > 0
+    ) {
+      console.error("Token timeout");
+      clearStorage();
+      return false;
+    }
+    if (
       localStorage.getItem("insights_address") &&
       localStorage.getItem("insights_token") &&
       localStorage.getItem("insights_signin_message") &&

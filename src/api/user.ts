@@ -29,7 +29,7 @@ export const Login = async (address: string) => {
   ) {
     localStorage.setItem("insights_address", address);
     localStorage.setItem("insights_token", loginResponse.data.data.token);
-    localStorage.setItem("insights_token_timeout", loginResponse.data.data.timeout);
+    localStorage.setItem("insights_token_timeout", Math.ceil(+new Date() / 1000) + loginResponse.data.data.timeout);
     console.log("Login Success", address);
     return true;
   }
