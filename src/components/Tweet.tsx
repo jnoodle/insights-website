@@ -33,6 +33,7 @@ export type InsightsUser = {
   invitationCode?: string;
   invitedBy?: string;
   uid?: string;
+  credit?: number;
 };
 
 // export type TweetMedia = {

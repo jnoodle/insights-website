@@ -45,7 +45,19 @@
     "Copied": "邀请链接已复制",
     "MyInvitations": "我邀请的用户",
     "PostsEndMessage": "耶！你已经看完所有内容了",
-    "PredictionsEndMessage": "耶！你已经看完所有内容了"
+    "PredictionsEndMessage": "耶！你已经看完所有内容了",
+    "Points": "积分",
+    "PointsList": "积分明细",
+    "PointsType": "积分类型",
+    "PointsAmount": "积分数量",
+    "PointsTime": "积分时间",
+    "LOGIN": "每日登录",
+    "WALLET": "绑定钱包",
+    "TWITTER": "绑定 X(Twitter)",
+    "PREDICTION": "建立预测",
+    "INVITATION_PREDICTION": "邀请的用户首次建立预测",
+    "INVITATION_TWITTER": "邀请的用户绑定 X(Twitter)",
+    "FOLLOW": "粉丝增加"
   },
   "Prediction": {
     "ConfirmComplete": "确认完成这个预测吗？",
@@ -78,7 +90,7 @@
   },
   "Header": {
     "Insights": "Insights",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
     "Whitepaper": "白皮书",
     "Contact": "联系我们"
   },
@@ -130,16 +142,18 @@
     "MyProfileTitle": "我的个人资料",
     "Anonymous": "匿名",
     "AdministratorTip": "网站管理员",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
+    "Address": "钱包地址",
+    "Points": "积分",
     "BackToHome": "返回首页",
     "GoToMyPage": "前往我的主页",
     "EditUserNamePrompt": "请输入新用户名（最小长度3个字符，允许的字符包括0-9、a-z、A-Z和下划线_，第一个字符只能使用a-z、A-Z）",
     "EditUserNameInvalid": "用户名不符合规则或者用户名为保留词",
     "PredictionSearchPlaceholder": "按名称/符号/合约地址搜索",
-    "BindTwitter": "绑定 Twitter 账户",
-    "BindTwitterLoading": "Twitter 账户绑定中...",
+    "BindTwitter": "绑定 X(Twitter) 账户",
+    "BindTwitterLoading": "X(Twitter) 账户绑定中...",
     "GetBindTwitterUriError": "获取绑定服务出错",
-    "BindTwitterSuccess": "Twitter 账户绑定成功",
+    "BindTwitterSuccess": "X(Twitter) 账户绑定成功",
     "UserNotExist": "用户不存在！"
   }
 }

@@ -66,6 +66,12 @@ a {
     padding: 0 1rem 2rem;
   }
 }
+@media (max-width: 400px) {
+  .tabtitle.tabs-bordered > .tab {
+    font-size: 14px;
+    padding: 0 0.5rem 1.5rem;
+  }
+}
 .tabtitle.tabs-bordered > .tab.tab-active:not(.tab-disabled):not([disabled]) {
   color: #0f1419;
   border-color: #1d9bf0;

@@ -45,7 +45,19 @@
     "Copied": "Invitation link copied",
     "MyInvitations": "Invited Users",
     "PostsEndMessage": "Yay! You have seen it all",
-    "PredictionsEndMessage": "Yay! You have seen it all"
+    "PredictionsEndMessage": "Yay! You have seen it all",
+    "Points": "Points",
+    "PointsList": "Points Details",
+    "PointsType": "Points Type",
+    "PointsAmount": "Points Amount",
+    "PointsTime": "Points Time",
+    "LOGIN": "Daily Login",
+    "WALLET": "Bind Wallet",
+    "TWITTER": "Bind X(Twitter)",
+    "PREDICTION": "Create Prediction",
+    "INVITATION_PREDICTION": "Invited User's First Prediction",
+    "INVITATION_TWITTER": "Invited User's X(Twitter) Binding",
+    "FOLLOW": "Followers Increase"
   },
   "Prediction": {
     "ConfirmComplete": "Confirm complete this prediction?",
@@ -78,7 +90,7 @@
   },
   "Header": {
     "Insights": "Insights",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
     "Whitepaper": "Whitepaper",
     "Contact": "Contact Us"
   },
@@ -130,15 +142,17 @@
     "MyProfileTitle": "My Profile",
     "Anonymous": "Anonymous",
     "AdministratorTip": "Operations Administrator",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
+    "Address": "Wallet Address",
+    "Points": "Points",
     "BackToHome": "Back to Home",
     "GoToMyPage": "Go to My Page",
     "EditUserNamePrompt": "Please enter a new username (Min length 3 characters, Permitted characters 0-9,a-z,A-Z,_, First character a-z,A-Z only)",
     "EditUserNameInvalid": "The username does not comply with the rules or is a reserved word",
     "PredictionSearchPlaceholder": "Search by Name / Symbol / Address",
-    "BindTwitter": "Bind Twitter Account",
-    "BindTwitterLoading": "Binding Twitter Account...",
+    "BindTwitter": "Bind X(Twitter) Account",
+    "BindTwitterLoading": "Binding X(Twitter) Account...",
     "GetBindTwitterUriError": "Error fetching bind service",
-    "BindTwitterSuccess": "Twitter account successfully bound"
+    "BindTwitterSuccess": "X(Twitter) account successfully bound"
   }
 }

@@ -45,7 +45,19 @@
     "Copied": "Enlace de invitación copiado",
     "MyInvitations": "Usuarios invitados",
     "PostsEndMessage": "¡Eureka! Has visto todo",
-    "PredictionsEndMessage": "¡Eureka! Has visto todo"
+    "PredictionsEndMessage": "¡Eureka! Has visto todo",
+    "Points": "Puntos",
+    "PointsList": "Detalles de puntos",
+    "PointsType": "Tipo de puntos",
+    "PointsAmount": "Cantidad de puntos",
+    "PointsTime": "Hora de los puntos",
+    "LOGIN": "Inicio de sesión diario",
+    "WALLET": "Vincular billetera",
+    "TWITTER": "Vincular X(Twitter)",
+    "PREDICTION": "Crear predicción",
+    "INVITATION_PREDICTION": "Primera predicción del usuario invitado",
+    "INVITATION_TWITTER": "Vinculación de X(Twitter) del usuario invitado",
+    "FOLLOW": "Aumento de seguidores"
   },
   "Prediction": {
     "ConfirmComplete": "¿Confirmar la finalización de esta predicción?",
@@ -78,7 +90,7 @@
   },
   "Header": {
     "Insights": "Insights",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
     "Whitepaper": "Documento Blanco",
     "Contact": "Contáctenos"
   },
@@ -130,15 +142,17 @@
     "MyProfileTitle": "Mi perfil",
     "Anonymous": "Anónimo",
     "AdministratorTip": "Administrador de operaciones",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
+    "Address": "Dirección de la billetera",
+    "Points": "Puntos",
     "BackToHome": "Volver a inicio",
     "GoToMyPage": "Ir a mi página",
     "EditUserNamePrompt": "Ingrese un nuevo nombre de usuario (Longitud mínima de 3 caracteres, Caracteres permitidos 0-9,a-z,A-Z,_, Primer carácter a-z,A-Z solamente)",
     "EditUserNameInvalid": "El nombre de usuario no cumple con las reglas o es una palabra reservada",
     "PredictionSearchPlaceholder": "Buscar por Nombre / Símbolo / Dirección",
-    "BindTwitter": "Vincular cuenta de Twitter",
-    "BindTwitterLoading": "Vinculando cuenta de Twitter...",
+    "BindTwitter": "Vincular cuenta de X(Twitter)",
+    "BindTwitterLoading": "Vinculando cuenta de X(Twitter)...",
     "GetBindTwitterUriError": "Error al obtener el servicio de vinculación",
-    "BindTwitterSuccess": "Cuenta de Twitter vinculada exitosamente"
+    "BindTwitterSuccess": "Cuenta de X(Twitter) vinculada exitosamente"
   }
 }

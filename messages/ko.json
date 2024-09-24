@@ -45,7 +45,19 @@
     "Copied": "초대 링크가 복사되었습니다",
     "MyInvitations": "초대한 사용자",
     "PostsEndMessage": "와우! 다 봤어요",
-    "PredictionsEndMessage": "와우! 다 봤어요"
+    "PredictionsEndMessage": "와우! 다 봤어요",
+    "Points": "포인트",
+    "PointsList": "포인트 상세 내역",
+    "PointsType": "포인트 유형",
+    "PointsAmount": "포인트 수량",
+    "PointsTime": "포인트 시간",
+    "LOGIN": "매일 로그인",
+    "WALLET": "지갑 바인딩",
+    "TWITTER": "X(Twitter) 바인딩",
+    "PREDICTION": "예측 생성",
+    "INVITATION_PREDICTION": "초대 사용자의 첫 예측",
+    "INVITATION_TWITTER": "초대한 사용자의 X(Twitter) 바인딩",
+    "FOLLOW": "팔로워 증가"
   },
   "Prediction": {
     "ConfirmComplete": "이 예측을 완료하시겠습니까?",
@@ -78,7 +90,7 @@
   },
   "Header": {
     "Insights": "Insights",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
     "Whitepaper": "화이트페이퍼",
     "Contact": "연락처"
   },
@@ -130,15 +142,17 @@
     "MyProfileTitle": "제 프로필",
     "Anonymous": "익명",
     "AdministratorTip": "사이트 관리자",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
+    "Address": "지갑 주소",
+    "Points": "포인트",
     "BackToHome": "홈으로 돌아가기",
     "GoToMyPage": "제 페이지로 이동",
     "EditUserNamePrompt": "새 사용자 이름을 입력해주세요 (최소 길이 3자, 허용된 문자 0-9, a-z, A-Z, _, 첫 문자는 a-z, A-Z만 사용 가능)",
     "EditUserNameInvalid": "사용자 이름이 규칙에 부합하지 않거나 예약어입니다",
     "PredictionSearchPlaceholder": "이름 / 기호 / 주소로 검색",
-    "BindTwitter": "Twitter 계정 바인딩",
-    "BindTwitterLoading": "Twitter 계정 바인딩 중...",
+    "BindTwitter": "X(Twitter) 계정 바인딩",
+    "BindTwitterLoading": "X(Twitter) 계정 바인딩 중...",
     "GetBindTwitterUriError": "바인딩 서비스 가져오기 오류",
-    "BindTwitterSuccess": "Twitter 계정 바인딩에 성공했습니다"
+    "BindTwitterSuccess": "X(Twitter) 계정 바인딩에 성공했습니다"
   }
 }

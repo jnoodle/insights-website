@@ -17,6 +17,7 @@ import { AddPrediction } from "@/components/AddPrediction";
 import { useTranslations } from "next-intl";
 import { reservedWords, userNameRegex } from "@/app/constants";
 import { toast } from "react-toastify";
+import numeral from "numeral";
 
 dayjs.extend(customParseFormat);
 
@@ -164,7 +165,11 @@ export default function Home() {
               {/*  <Accuracy accuracy={currentUser.accuracy} />*/}
               {/*</div>*/}
               <div className="">
-                Address:{" "}
+                {t("Points")}:{" "}
+                <span className="text-lg font-bold">{numeral(currentUser.credit || 0).format("0,0")}</span>
+              </div>
+              <div className="">
+                {t("Address")}:{" "}
                 <span className="text-primary cursor-pointer" onClick={() => open({ view: "Account" })}>
                   {ellipseAddress(address)}
                 </span>

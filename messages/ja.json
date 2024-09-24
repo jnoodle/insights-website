@@ -45,7 +45,19 @@
     "Copied": "招待リンクがコピーされました",
     "MyInvitations": "招待したユーザー",
     "PostsEndMessage": "やったね！すべてを見たぞ",
-    "PredictionsEndMessage": "やったね！すべてを見たぞ"
+    "PredictionsEndMessage": "やったね！すべてを見たぞ",
+    "Points": "ポイント",
+    "PointsList": "ポイント明細",
+    "PointsType": "ポイントタイプ",
+    "PointsAmount": "ポイント数量",
+    "PointsTime": "ポイント時間",
+    "LOGIN": "毎日ログイン",
+    "WALLET": "ウォレットをバインド",
+    "TWITTER": "X(Twitter)をバインド",
+    "PREDICTION": "予測を作成",
+    "INVITATION_PREDICTION": "招待ユーザーの初めての予測",
+    "INVITATION_TWITTER": "招待ユーザーのX(Twitter)バインド",
+    "FOLLOW": "フォロワー増加"
   },
   "Prediction": {
     "ConfirmComplete": "この予測を完了しますか？",
@@ -78,7 +90,7 @@
   },
   "Header": {
     "Insights": "Insights",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
     "Whitepaper": "ホワイトペーパー",
     "Contact": "お問い合わせ"
   },
@@ -130,15 +142,17 @@
     "MyProfileTitle": "私のプロフィール",
     "Anonymous": "匿名",
     "AdministratorTip": "ウェブサイト管理者",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
+    "Address": "ウォレットアドレス",
+    "Points": "ポイント",
     "BackToHome": "ホームに戻る",
     "GoToMyPage": "私のページへ行く",
     "EditUserNamePrompt": "新しいユーザー名を入力してください（最小3文字、使用可能な文字は0-9、a-z、A-Z、そして下線_、最初の文字はa-z、A-Zのみ）",
     "EditUserNameInvalid": "ユーザー名は規則に適合しないか、予約語です",
     "PredictionSearchPlaceholder": "名前 / シンボル / アドレスで検索",
-    "BindTwitter": "Twitter アカウントをバインドする",
-    "BindTwitterLoading": "Twitter アカウントのバインド中...",
+    "BindTwitter": "X(Twitter) アカウントをバインドする",
+    "BindTwitterLoading": "X(Twitter) アカウントのバインド中...",
     "GetBindTwitterUriError": "バインドサービスの取得に失敗しました",
-    "BindTwitterSuccess": "Twitter アカウントのバインドに成功しました"
+    "BindTwitterSuccess": "X(Twitter) アカウントのバインドに成功しました"
   }
 }

@@ -26,6 +26,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const [tweets, setTweets]: [TweetPropType[], any] = useState([]);
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
   const [invitations, setInvitations]: [any[], any] = useState([]);
+  const [points, setPoints]: [any[], any] = useState([]);
   const [tweetsHasMore, setTweetsHasMore] = useState(true);
   const [tweetsFromIndex, setTweetsFromIndex] = useState(0);
   const [tweetsIsLoading, setTweetsIsLoading] = useState(false);
@@ -35,6 +36,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const [invitationsHasMore, setInvitationsHasMore] = useState(true);
   const [invitationsFromIndex, setInvitationsFromIndex] = useState(0);
   const [invitationsIsLoading, setInvitationsIsLoading] = useState(false);
+  const [pointsIsLoading, setPointsIsLoading] = useState(false);
   const effectRef = useRef(false);
 
   useEffect((): any => {
@@ -43,6 +45,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
       fetchMoreTweetsData();
       fetchMorePredictionsData();
       fetchMoreInvitationsData();
+      fetchMorePointsData();
     }
     return () => (effectRef.current = true);
   }, []);
@@ -150,6 +153,32 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
       });
   };
 
+  const fetchMorePointsData = (isReset?: boolean) => {
+    if (pointsIsLoading) return;
+    if (isReset) {
+      setPoints([]);
+    }
+    if (!localStorage.getItem("insights_token")) {
+      return null;
+    }
+    setPointsIsLoading(true);
+    axios
+      .get(`/v0/api/user/credit/records`, {
+        headers: {
+          Authorization: localStorage.getItem("insights_token"),
+        },
+      })
+      .then((res) => {
+        if (res.data && res.data.code === 0 && res.data.data.length > 0) {
+          setPoints((prevItems: any[]) => [...prevItems, ...res.data.data]);
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setPointsIsLoading(false);
+      });
+  };
+
   const copyInvitationLink = () => {
     navigator.clipboard.writeText(window.location.origin + "?i=" + props.invitationCode);
     toast.success(t("Copied"), toastConfig);
@@ -169,6 +198,9 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             {t("Invitation")}
           </div>
         )}
+        <div role="tab" className={`tab ${activeTab === 3 ? "tab-active" : ""}`} onClick={() => handleTabClick(3)}>
+          {t("Points")}
+        </div>
       </div>
       <div className="w-full">
         {activeTab === 0 ? (
@@ -199,7 +231,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
               ))}
             </div>
           </InfiniteScroll>
-        ) : (
+        ) : activeTab === 2 ? (
           <InfiniteScroll
             dataLength={invitations.length}
             next={fetchMoreInvitationsData}
@@ -272,6 +304,29 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
               </ul>
             </div>
           </InfiniteScroll>
+        ) : (
+          <div className="flex flex-col items-center justify-between w-full pt-2 overflow-x-auto">
+            <h3 className="font-bold pt-2">{t("PointsList")}</h3>
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>{t("PointsType")}</th>
+                  <th>{t("PointsAmount")}</th>
+                  <th>{t("PointsTime")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {points.map((p, i) => (
+                  <tr key={i}>
+                    <td>{t(p.source)}</td>
+                    <td>{p.amount}</td>
+                    <td>{p.createTime ? dateFormat(p.createTime) : new Date().toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

@@ -45,7 +45,19 @@
     "Copied": "Ссылка-приглашение скопирована",
     "MyInvitations": "Приглашенные пользователи",
     "PostsEndMessage": "Ура! Вы видели все",
-    "PredictionsEndMessage": "Ура! Вы видели все"
+    "PredictionsEndMessage": "Ура! Вы видели все",
+    "Points": "Баллы",
+    "PointsList": "Подробности баллов",
+    "PointsType": "Тип баллов",
+    "PointsAmount": "Количество баллов",
+    "PointsTime": "Время баллов",
+    "LOGIN": "Ежедневный вход",
+    "WALLET": "Привязать кошелек",
+    "TWITTER": "Привязать X(Twitter)",
+    "PREDICTION": "Создать прогноз",
+    "INVITATION_PREDICTION": "Первый прогноз приглашенного пользователя",
+    "INVITATION_TWITTER": "Привязка X(Twitter) приглашенного пользователя",
+    "FOLLOW": "Увеличение числа подписчиков"
   },
   "Prediction": {
     "ConfirmComplete": "Подтвердить завершение этого прогноза?",
@@ -131,14 +143,16 @@
     "Anonymous": "Анонимно",
     "AdministratorTip": "Администратор операций",
     "Twitter": "Твиттер",
+    "Address": "Адрес кошелька",
+    "Points": "Баллы",
     "BackToHome": "Вернуться на главную",
     "GoToMyPage": "Перейти к моей странице",
     "EditUserNamePrompt": "Пожалуйста, введите новое имя пользователя (Минимальная длина 3 символа, Разрешенные символы 0-9,a-z,A-Z,_, Первый символ только a-z,A-Z)",
     "EditUserNameInvalid": "Имя пользователя не соответствует правилам или является зарезервированным словом",
     "PredictionSearchPlaceholder": "Поиск по Имени / Символу / Адресу",
-    "BindTwitter": "Привязать аккаунт Twitter",
-    "BindTwitterLoading": "Привязка аккаунта Twitter...",
+    "BindTwitter": "Привязать аккаунт X(Twitter)",
+    "BindTwitterLoading": "Привязка аккаунта X(Twitter)...",
     "GetBindTwitterUriError": "Ошибка при получении службы привязки",
-    "BindTwitterSuccess": "Аккаунт Twitter успешно привязан"
+    "BindTwitterSuccess": "Аккаунт X(Twitter) успешно привязан"
   }
 }

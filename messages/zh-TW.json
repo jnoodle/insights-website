@@ -45,7 +45,19 @@
     "Copied": "邀請鏈接已複製",
     "MyInvitations": "我邀請的用戶",
     "PostsEndMessage": "耶！你已經看完所有內容了",
-    "PredictionsEndMessage": "耶！你已經看完所有內容了"
+    "PredictionsEndMessage": "耶！你已經看完所有內容了",
+    "Points": "積分",
+    "PointsList": "積分明細",
+    "PointsType": "積分類型",
+    "PointsAmount": "積分數量",
+    "PointsTime": "積分時間",
+    "LOGIN": "每日登入",
+    "WALLET": "綁定錢包",
+    "TWITTER": "綁定 X(Twitter)",
+    "PREDICTION": "建立預測",
+    "INVITATION_PREDICTION": "邀請的用戶首次建立預測",
+    "INVITATION_TWITTER": "邀請的用戶綁定 X(Twitter)",
+    "FOLLOW": "粉絲增加"
   },
   "Prediction": {
     "ConfirmComplete": "確認完成呢個預測嗎？",
@@ -78,7 +90,7 @@
   },
   "Header": {
     "Insights": "Insights",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
     "Whitepaper": "白皮書",
     "Contact": "聯絡我們"
   },
@@ -130,15 +142,17 @@
     "MyProfileTitle": "我的個人資料",
     "Anonymous": "匿名",
     "AdministratorTip": "網站管理員",
-    "Twitter": "Twitter",
+    "Twitter": "X(Twitter)",
+    "Address": "錢包地址",
+    "Points": "積分",
     "BackToHome": "返回首頁",
     "GoToMyPage": "前往我的主頁",
     "EditUserNamePrompt": "請輸入新用戶名（最小長度3個字符，允許的字符包括0-9、a-z、A-Z和下划線_，第一個字符只能使用a-z、A-Z）",
     "EditUserNameInvalid": "用戶名不符合規則或者用戶名為保留詞",
     "PredictionSearchPlaceholder": "按名稱/符號/合約地址搜尋",
-    "BindTwitter": "绑定 Twitter 帳戶",
-    "BindTwitterLoading": "Twitter 帳戶綁定中...",
+    "BindTwitter": "绑定 X(Twitter) 帳戶",
+    "BindTwitterLoading": "X(Twitter) 帳戶綁定中...",
     "GetBindTwitterUriError": "獲取綁定服務出錯",
-    "BindTwitterSuccess": "Twitter 帳戶綁定成功"
+    "BindTwitterSuccess": "X(Twitter) 帳戶綁定成功"
   }
 }
