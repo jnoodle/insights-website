@@ -18,6 +18,7 @@ import { useTranslations } from "next-intl";
 import { reservedWords, userNameRegex } from "@/app/constants";
 import { toast } from "react-toastify";
 import numeral from "numeral";
+import { useSearchParams } from "next/navigation";
 
 dayjs.extend(customParseFormat);
 
@@ -26,12 +27,17 @@ export default function Home() {
   const { address, isConnected } = useAccount();
   const { open } = useWeb3Modal();
   const [currentUser, setCurrentUser]: [InsightsUser, any] = useState({});
+  const [activeTabName, setActiveTabName] = useState("");
   const [loading, setLoading] = useState(false);
   const [bindTwitterLoading, setBindTwitterLoading] = useState(false);
   const effectRef = useRef(false);
   const profileTabRef = useRef();
+  const searchParams = useSearchParams();
 
   useEffect((): any => {
+    if (searchParams && searchParams.get("t")) {
+      setActiveTabName(searchParams.get("t")!);
+    }
     if (address) {
       if (!loading) {
         // Login(address).then(() => {
@@ -220,7 +226,12 @@ export default function Home() {
       {isConnected && (
         <div className="flex items-center w-full mt-6">
           {currentUser && currentUser.alias && (
-            <ProfileTab alias={currentUser.alias} invitationCode={currentUser.invitationCode} ref={profileTabRef} />
+            <ProfileTab
+              alias={currentUser.alias}
+              invitationCode={currentUser.invitationCode}
+              ref={profileTabRef}
+              activeTabName={activeTabName}
+            />
           )}
         </div>
       )}

@@ -18,11 +18,12 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 export type ProfileTabPropType = {
   alias?: string;
   invitationCode?: string;
+  activeTabName?: string;
 };
 
 const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const t = useTranslations("ProfileTab");
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(1); // default tab predictions
   const [tweets, setTweets]: [TweetPropType[], any] = useState([]);
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
   const [invitations, setInvitations]: [any[], any] = useState([]);
@@ -40,6 +41,29 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const effectRef = useRef(false);
 
   useEffect((): any => {
+    if (props.activeTabName) {
+      switch (props.activeTabName) {
+        case "prediction":
+        case "predictions":
+          setActiveTab(1);
+          break;
+        case "post":
+        case "posts":
+          setActiveTab(0);
+          break;
+        case "invitation":
+        case "invitations":
+          setActiveTab(2);
+          break;
+        case "point":
+        case "points":
+          setActiveTab(3);
+          break;
+
+        default:
+          break;
+      }
+    }
     // fix react 18 strict mode: https://rishabhsharma.bio/next-js-issue-useeffect-hook-running-twice-in-client-9fb6712f6362
     if (!effectRef.current) {
       fetchMoreTweetsData();

@@ -51,7 +51,7 @@ export default function Home() {
             <div dangerouslySetInnerHTML={{ __html: t.raw("CampaignRulesDetail") }} />
           </div>
           <div className="card-actions justify-end">
-            <Link href="/profile" className="btn btn-primary md:btn-lg text-white">
+            <Link href="/profile?t=invitation" className="btn btn-primary md:btn-lg text-white">
               {t("CampaignJoin")}
             </Link>
           </div>
