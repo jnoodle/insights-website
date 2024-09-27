@@ -306,7 +306,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
           </InfiniteScroll>
         ) : (
           <div className="flex flex-col items-center justify-between w-full pt-2 overflow-x-auto">
-            <h3 className="font-bold pt-2">{t("PointsList")}</h3>
+            <h3 className="font-bold py-2">{t("PointsList")}</h3>
             <table className="table">
               {/* head */}
               <thead>

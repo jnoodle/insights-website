@@ -154,5 +154,16 @@
     "BindTwitterLoading": "Vinculando cuenta de X(Twitter)...",
     "GetBindTwitterUriError": "Error al obtener el servicio de vinculación",
     "BindTwitterSuccess": "Cuenta de X(Twitter) vinculada exitosamente"
+  },
+  "Ad": {
+    "PointsRanking": "Clasificación del Tablón",
+    "PointsRankingUser": "Usuario",
+    "PointsRankingPoint": "Puntos",
+    "CampaignName": "Campaña de Recompensa de Puntos",
+    "CampaignJoin": "Comenzar a invitar",
+    "CampaignDate": "Hora de la Campaña",
+    "CampaignDateDetail": "28 de septiembre - 8 de octubre",
+    "CampaignRules": "Reglas de la Campaña",
+    "CampaignRulesDetail": "<ul><li>1. Registro Exitoso: Los usuarios que conecten sus billeteras por primera vez y se inician sesión en Insights ganarán 50 puntos. Los usuarios que también vinculen cuentas de Twitter ganarán 50 puntos adicionales (cada cuenta es elegible para estos puntos solo una vez).</li><li>2. Inicio de Sesión Diario: Los usuarios que participan en el evento ganarán 5 puntos por su primer inicio de sesión en Insights. Durante el período del evento, los usuarios que inicien sesión de manera consecutiva cada día ganarán 5 puntos por día.</li><li>3. Creación de Predicciones: Los usuarios ganarán 20 puntos por cada predicción que creen (Sin límite superior).</li><li>4. Invitación: Los usuarios que inviten a amigos a registrarse exitosamente utilizando el enlace exclusivo de referencia de Insights ganarán una recompensa en puntos. Por cada invitación exitosa, el usuario puede ganar hasta 40 puntos (el nuevo usuario debe cumplir al menos una de las siguientes condiciones: ①. Conectar billetera y crear al menos una predicción ②. Vincular cuenta de Twitter; por cada condición cumplida por el usuario invitado, el invitador ganará 20 puntos).</li><li>5. Recompensa del Tablón: Después de que termine el evento, los 3 primeros usuarios en el tablon ganarán premios exclusivos de NFT. (Los titulares de NFT obtendrán beneficios especiales de la plataforma en el futuro y acceso a grupos exclusivos).</li></ul>"
   }
 }

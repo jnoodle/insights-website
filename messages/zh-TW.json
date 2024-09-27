@@ -154,5 +154,16 @@
     "BindTwitterLoading": "X(Twitter) 帳戶綁定中...",
     "GetBindTwitterUriError": "獲取綁定服務出錯",
     "BindTwitterSuccess": "X(Twitter) 帳戶綁定成功"
+  },
+  "Ad": {
+    "PointsRanking": "积分排行榜",
+    "PointsRankingUser": "使用者",
+    "PointsRankingPoint": "积分",
+    "CampaignName": "积分獎勵活動",
+    "CampaignJoin": "開始邀請",
+    "CampaignDate": "活動時間",
+    "CampaignDateDetail": "9月28日 - 10月8日",
+    "CampaignRules": "活動規則",
+    "CampaignRulesDetail": "<ul><li>1.註冊使用者獎勵：首次綁定錢包，登入 Insights 的使用者獲得 50 积分，同時綁定 Twitter 的使用者將獲得額外的 50 积分獎勵（每個帳號僅記錄一次）；</li><li>2.每日登入獎勵：參與活動的社區成員，首次登入 Insights 可獲得 5 积分，活動期間連續登入每天均可獲得 5 积分；</li><li>3.建立預測獎勵：登入成功的使用者，每建立一次預測將可獲得 20 积分獎勵（建立預測數不設上限）；</li><li>4.拉新邀請獎勵：透過 Insights 專屬邀請連結，邀請好友註冊成功可獲得积分獎勵，每邀請成功一個好友最多可獲得 40 积分（新使用者至少需滿足以下兩個條件中的一條 ①.綁定錢包+建立一條預測 ②.綁定 Twitter；被邀請者每完成一項，邀請人則可獲得 20 积分）；</li><li>5.排行榜獎勵：活動結束後，积分排名前三位的使用者，將獲得額外的專屬 NFT 獎勵（NFT持有者將獲得後續平台特別福利及專屬群組訪問權限）；</li></ul>"
   }
 }

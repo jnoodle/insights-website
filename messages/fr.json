@@ -154,5 +154,16 @@
     "BindTwitterLoading": "Liaison du compte X(Twitter) en cours...",
     "GetBindTwitterUriError": "Erreur lors de l'obtention du service de liaison",
     "BindTwitterSuccess": "Compte X(Twitter) lié avec succès"
+  },
+  "Ad": {
+    "PointsRanking": "Classement du Leaderboard",
+    "PointsRankingUser": "Utilisateur",
+    "PointsRankingPoint": "Points",
+    "CampaignName": "Campagne de Récompense en Points",
+    "CampaignJoin": "Commencer à inviter",
+    "CampaignDate": "Temps de la Campagne",
+    "CampaignDateDetail": "28 septembre - 8 octobre",
+    "CampaignRules": "Règles de la Campagne",
+    "CampaignRulesDetail": "<ul><li>1. Inscription réussie : Les utilisateurs qui se connectent pour la première fois à leur portefeuille et se connectent à Insights gagneront 50 points. Les utilisateurs qui se lient également à des comptes Twitter gagneront des points supplémentaires de 50 (chaque compte est éligible à ces points une seule fois).</li><li>2. Connexion quotidienne : Les utilisateurs participant à l'événement gagneront 5 points pour leur première connexion à Insights. Pendant la période de l'événement, les utilisateurs qui se connectent de manière consécutive chaque jour gagneront 5 points par jour.</li><li>3. Création de prédictions : Les utilisateurs gagneront 20 points pour chaque prédiction qu'ils créent (Sans limite supérieure).</li><li>4. Invitation : Les utilisateurs qui invitent des amis à s'inscrire avec succès en utilisant le lien de parrainage exclusif Insights gagneront une récompense en points. Pour chaque invitation réussie, l'utilisateur peut gagner jusqu'à 40 points (le nouvel utilisateur doit répondre au moins à une des conditions suivantes : ①. Connecter le portefeuille et créer au moins une prédiction ②. Liens de compte Twitter ; pour chaque condition remplie par l'utilisateur invité, l'invitant gagnera 20 points).</li><li>5. Récompense du classement : Après la fin de l'événement, les 3 premiers utilisateurs du classement gagneront des récompenses exclusives NFT. (Les détenteurs de NFT obtiendront des avantages spéciaux de la plateforme future et un accès à des groupes exclusifs).</li></ul>"
   }
 }

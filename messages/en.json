@@ -154,5 +154,16 @@
     "BindTwitterLoading": "Binding X(Twitter) Account...",
     "GetBindTwitterUriError": "Error fetching bind service",
     "BindTwitterSuccess": "X(Twitter) account successfully bound"
+  },
+  "Ad": {
+    "PointsRanking": "Ranking Leaderboard",
+    "PointsRankingUser": "User",
+    "PointsRankingPoint": "Points",
+    "CampaignName": "Point Reward Campaign",
+    "CampaignJoin": "Start Inviting",
+    "CampaignDate": "Campaign Time",
+    "CampaignDateDetail": "September 28th - October 8th",
+    "CampaignRules": "Campaign Rules",
+    "CampaignRulesDetail": "<ul><li>1. Successful Registration: Users who connect their wallets for the first time and log into Insights will earn 50 points. Users who also bind Twitter accounts will earn additional 50 points (each account is eligible for these points only once).</li><li>2. Daily Login: Users participating in the event will earn 5 points for their first login to Insights. During the event period, users who log in consecutively each day will earn 5 points per day.</li><li>3. Prediction Creation: Users will earn 20 points for each prediction they create (With no upper limit ).</li><li>4. Invitation: Users who invite friends to successfully register using exclusive Insights referral link will earn points reward. For each successful invitation, user can earn up to 40 points ( new user must meet at least one conditions: ①. Connect wallet and create at least one prediction ②. Bind Twitter account; for each condition completed by the invited user, the inviter will earn 20 points).</li><li>5. Leaderboard Reward: After the event ends, the top 3 users on the leaderboard will earn exclusive NFT rewards. (NFT holders will get special future platform benefits and access to exclusive groups).</li></ul>"
   }
 }
