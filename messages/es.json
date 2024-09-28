@@ -100,7 +100,10 @@
     "SigningIn": "Iniciando sesión...",
     "SwitchChain": "Cambiar a Conflux eSpace Testnet",
     "Connecting": "Conectando...",
-    "ConnectWallet": "Conectar monedero"
+    "ConnectWallet": "Conectar monedero",
+    "Disconnect": "Desconectar",
+    "Invitation": "Invitar amigos",
+    "Points": "Mis puntos"
   },
   "Article": {
     "ConfirmDelete": "¿Confirmar la eliminación de esta noticia?",

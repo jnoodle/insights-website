@@ -100,7 +100,10 @@
     "SigningIn": "登入中...",
     "SwitchChain": "切換到 Conflux eSpace Testnet",
     "Connecting": "正在連接...",
-    "ConnectWallet": "連接錢包"
+    "ConnectWallet": "連接錢包",
+    "Disconnect": "斷開連接",
+    "Invitation": "邀請好友",
+    "Points": "我的積分"
   },
   "Article": {
     "ConfirmDelete": "確認刪除呢篇新聞嗎？",

@@ -19,6 +19,7 @@ import { getMyProfile, getUserProfile, Login } from "@/api/user";
 import Image from "next/image";
 import * as React from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export const clearStorage = () => {
   localStorage.removeItem("insights_signin_message");
@@ -44,16 +45,37 @@ export default function ConnectButton() {
   // change address
   const [preAddress, setPreAddress] = useState("");
   const handleConnect = () => {
-    if (!address) {
+    console.log("handleConnect", address);
+    if (!address && !isSigning) {
       // connect wallet
       open();
       // } else if (chainId !== +process.env.NEXT_PUBLIC_CorrectChainId!) {
       //   // switch chain
       //   switchChain({ chainId: +process.env.NEXT_PUBLIC_CorrectChainId! });
-    } else {
-      // goto profile page
-      router.push("/profile");
-      // open({ view: "Account" });
+    }
+    // else {
+    //   // goto profile page
+    //   router.push("/profile");
+    //   // open({ view: "Account" });
+    // }
+  };
+  const handleDisconnect = () => {
+    disconnect();
+    clearStorage();
+    window.location.reload();
+    const elem = document.activeElement;
+    if (elem) {
+      // @ts-ignore
+      elem?.blur();
+    }
+  };
+  const handleToProfile = (tab: string | undefined) => {
+    router.push("/profile" + (tab ? "?t=" + tab : ""));
+    router.refresh(); //TODO
+    const elem = document.activeElement;
+    if (elem) {
+      // @ts-ignore
+      elem?.blur();
     }
   };
 
@@ -161,43 +183,98 @@ export default function ConnectButton() {
 
   return (
     <>
-      <button
-        className={`btn btn-primary px-4 md:px-6 btn-sm md:btn-md text-sm md:text-base text-white font-normal rounded-full ${
-          // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
-          isConnected && !chainId ? "btn-error" : ""
-        }`}
-        onClick={handleConnect}
-      >
-        {isSigning ? (
-          "Signing In..."
-        ) : isConnected ? (
-          // chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
-          chainId ? (
-            isSigning ? (
-              t("SigningIn")
+      <div className="dropdown dropdown-bottom dropdown-end">
+        <button
+          tabIndex={0}
+          className={`btn btn-primary px-4 md:px-6 btn-sm md:btn-md text-sm md:text-base text-white font-normal rounded-full ${
+            // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
+            isConnected && !chainId ? "btn-error" : ""
+          }`}
+          // onClick={handleConnect}
+        >
+          {isSigning ? (
+            "Signing In..."
+          ) : isConnected ? (
+            // chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
+            chainId ? (
+              isSigning ? (
+                t("SigningIn")
+              ) : (
+                <span className="flex">
+                  {ellipseAddress(address)}
+                  {/*<Image*/}
+                  {/*  src="/profile.svg"*/}
+                  {/*  className="ml-1 w-4 md:w-6"*/}
+                  {/*  alt={t("MyProfile")}*/}
+                  {/*  title={t("MyProfile")}*/}
+                  {/*  width={24}*/}
+                  {/*  height={24}*/}
+                  {/*  priority*/}
+                  {/*/>*/}
+                </span>
+              )
             ) : (
-              <span className="flex">
-                {ellipseAddress(address)}
-                <Image
-                  src="/profile.svg"
-                  className="ml-1 w-4 md:w-6"
-                  alt={t("MyProfile")}
-                  title={t("MyProfile")}
-                  width={24}
-                  height={24}
-                  priority
-                />
-              </span>
+              t("SwitchChain")
             )
+          ) : isConnecting ? (
+            t("Connecting")
           ) : (
-            t("SwitchChain")
-          )
-        ) : isConnecting ? (
-          t("Connecting")
-        ) : (
-          t("ConnectWallet")
-        )}
-      </button>
+            t("ConnectWallet")
+          )}
+        </button>
+        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+          {isConnected && chainId && !isSigning ? (
+            <>
+              <li>
+                <a onClick={() => handleToProfile("")}>{t("MyProfile")}</a>
+              </li>
+              <li>
+                <a onClick={() => handleToProfile("invitation")}>{t("Invitation")}</a>
+              </li>
+              <li>
+                <a onClick={() => handleToProfile("point")}>{t("Points")}</a>
+              </li>
+              <li>
+                <a onClick={() => handleDisconnect}>{t("Disconnect")}</a>
+              </li>
+            </>
+          ) : (
+            <li>
+              <a onClick={handleConnect}>
+                {isSigning ? (
+                  "Signing In..."
+                ) : isConnected ? (
+                  // chainId === +process.env.NEXT_PUBLIC_CorrectChainId! ? (
+                  chainId ? (
+                    isSigning ? (
+                      t("SigningIn")
+                    ) : (
+                      <span className="flex">
+                        {ellipseAddress(address)}
+                        {/*<Image*/}
+                        {/*  src="/profile.svg"*/}
+                        {/*  className="ml-1 w-4 md:w-6"*/}
+                        {/*  alt={t("MyProfile")}*/}
+                        {/*  title={t("MyProfile")}*/}
+                        {/*  width={24}*/}
+                        {/*  height={24}*/}
+                        {/*  priority*/}
+                        {/*/>*/}
+                      </span>
+                    )
+                  ) : (
+                    t("SwitchChain")
+                  )
+                ) : isConnecting ? (
+                  t("Connecting")
+                ) : (
+                  t("ConnectWallet")
+                )}
+              </a>
+            </li>
+          )}
+        </ul>
+      </div>
       {/*isConnected: {isConnected + ""}*/}
       {/*isSigning: {isSigning + ""}*/}
       {/*isLoading: {isLoading + ""}*/}

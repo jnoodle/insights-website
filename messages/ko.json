@@ -100,7 +100,10 @@
     "SigningIn": "로그인 중...",
     "SwitchChain": "Conflux eSpace Testnet 로 전환",
     "Connecting": "연결 중...",
-    "ConnectWallet": "지갑 연결"
+    "ConnectWallet": "지갑 연결",
+    "Disconnect": "연결 끊기",
+    "Invitation": "친구 초대",
+    "Points": "내 포인트"
   },
   "Article": {
     "ConfirmDelete": "이 뉴스를 삭제하시겠습니까?",

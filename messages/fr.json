@@ -100,7 +100,10 @@
     "SigningIn": "Connexion en cours...",
     "SwitchChain": "Passer à Conflux eSpace Testnet",
     "Connecting": "Connexion en cours...",
-    "ConnectWallet": "Connecter le portefeuille"
+    "ConnectWallet": "Connecter le portefeuille",
+    "Disconnect": "Déconnecter",
+    "Invitation": "Inviter des amis",
+    "Points": "Mes points"
   },
   "Article": {
     "ConfirmDelete": "Confirmez la suppression de cette actualité ?",

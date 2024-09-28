@@ -100,7 +100,10 @@
     "SigningIn": "Signing In...",
     "SwitchChain": "Switch to Conflux eSpace Testnet",
     "Connecting": "Connecting...",
-    "ConnectWallet": "Connect Wallet"
+    "ConnectWallet": "Connect Wallet",
+    "Disconnect": "Disconnect",
+    "Invitation": "Invite Friends",
+    "Points": "My Points"
   },
   "Article": {
     "ConfirmDelete": "Confirm delete this news?",

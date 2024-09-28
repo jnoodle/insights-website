@@ -100,7 +100,10 @@
     "SigningIn": "Вход...",
     "SwitchChain": "Переключиться на Conflux eSpace Testnet",
     "Connecting": "Подключение...",
-    "ConnectWallet": "Подключить кошелек"
+    "ConnectWallet": "Подключить кошелек",
+    "Disconnect": "Отсоединение",
+    "Invitation": "Пригласить друзей",
+    "Points": "Мои баллы"
   },
   "Article": {
     "ConfirmDelete": "Подтвердить удаление этой новости?",
