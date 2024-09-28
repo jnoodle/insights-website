@@ -69,7 +69,8 @@ export default function ConnectButton() {
       elem?.blur();
     }
   };
-  const handleToProfile = (tab: string | undefined) => {
+  const handleToProfile = (e: any, tab: string | undefined) => {
+    e.preventDefault();
     router.push("/profile" + (tab ? "?t=" + tab : ""));
     router.refresh(); //TODO
     const elem = document.activeElement;
@@ -226,16 +227,16 @@ export default function ConnectButton() {
           {isConnected && chainId && !isSigning ? (
             <>
               <li>
-                <a onClick={() => handleToProfile("")}>{t("MyProfile")}</a>
+                <a onClick={(e) => handleToProfile(e, "")}>{t("MyProfile")}</a>
               </li>
               <li>
-                <a onClick={() => handleToProfile("invitation")}>{t("Invitation")}</a>
+                <a onClick={(e) => handleToProfile(e, "invitation")}>{t("Invitation")}</a>
               </li>
               <li>
-                <a onClick={() => handleToProfile("point")}>{t("Points")}</a>
+                <a onClick={(e) => handleToProfile(e, "point")}>{t("Points")}</a>
               </li>
               <li>
-                <a onClick={() => handleDisconnect}>{t("Disconnect")}</a>
+                <a onClick={handleDisconnect}>{t("Disconnect")}</a>
               </li>
             </>
           ) : (
