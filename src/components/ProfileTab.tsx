@@ -348,16 +348,18 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
                 <thead>
                   <tr>
                     <th>{t("PointsType")}</th>
-                    <th>{t("PointsAmount")}</th>
-                    <th>{t("PointsTime")}</th>
+                    <th className="text-right">{t("PointsAmount")}</th>
+                    <th className="text-right">{t("PointsTime")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {points.map((p, i) => (
                     <tr key={i}>
                       <td>{t(p.source)}</td>
-                      <td>{p.amount}</td>
-                      <td>{p.createTime ? dateFormat(p.createTime) : new Date().toLocaleString()}</td>
+                      <td className="text-right">{p.amount}</td>
+                      <td className="text-right">
+                        {p.createTime ? dateFormat(p.createTime) : new Date().toLocaleString()}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
