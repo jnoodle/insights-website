@@ -14,12 +14,23 @@ import { useTranslations } from "next-intl";
 export default function Home({ params }: { params: { alias: string } }) {
   const t = useTranslations("Pages");
   const [userInfo, setUserInfo]: [InsightsUser, any] = useState({});
+  const [isUserExist, setIsUserExist] = useState(true);
   const effectRef = useRef(false);
 
   useEffect((): any => {
     if (!effectRef.current) {
       (async () => {
-        setUserInfo(await getUserProfile(params.alias));
+        try {
+          const info = await getUserProfile(params.alias);
+          if (info) {
+            setUserInfo(info);
+          } else {
+            setIsUserExist(false);
+          }
+        } catch (ex) {
+          console.error(ex);
+          setIsUserExist(false);
+        }
       })();
     }
     return () => (effectRef.current = true);
@@ -65,12 +76,12 @@ export default function Home({ params }: { params: { alias: string } }) {
         </div>
       </div>
       <div className="flex items-center w-full mt-6">
-        <ProfileTab alias={params.alias} />
+        <ProfileTab alias={params.alias} isPublic={true} />
       </div>
     </div>
   ) : (
     <div className="flex flex-col items-center justify-between w-full pt-4 md:pt-8">
-      <h1 className="text-error">{t("UserNotExist")}</h1>
+      {!isUserExist && <h1 className="text-error">{t("UserNotExist")}</h1>}
     </div>
   );
 }

@@ -231,6 +231,7 @@ export default function Home() {
               invitationCode={currentUser.invitationCode}
               ref={profileTabRef}
               activeTabName={activeTabName}
+              isPublic={false}
             />
           )}
         </div>

@@ -19,6 +19,7 @@ export type ProfileTabPropType = {
   alias?: string;
   invitationCode?: string;
   activeTabName?: string;
+  isPublic: boolean;
 };
 
 const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
@@ -53,11 +54,15 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
           break;
         case "invitation":
         case "invitations":
-          setActiveTab(2);
+          if (!props.isPublic) {
+            setActiveTab(2);
+          }
           break;
         case "point":
         case "points":
-          setActiveTab(3);
+          if (!props.isPublic) {
+            setActiveTab(3);
+          }
           break;
 
         default:
@@ -68,8 +73,10 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
     if (!effectRef.current) {
       fetchMoreTweetsData();
       fetchMorePredictionsData();
-      fetchMoreInvitationsData();
-      fetchMorePointsData();
+      if (props.isPublic) {
+        fetchMoreInvitationsData();
+        fetchMorePointsData();
+      }
     }
     return () => (effectRef.current = true);
   }, []);
@@ -217,14 +224,16 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
         <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
           {t("Posts")}
         </div>
-        {props.invitationCode && (
+        {!props.isPublic && props.invitationCode && (
           <div role="tab" className={`tab ${activeTab === 2 ? "tab-active" : ""}`} onClick={() => handleTabClick(2)}>
             {t("Invitation")}
           </div>
         )}
-        <div role="tab" className={`tab ${activeTab === 3 ? "tab-active" : ""}`} onClick={() => handleTabClick(3)}>
-          {t("Points")}
-        </div>
+        {!props.isPublic && (
+          <div role="tab" className={`tab ${activeTab === 3 ? "tab-active" : ""}`} onClick={() => handleTabClick(3)}>
+            {t("Points")}
+          </div>
+        )}
       </div>
       <div className="w-full">
         {activeTab === 0 ? (
@@ -256,101 +265,105 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             </div>
           </InfiniteScroll>
         ) : activeTab === 2 ? (
-          <InfiniteScroll
-            dataLength={invitations.length}
-            next={fetchMoreInvitationsData}
-            hasMore={invitationsHasMore}
-            loader={<Loading />}
-            endMessage={<p className="text-center py-2">{t("PredictionsEndMessage")}</p>}
-          >
-            <div className="flex flex-row items-center justify-center w-full py-4">
-              <label className="form-control w-full bg-white">
-                <div className="label">
-                  <span className="label-text">{t("InvitationLink")}</span>
-                  <span className="label-text-alt"></span>
-                </div>
-                <input
-                  type="text"
-                  placeholder={t("InvitationLink")}
-                  value={window.location.origin + "?i=" + props.invitationCode}
-                  readOnly={true}
-                  onFocus={(e) => e.target.select()}
-                  onClick={copyInvitationLink}
-                  className="input input-bordered w-full bg-white outline-0"
-                />
-                <div className="label">
-                  <span className="label-text-alt"></span>
-                  <span className="label-text-alt">
-                    <button className="btn btn-primary btn-sm text-white" onClick={copyInvitationLink}>
-                      {t("CopyLink")}
-                    </button>
-                  </span>
-                </div>
-              </label>
-            </div>
-            <div className="flex flex-col items-center justify-between w-full pt-2">
-              <h3 className="font-bold">{t("MyInvitations")}</h3>
-              <ul className="w-full">
-                {invitations.map((t, i) => (
-                  <li key={i} className="flex flex-row items-center justify-between w-full py-2 border-b">
-                    <div className="flex items-center gap-2">
-                      <div className="avatar">
-                        <div className="w-10 rounded-full">
-                          {t.avatarUrl ? (
-                            <img
-                              src={t.avatarUrl}
-                              alt={t.name ? t.name : t("Anonymous")}
-                              onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
-                            />
-                          ) : (
-                            parse(multiavatar(t.name ? filterString(t.name) : t("Anonymous")))
-                          )}
+          !props.isPublic && (
+            <InfiniteScroll
+              dataLength={invitations.length}
+              next={fetchMoreInvitationsData}
+              hasMore={invitationsHasMore}
+              loader={<Loading />}
+              endMessage={<p className="text-center py-2">{t("PredictionsEndMessage")}</p>}
+            >
+              <div className="flex flex-row items-center justify-center w-full py-4">
+                <label className="form-control w-full bg-white">
+                  <div className="label">
+                    <span className="label-text">{t("InvitationLink")}</span>
+                    <span className="label-text-alt"></span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={t("InvitationLink")}
+                    value={window.location.origin + "?i=" + props.invitationCode}
+                    readOnly={true}
+                    onFocus={(e) => e.target.select()}
+                    onClick={copyInvitationLink}
+                    className="input input-bordered w-full bg-white outline-0"
+                  />
+                  <div className="label">
+                    <span className="label-text-alt"></span>
+                    <span className="label-text-alt">
+                      <button className="btn btn-primary btn-sm text-white" onClick={copyInvitationLink}>
+                        {t("CopyLink")}
+                      </button>
+                    </span>
+                  </div>
+                </label>
+              </div>
+              <div className="flex flex-col items-center justify-between w-full pt-2">
+                <h3 className="font-bold">{t("MyInvitations")}</h3>
+                <ul className="w-full">
+                  {invitations.map((t, i) => (
+                    <li key={i} className="flex flex-row items-center justify-between w-full py-2 border-b">
+                      <div className="flex items-center gap-2">
+                        <div className="avatar">
+                          <div className="w-10 rounded-full">
+                            {t.avatarUrl ? (
+                              <img
+                                src={t.avatarUrl}
+                                alt={t.name ? t.name : t("Anonymous")}
+                                onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
+                              />
+                            ) : (
+                              parse(multiavatar(t.name ? filterString(t.name) : t("Anonymous")))
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+                          <div className="text-base font-bold">
+                            {/*TODO alias*/}
+                            <Link href={"/user/" + t?.alias} className="link">
+                              {t.name ? t.name : t("Anonymous")}
+                            </Link>
+                            <span className="font-normal ml-2 text-sm">
+                              @{t.alias ? t.alias : t("Anonymous")}
+                              &nbsp;{t.address ? t.address : ""}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                      <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
-                        <div className="text-base font-bold">
-                          {/*TODO alias*/}
-                          <Link href={"/user/" + t?.alias} className="link">
-                            {t.name ? t.name : t("Anonymous")}
-                          </Link>
-                          <span className="font-normal ml-2 text-sm">
-                            @{t.alias ? t.alias : t("Anonymous")}
-                            &nbsp;{t.address ? t.address : ""}
-                          </span>
-                        </div>
+                      <div className="text-sm">
+                        {t.createTime ? dateFormat(t.createTime) : new Date().toLocaleString()}
                       </div>
-                    </div>
-                    <div className="text-sm">
-                      {t.createTime ? dateFormat(t.createTime) : new Date().toLocaleString()}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </InfiniteScroll>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </InfiniteScroll>
+          )
         ) : (
-          <div className="flex flex-col items-center justify-between w-full pt-2 overflow-x-auto">
-            <h3 className="font-bold py-2">{t("PointsList")}</h3>
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>{t("PointsType")}</th>
-                  <th>{t("PointsAmount")}</th>
-                  <th>{t("PointsTime")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {points.map((p, i) => (
-                  <tr key={i}>
-                    <td>{t(p.source)}</td>
-                    <td>{p.amount}</td>
-                    <td>{p.createTime ? dateFormat(p.createTime) : new Date().toLocaleString()}</td>
+          !props.isPublic && (
+            <div className="flex flex-col items-center justify-between w-full pt-2 overflow-x-auto">
+              <h3 className="font-bold py-2">{t("PointsList")}</h3>
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr>
+                    <th>{t("PointsType")}</th>
+                    <th>{t("PointsAmount")}</th>
+                    <th>{t("PointsTime")}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {points.map((p, i) => (
+                    <tr key={i}>
+                      <td>{t(p.source)}</td>
+                      <td>{p.amount}</td>
+                      <td>{p.createTime ? dateFormat(p.createTime) : new Date().toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )
         )}
       </div>
     </div>
