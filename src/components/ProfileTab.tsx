@@ -73,7 +73,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
     if (!effectRef.current) {
       fetchMoreTweetsData();
       fetchMorePredictionsData();
-      if (props.isPublic) {
+      if (!props.isPublic) {
         fetchMoreInvitationsData();
         fetchMorePointsData();
       }
