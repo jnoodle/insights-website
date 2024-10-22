@@ -92,7 +92,7 @@ export function Prediction(props: PredictionPropType) {
   const resultIcon = () =>
     predictionResult === true ? (
       <div className="tooltip tooltip-left" data-tip={t("ROI")}>
-        <span className="text-lg text-success font-bold md:text-2xl">
+        <span className="text-lg text-success font-bold lg:text-2xl">
           {/*{ROI(props.price, predictionResultPrice)}*/}
           {+props.roi > 10000 ? (
             <span>&gt; 100X</span>
@@ -106,7 +106,7 @@ export function Prediction(props: PredictionPropType) {
       </div>
     ) : predictionResult === false ? (
       <div className="tooltip tooltip-left" data-tip={t("ROI")}>
-        <span className="text-lg text-error font-bold md:text-2xl">
+        <span className="text-lg text-error font-bold lg:text-2xl">
           {/*﹣{ROI(props.price, predictionResultPrice)}*/}
           {props.roi}
           <span className="text-base">%</span>
@@ -172,7 +172,7 @@ export function Prediction(props: PredictionPropType) {
         <div className="author flex w-full justify-between items-center">
           <div className="flex items-center gap-4">
             <Avatar className="w-12 rounded-full" user={props.userView} />
-            <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+            <div className="flex flex-col lg:flex-row gap-0 lg:gap-2 items-start lg:items-center">
               <div className="text-base font-bold">
                 {/*TODO alias*/}
                 <Link href={"/user/" + props.userView?.alias} className="link">
@@ -185,12 +185,12 @@ export function Prediction(props: PredictionPropType) {
               </div>
             </div>
           </div>
-          <div className="date hidden md:block">
+          <div className="date hidden lg:block">
             {props.createTime ? dateFormat(props.createTime) : new Date().toLocaleString()}
           </div>
-          <div className="flex items-center md:hidden">{resultIcon()}</div>
+          <div className="flex items-center lg:hidden">{resultIcon()}</div>
         </div>
-        <div className="prediction flex w-full flex-col md:flex-row justify-between items-start md:items-center md:pl-5">
+        <div className="prediction flex w-full flex-col lg:flex-row justify-between items-start lg:items-center lg:pl-5">
           <div className="flex items-center gap-2 min-w-60" title={props.explanation}>
             {props.trend === "rise" ? (
               <Image src="/rise.svg" width={64} height={64} priority alt={t("Rise")} />
@@ -203,16 +203,16 @@ export function Prediction(props: PredictionPropType) {
             </Link>
           </div>
           <div className="flex flex-col items-start gap-2 grow">
-            <div className="flex flex-col md:flex-row md:items-center">
+            <div className="flex flex-col lg:flex-row lg:items-center">
               <span>{t("PriceAtCreate")}&nbsp;</span>
-              <span className="text-xs md:text-sm">
+              <span className="text-xs lg:text-sm">
                 <span className="font-bold text-accent text-sm">{formatPrice(props.price)}</span> (
                 {props.createTime && dateFormat(props.createTime)})
               </span>
             </div>
-            <div className="flex flex-col md:flex-row md:items-center">
+            <div className="flex flex-col lg:flex-row lg:items-center">
               <span>{t("PriceAtFinish")}&nbsp;</span>
-              <span className="text-xs md:text-sm">
+              <span className="text-xs lg:text-sm">
                 <span className={`font-bold text-sm ${getTextColor(predictionResultPrice)}`}>
                   {formatPrice(predictionResultPrice)}
                   {/*{predictionResult != null &&*/}
@@ -228,22 +228,22 @@ export function Prediction(props: PredictionPropType) {
                 )
               </span>
             </div>
-            {/*<div className="flex flex-col md:flex-row md:items-center">*/}
+            {/*<div className="flex flex-col lg:flex-row lg:items-center">*/}
             {/*  <span>*/}
             {/*    Price (1d):{" "}*/}
             {/*    <span className={`font-bold ${getTextColor(props.priceDayOne)}`}>{formatPrice(props.priceDayOne)}</span>*/}
             {/*  </span>*/}
-            {/*  <span className="md:ml-2">*/}
+            {/*  <span className="lg:ml-2">*/}
             {/*    Price (3d):{" "}*/}
             {/*    <span className={`font-bold ${getTextColor(props.priceDayThree)}`}>*/}
             {/*      {formatPrice(props.priceDayThree)}*/}
             {/*    </span>*/}
             {/*  </span>*/}
-            {/*  <span className="md:ml-2">*/}
+            {/*  <span className="lg:ml-2">*/}
             {/*    Price (5d):{" "}*/}
             {/*    <span className={`font-bold ${getTextColor(props.priceDayFive)}`}>{formatPrice(props.priceDayFive)}</span>*/}
             {/*  </span>*/}
-            {/*  <span className="md:ml-2">*/}
+            {/*  <span className="lg:ml-2">*/}
             {/*    Price (7d):{" "}*/}
             {/*    <span className={`font-bold ${getTextColor(props.priceDaySeven)}`}>*/}
             {/*      {formatPrice(props.priceDaySeven)}*/}
@@ -251,7 +251,7 @@ export function Prediction(props: PredictionPropType) {
             {/*  </span>*/}
             {/*</div>*/}
             {(props.tweetUrl || props.explanation) && (
-              <div className="flex md:items-center gap-2">
+              <div className="flex lg:items-center gap-2">
                 {props.explanation && (
                   <div className="tooltip" data-tip={props.explanation}>
                     <span className="link text-primary mr-2">{t("ViewExplanation")}</span>
@@ -265,7 +265,7 @@ export function Prediction(props: PredictionPropType) {
               </div>
             )}
             {predictionResult == null && props.userView && props.userView.alias === currentUserAlias && (
-              <div className="flex flex-col md:flex-row md:items-center">
+              <div className="flex flex-col lg:flex-row lg:items-center">
                 <button
                   className="btn btn-primary btn-xs text-white font-normal"
                   onClick={() => CompletePrediction(props.id)}
@@ -278,7 +278,7 @@ export function Prediction(props: PredictionPropType) {
             )}
             {currentUserIsOperator && (
               <>
-                <div className="flex flex-col md:flex-row md:items-center gap-2">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-2">
                   {predictionResult == null && (
                     <>
                       <button
@@ -304,7 +304,7 @@ export function Prediction(props: PredictionPropType) {
               </>
             )}
           </div>
-          <div className="flex items-center hidden md:block">{resultIcon()}</div>
+          <div className="flex items-center hidden lg:block">{resultIcon()}</div>
         </div>
       </div>
     )

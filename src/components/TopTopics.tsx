@@ -64,7 +64,7 @@ export const TopTopics = () => {
       {/*<table className="table table-sm">*/}
       {/*  <thead>*/}
       {/*    <tr>*/}
-      {/*      <th className="hidden md:table-cell"></th>*/}
+      {/*      <th className="hidden lg:table-cell"></th>*/}
       {/*      <th>Topic</th>*/}
       {/*      <th className="text-right">Mention</th>*/}
       {/*    </tr>*/}
@@ -72,7 +72,7 @@ export const TopTopics = () => {
       {/*  <tbody>*/}
       {/*    {topics.map((t, i) => (*/}
       {/*      <tr key={i}>*/}
-      {/*        <th className="text-neutral hidden md:table-cell">{i + 1}</th>*/}
+      {/*        <th className="text-neutral hidden lg:table-cell">{i + 1}</th>*/}
       {/*        <td>*/}
       {/*          <details className="collapse rounded-none outline-0">*/}
       {/*            <summary className="collapse-title font-bold text-sm p-0 min-h-0">{t.title}</summary>*/}

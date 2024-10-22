@@ -27,6 +27,8 @@ body {
   }
 }
 
+// Global
+
 a {
   color: #1d9bf0;
 }
@@ -44,78 +46,155 @@ a {
   border-color: #ffa92c;
 }
 
-/*--------------*/
+// Header
 
 .header {
   /*background-color: rgba(255, 255, 255, 0.85);*/
   /*backdrop-filter: blur(12px);*/
+
+  .navbar-start {
+    width: 60%;
+  }
+  .logo {
+    width: 88px;
+    height: 26px;
+  }
+  .menu {
+    padding-left: 12px;
+    padding-right: 12px;
+
+    a {
+      color: #a6b8cd;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 0;
+      padding: 6px 0;
+      margin: 6px 22px 0;
+      border-bottom: 4px solid transparent;
+
+      &.active-link,
+      &:hover,
+      &:focus {
+        color: #1e3a59;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        border-bottom: 4px solid #ffd856;
+        background: transparent;
+      }
+    }
+  }
+
+  .navbar-end {
+    width: 40%;
+
+    .menu a {
+      margin: 0 12px 0;
+      border-bottom: none;
+
+      &:hover,
+      &:focus {
+        border-bottom: none;
+        svg {
+          fill: #ffd856;
+        }
+      }
+    }
+    .dropdown {
+      padding: 6px 0;
+
+      .link {
+        padding: 6px 0;
+
+        &:hover svg,
+        &:focus svg {
+          fill: #ffd856;
+        }
+      }
+
+      ul {
+        width: auto;
+      }
+      a {
+        white-space: nowrap;
+        border-bottom: 4px solid transparent;
+
+        &.active-link,
+        &:hover,
+        &:focus {
+          border-bottom: 4px solid #ffd856;
+        }
+      }
+    }
+  }
 }
-.header .logo {
-  width: 88px;
-  height: 26px;
+
+.mobile-menu {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 68px 37px 23px;
+
+  .mobile-main-nav {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: flex;
+      a {
+        color: #1e3a59;
+        font-size: 14px;
+        font-weight: 700;
+        width: 100%;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(166, 184, 205, 0.5);
+        background-image: url("../../public/arrow-right.svg");
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position: right center;
+
+        &.active-link,
+        &:hover,
+        &:focus {
+          border-bottom-color: #ffd856;
+        }
+      }
+    }
+  }
+  .mobile-sub-nav {
+    position: absolute;
+    width: calc(100% - 74px);
+    bottom: 30px;
+  }
+  .dropdown {
+    padding: 4px 0;
+
+    .link {
+      padding: 2px 0;
+
+      &:hover svg,
+      &:focus svg {
+        fill: #ffd856;
+      }
+    }
+    a {
+      color: #1e3a59;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      border-radius: 0;
+      border-bottom: 4px solid transparent;
+      padding: 6px 0;
+      margin: 6px 22px 0;
+
+      &.active-link,
+      &:hover,
+      &:focus {
+        border-bottom: 4px solid #ffd856;
+      }
+    }
+  }
 }
-.header .menu {
-  padding-left: 12px;
-  padding-right: 12px;
-}
-.header .menu a {
-  color: #a6b8cd;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  border-radius: 0;
-  padding: 6px 0;
-  margin: 6px 22px 0;
-  border-bottom: 4px solid transparent;
-}
-.header .menu a.active-link,
-.header .menu a:hover,
-.header .menu a:focus {
-  color: #1e3a59;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  border-bottom: 4px solid #ffd856;
-  background: transparent;
-}
-.header .navbar-end .menu a {
-  margin: 0 12px 0;
-  border-bottom: none;
-}
-.header .navbar-end .menu a:hover,
-.header .navbar-end .menu a:focus {
-  border-bottom: none;
-}
-.header .navbar-end .menu a:hover svg,
-.header .navbar-end .menu a:focus svg {
-  fill: #ffd856;
-}
-.header .navbar-end .dropdown {
-  padding: 6px 0;
-}
-.header .navbar-end .dropdown .link {
-  padding: 6px 0;
-}
-.header .navbar-end .dropdown .link:hover svg,
-.header .navbar-end .dropdown .link:focus svg {
-  fill: #ffd856;
-}
-.header .navbar-end .dropdown ul {
-  width: auto;
-}
-.header .navbar-end .dropdown a {
-  white-space: nowrap;
-  border-bottom: 4px solid transparent;
-}
-.header .navbar-end .dropdown a.active-link,
-.header .navbar-end .dropdown a:hover,
-.header .navbar-end .dropdown a:focus {
-  border-bottom: 4px solid #ffd856;
-}
-/*.header .navbar-end .menu a:hover svg path,*/
-/*.header .navbar-end .menu a:focus svg path {*/
-/*  stroke: #ffa92c;*/
-/*}*/
+
 .tabtitle {
   border-bottom-width: 1px;
   border-color: #eff3f4;

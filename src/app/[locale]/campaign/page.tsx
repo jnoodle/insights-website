@@ -41,9 +41,9 @@ export default function Home() {
     <div className="flex flex-col items-center justify-between w-full pt-4">
       <AdBanner />
       <div className="card bg-slate-50 shadow-xl w-full">
-        <div className="card-body px-4 md:px-8">
+        <div className="card-body px-4 lg:px-8">
           <h2 className="card-title justify-center w-full">{t("CampaignName")}</h2>
-          <div className="w-full text-left md:p-4 leading-normal">
+          <div className="w-full text-left lg:p-4 leading-normal">
             <p>
               {t("CampaignDate")}: {t("CampaignDateDetail")}
             </p>
@@ -51,16 +51,16 @@ export default function Home() {
             <div dangerouslySetInnerHTML={{ __html: t.raw("CampaignRulesDetail") }} />
           </div>
           <div className="card-actions justify-end">
-            <Link href="/profile?t=invitation" className="btn btn-primary md:btn-lg text-white">
+            <Link href="/profile?t=invitation" className="btn btn-primary lg:btn-lg text-white">
               {t("CampaignJoin")}
             </Link>
           </div>
         </div>
       </div>
       <div className="card bg-slate-100 shadow-xl w-full mt-6">
-        <div className="card-body px-4 md:px-8">
+        <div className="card-body px-4 lg:px-8">
           <h2 className="card-title justify-center w-full">{t("PointsRanking")}</h2>
-          <div className="w-full text-left md:p-4 leading-normal">
+          <div className="w-full text-left lg:p-4 leading-normal">
             {isLoading ? (
               <span className="loading loading-dots loading-md"></span>
             ) : (
@@ -77,10 +77,10 @@ export default function Home() {
                     <tr key={i}>
                       <td>
                         <div className="flex flex-col">
-                          <Link href={"/user/" + t.alias} className="link md:text-base font-bold">
+                          <Link href={"/user/" + t.alias} className="link lg:text-base font-bold">
                             {t.name ? t.name : t("Anonymous")}
                           </Link>
-                          <span className="font-normal text-xs md:ml-2 md:text-sm">
+                          <span className="font-normal text-xs lg:ml-2 lg:text-sm">
                             @{t.alias ? t.alias : t("Anonymous")}
                             &nbsp;{t.address ? t.address : ""}
                           </span>

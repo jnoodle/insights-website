@@ -184,10 +184,10 @@ export default function ConnectButton() {
 
   return (
     <>
-      <div className="dropdown dropdown-bottom dropdown-end">
+      <div className="dropdown dropdown-top lg:dropdown-bottom dropdown-end w-full lg:w-auto">
         <button
           tabIndex={0}
-          className={`btn btn-primary px-4 md:px-6 btn-sm md:btn-md text-sm md:text-base font-bold rounded-full ${
+          className={`btn btn-primary px-4 lg:px-6 btn-md text-sm lg:text-base font-bold rounded-full w-full lg:w-auto ${
             // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
             isConnected && !chainId ? "btn-error" : ""
           }`}
@@ -205,7 +205,7 @@ export default function ConnectButton() {
                   {ellipseAddress(address)}
                   {/*<Image*/}
                   {/*  src="/profile.svg"*/}
-                  {/*  className="ml-1 w-4 md:w-6"*/}
+                  {/*  className="ml-1 w-4 lg:w-6"*/}
                   {/*  alt={t("MyProfile")}*/}
                   {/*  title={t("MyProfile")}*/}
                   {/*  width={24}*/}
@@ -223,7 +223,10 @@ export default function ConnectButton() {
             t("ConnectWallet")
           )}
         </button>
-        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow w-full lg:w-auto"
+        >
           {isConnected && chainId && !isSigning ? (
             <>
               <li>
@@ -254,7 +257,7 @@ export default function ConnectButton() {
                         {ellipseAddress(address)}
                         {/*<Image*/}
                         {/*  src="/profile.svg"*/}
-                        {/*  className="ml-1 w-4 md:w-6"*/}
+                        {/*  className="ml-1 w-4 lg:w-6"*/}
                         {/*  alt={t("MyProfile")}*/}
                         {/*  title={t("MyProfile")}*/}
                         {/*  width={24}*/}

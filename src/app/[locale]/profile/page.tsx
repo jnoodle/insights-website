@@ -126,7 +126,7 @@ export default function Home() {
   // @ts-ignore
   return (
     <div className="flex flex-col items-center justify-between w-full pt-4">
-      <h1 className="text-xl text-accent font-bold md:mb-4 mb-2">{t("MyProfileTitle")}</h1>
+      <h1 className="text-xl text-accent font-bold lg:mb-4 mb-2">{t("MyProfileTitle")}</h1>
       {!isConnected && (
         <div role="alert" className="alert alert-warning">
           <span>{t("NotConnectWallet")}</span>
@@ -139,9 +139,9 @@ export default function Home() {
       )}
       {isConnected && currentUser && currentUser.alias && (
         <>
-          <div className="flex items-center gap-2 md:gap-4 w-full md:flex-row flex-col">
-            <Avatar className="w-20 md:w-32 rounded-full" user={currentUser} />
-            <div className="flex flex-col gap-1 md:w-auto w-11/12">
+          <div className="flex items-center gap-2 lg:gap-4 w-full lg:flex-row flex-col">
+            <Avatar className="w-20 lg:w-32 rounded-full" user={currentUser} />
+            <div className="flex flex-col gap-1 lg:w-auto w-11/12">
               <div className="flex items-center gap-1">
                 <span className={`text-xl font-bold ${currentUser.isOperator ? "text-orange-600" : "text-accent"}`}>
                   {currentUser.name}
@@ -192,7 +192,7 @@ export default function Home() {
                   </>
                 )}
               </div>
-              <div className="flex gap-2 mt-2 flex-col md:flex-row">
+              <div className="flex gap-2 mt-2 flex-col lg:flex-row">
                 <Link href="/" className="btn btn-primary btn-sm text-white font-normal">
                   {t("BackToHome")}
                 </Link>

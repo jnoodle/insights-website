@@ -37,10 +37,10 @@ export default function Home({ params }: { params: { alias: string } }) {
   }, []);
 
   return userInfo && userInfo.alias ? (
-    <div className="flex flex-col items-center justify-between w-full pt-4 md:pt-8">
-      <div className="flex items-center gap-2 md:gap-4 w-full md:flex-row flex-col">
-        <div className="avatar md:mt-0 mt-4">
-          <div className="w-20 md:w-32 rounded-full">
+    <div className="flex flex-col items-center justify-between w-full pt-4 lg:pt-8">
+      <div className="flex items-center gap-2 lg:gap-4 w-full lg:flex-row flex-col">
+        <div className="avatar lg:mt-0 mt-4">
+          <div className="w-20 lg:w-32 rounded-full">
             {userInfo &&
               userInfo.alias &&
               (userInfo.avatarUrl ? (
@@ -54,7 +54,7 @@ export default function Home({ params }: { params: { alias: string } }) {
               ))}
           </div>
         </div>
-        <div className="flex flex-col gap-1 md:w-auto w-11/12">
+        <div className="flex flex-col gap-1 lg:w-auto w-11/12">
           <div className="text-xl font-bold text-accent">{userInfo.name}</div>
           <div className="">@{params.alias}</div>
           <div className="">
@@ -80,7 +80,7 @@ export default function Home({ params }: { params: { alias: string } }) {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col items-center justify-between w-full pt-4 md:pt-8">
+    <div className="flex flex-col items-center justify-between w-full pt-4 lg:pt-8">
       {!isUserExist && <h1 className="text-error">{t("UserNotExist")}</h1>}
     </div>
   );

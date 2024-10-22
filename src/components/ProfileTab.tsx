@@ -306,7 +306,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
                     <li key={i} className="flex flex-row items-center justify-between w-full py-2 border-b">
                       <div className="flex items-center gap-2">
                         <Avatar className="w-10 rounded-full" user={t} />
-                        <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+                        <div className="flex flex-col lg:flex-row gap-0 lg:gap-2 items-start lg:items-center">
                           <div className="text-base font-bold">
                             {/*TODO alias*/}
                             <Link href={"/user/" + t?.alias} className="link">

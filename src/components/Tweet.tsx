@@ -102,7 +102,7 @@ export function Tweet(props: TweetPropType) {
         <div className="author flex w-full justify-between items-center">
           <div className="flex items-center gap-2">
             <Avatar className="w-12 rounded-full" user={insightUser} />
-            <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+            <div className="flex flex-col lg:flex-row gap-0 lg:gap-2 items-start lg:items-center">
               <div className="text-base font-bold">
                 {/*TODO alias*/}
                 <Link href={"/user/" + insightUser?.alias} className="link">
@@ -112,11 +112,11 @@ export function Tweet(props: TweetPropType) {
               {/*<div>@{props.user && props.user.screenName ? props.user.screenName : "anonymous"}</div>*/}
             </div>
           </div>
-          <div className="date hidden md:block text-neutral">
+          <div className="date hidden lg:block text-neutral">
             {props.createAt ? dateFormat(props.createAt) : new Date().toLocaleString()}
           </div>
         </div>
-        <div className="tweet flex justify-between items-center md:border-l border-l-secondary mt-2 ml-0 md:ml-5 pl-1 md:pl-5">
+        <div className="tweet flex justify-between items-center lg:border-l border-l-secondary mt-2 ml-0 lg:ml-5 pl-1 lg:pl-5">
           <div className="flex w-full flex-col items-start justify-start gap-2">
             {props.coins && props.coins.length > 0 && (
               <div className="insights flex font-bold items-center py-1">
@@ -145,7 +145,7 @@ export function Tweet(props: TweetPropType) {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+                <div className="flex flex-col lg:flex-row gap-0 lg:gap-2 items-start lg:items-center">
                   <div className="font-bold">
                     <Link
                       href={"https://twitter.com/" + tweetAuthor!.screenName}
@@ -162,7 +162,7 @@ export function Tweet(props: TweetPropType) {
               </div>
               <Link
                 href={`https://twitter.com/${tweetUser?.screenName}/status/${props.tweetId}`}
-                className="link hidden md:block"
+                className="link hidden lg:block"
                 target="_blank"
               >
                 {t("ViewMore")}
@@ -192,7 +192,7 @@ export function Tweet(props: TweetPropType) {
                 <div className="flex gap-2 mt-1 w-full flex-wrap">
                   {props.media.map((m: any, i: any) =>
                     m.mediaUrlHttps ? (
-                      <img src={m.mediaUrlHttps} key={i} className="max-w-40 max-h-40 md:max-w-80 md:max-h-80" />
+                      <img src={m.mediaUrlHttps} key={i} className="max-w-40 max-h-40 lg:max-w-80 lg:max-h-80" />
                     ) : null,
                   )}
                 </div>
@@ -219,7 +219,7 @@ export function Tweet(props: TweetPropType) {
                 </span>
               )}
             </div>
-            <div className="flex w-full justify-between md:hidden">
+            <div className="flex w-full justify-between lg:hidden">
               <div className="date text-xs text-neutral">
                 {props.createAt ? dateFormat(props.createAt) : new Date().toLocaleString()}
               </div>
@@ -232,7 +232,7 @@ export function Tweet(props: TweetPropType) {
               </Link>
             </div>
             {currentUserIsOperator && (
-              <div className="flex flex-col md:flex-row md:items-center gap-2">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-2">
                 <button
                   className="btn btn-warning btn-xs font-normal"
                   disabled={btnDeleteLoading}

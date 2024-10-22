@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
-import "../globals.css";
+import "../globals.scss";
 import { Header } from "@/components/Header";
 import { Web3Modal } from "@/context/Web3Modal";
 import { ToastContainer } from "react-toastify";
@@ -71,11 +71,11 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
         <link rel="manifest" href="/icons/site.webmanifest" />
       </head>
-      <body className={insightsFont.className + " flex w-full min-h-screen flex-col items-center pt-12 md:pt-24"}>
+      <body className={insightsFont.className + " flex w-full min-h-screen flex-col items-center pt-12 lg:pt-24"}>
         <NextIntlClientProvider messages={messages}>
           <Web3Modal>
             <Header />
-            <main className="w-full max-w-7xl px-2 py-2">{children}</main>
+            {/*<main className="w-full max-w-7xl px-2 py-2">{children}</main>*/}
           </Web3Modal>
           <ToastContainer />
           {/*<div className="fixed bottom-0 z-50 w-full max-w-7xl px-2 py-2">*/}

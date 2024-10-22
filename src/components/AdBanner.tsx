@@ -8,8 +8,8 @@ export const AdBanner = () => {
   // return (
   //   <div className="flex items-center justify-center w-full py-2">
   //     <Link href="/campaign">
-  //       <img src="/banner-m.jpg" alt="Point Reward Campaign" className="block md:hidden" />
-  //       <img src="/banner.jpg" alt="Point Reward Campaign" className="hidden md:block" />
+  //       <img src="/banner-m.jpg" alt="Point Reward Campaign" className="block lg:hidden" />
+  //       <img src="/banner.jpg" alt="Point Reward Campaign" className="hidden lg:block" />
   //     </Link>
   //   </div>
   // );

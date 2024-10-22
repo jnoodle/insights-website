@@ -58,7 +58,7 @@ export function Article(props: ArticlePropType) {
         className="flex flex-col w-full px-4 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
         key={props.id}
       >
-        <div className="flex w-full flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="flex w-full flex-col lg:flex-row justify-between items-start lg:items-center">
           <div className="flex items-center gap-4">
             <div className="text-base font-bold">
               <Link href={props.originalLink || "#"} target="_blank" className="text-accent link">
@@ -66,7 +66,7 @@ export function Article(props: ArticlePropType) {
               </Link>
             </div>
           </div>
-          <div className="date whitespace-nowrap mt-1 md:mt-0">
+          <div className="date whitespace-nowrap mt-1 lg:mt-0">
             <div className="badge mr-3 border-secondary bg-secondary hover:bg-primary">
               <Link href={props.sourceLink || "#"} target="_blank" className="text-neutral hover:text-white">
                 {props.source || "anonymous"}
@@ -107,7 +107,7 @@ export function Article(props: ArticlePropType) {
             )}
           </div>
           {currentUserIsOperator && (
-            <div className="flex flex-col md:flex-row md:items-center gap-2">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-2">
               <button
                 className="btn btn-warning btn-xs font-normal"
                 disabled={btnDeleteLoading}
