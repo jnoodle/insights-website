@@ -38,6 +38,14 @@ a {
   text-decoration: underline;
 }
 
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background-color: #ffa92c;
+  border-color: #ffa92c;
+}
+
+/*--------------*/
+
 .header {
   /*background-color: rgba(255, 255, 255, 0.85);*/
   /*backdrop-filter: blur(12px);*/
@@ -70,6 +78,44 @@ a {
   border-bottom: 4px solid #ffd856;
   background: transparent;
 }
+.header .navbar-end .menu a {
+  margin: 0 12px 0;
+  border-bottom: none;
+}
+.header .navbar-end .menu a:hover,
+.header .navbar-end .menu a:focus {
+  border-bottom: none;
+}
+.header .navbar-end .menu a:hover svg,
+.header .navbar-end .menu a:focus svg {
+  fill: #ffd856;
+}
+.header .navbar-end .dropdown {
+  padding: 6px 0;
+}
+.header .navbar-end .dropdown .link {
+  padding: 6px 0;
+}
+.header .navbar-end .dropdown .link:hover svg,
+.header .navbar-end .dropdown .link:focus svg {
+  fill: #ffd856;
+}
+.header .navbar-end .dropdown ul {
+  width: auto;
+}
+.header .navbar-end .dropdown a {
+  white-space: nowrap;
+  border-bottom: 4px solid transparent;
+}
+.header .navbar-end .dropdown a.active-link,
+.header .navbar-end .dropdown a:hover,
+.header .navbar-end .dropdown a:focus {
+  border-bottom: 4px solid #ffd856;
+}
+/*.header .navbar-end .menu a:hover svg path,*/
+/*.header .navbar-end .menu a:focus svg path {*/
+/*  stroke: #ffa92c;*/
+/*}*/
 .tabtitle {
   border-bottom-width: 1px;
   border-color: #eff3f4;
