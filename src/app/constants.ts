@@ -174,6 +174,8 @@ export const reservedWords = [
   "store",
   "tag",
   "tags",
+  "tweet",
+  "twitter",
   "nan",
   "widget",
   "widgets",

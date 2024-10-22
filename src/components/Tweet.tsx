@@ -10,6 +10,7 @@ import { useState } from "react";
 import { deleteItem } from "@/api/func";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
+import { Avatar } from "@/components/Avatar";
 
 export type TwitterUser = {
   id?: string;
@@ -100,19 +101,7 @@ export function Tweet(props: TweetPropType) {
       <div className="flex flex-col w-full px-2 pt-4 pb-4 text-sm border-b border-b-secondary hover:bg-base-200">
         <div className="author flex w-full justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="avatar">
-              <div className="w-12 rounded-full">
-                {insightUser.avatarUrl ? (
-                  <img
-                    src={insightUser.avatarUrl}
-                    alt={insightUser.name ? insightUser.name : t("Anonymous")}
-                    onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
-                  />
-                ) : (
-                  parse(multiavatar(insightUser.name ? filterString(insightUser.name) : t("Anonymous")))
-                )}
-              </div>
-            </div>
+            <Avatar className="w-12 rounded-full" user={insightUser} />
             <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
               <div className="text-base font-bold">
                 {/*TODO alias*/}

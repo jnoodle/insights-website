@@ -4,7 +4,8 @@
     "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
   },
   "Nav": {
-    "Posts": "推文",
+    "Home": "首页",
+    "Tweets": "推文",
     "Predictions": "预测",
     "News": "新闻"
   },
@@ -36,7 +37,7 @@
     "Section4": "交易对：交易对地址"
   },
   "ProfileTab": {
-    "Posts": "推文",
+    "Tweets": "推文",
     "Predictions": "预测",
     "Invitation": "邀请",
     "InvitationLink": "我的邀请链接",
@@ -44,7 +45,7 @@
     "CopyLink": "复制邀请链接",
     "Copied": "邀请链接已复制",
     "MyInvitations": "我邀请的用户",
-    "PostsEndMessage": "耶！你已经看完所有内容了",
+    "TweetsEndMessage": "耶！你已经看完所有内容了",
     "PredictionsEndMessage": "耶！你已经看完所有内容了",
     "Points": "积分",
     "PointsList": "积分明细",

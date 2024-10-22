@@ -4,7 +4,8 @@
     "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
   },
   "Nav": {
-    "Posts": "Твиты",
+    "Home": "Главная",
+    "Tweets": "Твиты",
     "Predictions": "Прогнозы",
     "News": "Новости"
   },
@@ -36,7 +37,7 @@
     "Section4": "Пара: Адрес пары"
   },
   "ProfileTab": {
-    "Posts": "Публикации",
+    "Tweets": "Твиты",
     "Predictions": "Прогнозы",
     "Invitation": "Приглашение",
     "InvitationLink": "Мой ссылка-приглашение",
@@ -44,7 +45,7 @@
     "CopyLink": "Скопировать ссылку-приглашение",
     "Copied": "Ссылка-приглашение скопирована",
     "MyInvitations": "Приглашенные пользователи",
-    "PostsEndMessage": "Ура! Вы видели все",
+    "TweetsEndMessage": "Ура! Вы видели все",
     "PredictionsEndMessage": "Ура! Вы видели все",
     "Points": "Баллы",
     "PointsList": "Подробности баллов",

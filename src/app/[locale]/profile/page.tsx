@@ -19,6 +19,7 @@ import { reservedWords, userNameRegex } from "@/app/constants";
 import { toast } from "react-toastify";
 import numeral from "numeral";
 import { useSearchParams } from "next/navigation";
+import { Avatar } from "@/components/Avatar";
 
 dayjs.extend(customParseFormat);
 
@@ -139,19 +140,7 @@ export default function Home() {
       {isConnected && currentUser && currentUser.alias && (
         <>
           <div className="flex items-center gap-2 md:gap-4 w-full md:flex-row flex-col">
-            <div className="avatar">
-              <div className="w-20 md:w-32 rounded-full">
-                {currentUser.avatarUrl ? (
-                  <img
-                    src={currentUser.avatarUrl}
-                    alt={currentUser.name ? currentUser.name : t("Anonymous")}
-                    onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
-                  />
-                ) : (
-                  parse(multiavatar(currentUser.alias || t("Anonymous")))
-                )}
-              </div>
-            </div>
+            <Avatar className="w-20 md:w-32 rounded-full" user={currentUser} />
             <div className="flex flex-col gap-1 md:w-auto w-11/12">
               <div className="flex items-center gap-1">
                 <span className={`text-xl font-bold ${currentUser.isOperator ? "text-orange-600" : "text-accent"}`}>

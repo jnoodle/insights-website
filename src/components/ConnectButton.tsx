@@ -187,7 +187,7 @@ export default function ConnectButton() {
       <div className="dropdown dropdown-bottom dropdown-end">
         <button
           tabIndex={0}
-          className={`btn btn-primary px-4 md:px-6 btn-sm md:btn-md text-sm md:text-base text-white font-normal rounded-full ${
+          className={`btn btn-primary px-4 md:px-6 btn-sm md:btn-md text-sm md:text-base font-bold rounded-full ${
             // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
             isConnected && !chainId ? "btn-error" : ""
           }`}

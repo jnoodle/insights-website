@@ -4,7 +4,8 @@
     "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
   },
   "Nav": {
-    "Posts": "Tweets",
+    "Home": "Inicio",
+    "Tweets": "Tweets",
     "Predictions": "Predicciones",
     "News": "Noticias"
   },
@@ -36,7 +37,7 @@
     "Section4": "Par: Dirección del par"
   },
   "ProfileTab": {
-    "Posts": "Publicaciones",
+    "Tweets": "Tweets",
     "Predictions": "Predicciones",
     "Invitation": "Invitación",
     "InvitationLink": "Mi enlace de invitación",
@@ -44,7 +45,7 @@
     "CopyLink": "Copiar enlace de invitación",
     "Copied": "Enlace de invitación copiado",
     "MyInvitations": "Usuarios invitados",
-    "PostsEndMessage": "¡Eureka! Has visto todo",
+    "TweetsEndMessage": "¡Eureka! Has visto todo",
     "PredictionsEndMessage": "¡Eureka! Has visto todo",
     "Points": "Puntos",
     "PointsList": "Detalles de puntos",

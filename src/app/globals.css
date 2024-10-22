@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 15, 20, 25;
-  --background-rgb: 255, 255, 255;
+  --foreground-rgb: 30, 58, 89;
+  --background-rgb: 255, 169, 44;
   /*color-scheme: light !important;*/
 }
 
@@ -39,8 +39,36 @@ a {
 }
 
 .header {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
+  /*background-color: rgba(255, 255, 255, 0.85);*/
+  /*backdrop-filter: blur(12px);*/
+}
+.header .logo {
+  width: 88px;
+  height: 26px;
+}
+.header .menu {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.header .menu a {
+  color: #a6b8cd;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+  padding: 6px 0;
+  margin: 6px 22px 0;
+  border-bottom: 4px solid transparent;
+}
+.header .menu a.active-link,
+.header .menu a:hover,
+.header .menu a:focus {
+  color: #1e3a59;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-bottom: 4px solid #ffd856;
+  background: transparent;
 }
 .tabtitle {
   border-bottom-width: 1px;

@@ -4,7 +4,8 @@
     "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
   },
   "Nav": {
-    "Posts": "ツイート",
+    "Home": "ホーム",
+    "Tweets": "ツイート",
     "Predictions": "予測",
     "News": "ニュース"
   },
@@ -36,7 +37,7 @@
     "Section4": "ペア：ペアアドレス"
   },
   "ProfileTab": {
-    "Posts": "ツイート",
+    "Tweets": "ツイート",
     "Predictions": "予測",
     "Invitation": "招待",
     "InvitationLink": "招待リンク",
@@ -44,7 +45,7 @@
     "CopyLink": "招待リンクをコピー",
     "Copied": "招待リンクがコピーされました",
     "MyInvitations": "招待したユーザー",
-    "PostsEndMessage": "やったね！すべてを見たぞ",
+    "TweetsEndMessage": "やったね！すべてを見たぞ",
     "PredictionsEndMessage": "やったね！すべてを見たぞ",
     "Points": "ポイント",
     "PointsList": "ポイント明細",

@@ -15,6 +15,7 @@ import { completePrediction, deleteItem } from "@/api/func";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 import { CompletePrediction as CompletePredictionBtn } from "@/components/CompletePrediction";
+import { Avatar } from "@/components/Avatar";
 
 export type CmcCoinInfo = {
   id?: number;
@@ -170,23 +171,7 @@ export function Prediction(props: PredictionPropType) {
       >
         <div className="author flex w-full justify-between items-center">
           <div className="flex items-center gap-4">
-            <div className="avatar">
-              <div className="w-12 rounded-full">
-                {props.userView && props.userView.avatarUrl ? (
-                  <img
-                    src={props.userView.avatarUrl}
-                    alt={props.userView && props.userView.name ? props.userView.name : t("Anonymous")}
-                    onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
-                  />
-                ) : (
-                  parse(
-                    multiavatar(
-                      props.userView && props.userView.name ? filterString(props.userView.name) : t("Anonymous"),
-                    ),
-                  )
-                )}
-              </div>
-            </div>
+            <Avatar className="w-12 rounded-full" user={props.userView} />
             <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
               <div className="text-base font-bold">
                 {/*TODO alias*/}

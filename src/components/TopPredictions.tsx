@@ -7,9 +7,11 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 import { filterString, formatPrice } from "@/app/utils";
 import { Accuracy } from "@/components/Accuracy";
 import numeral from "numeral";
+import { Avatar } from "@/components/Avatar";
 
 export type TopPredictionsType = {
   id: string;
+  userId?: string;
   alias: string;
   avatarUrl?: string;
   name?: string;
@@ -54,19 +56,7 @@ export const TopPredictions = () => {
           <li key={i} className="p-2 hover:bg-base-200 list-none flex justify-between">
             <div className="flex items-center gap-2">
               <div className="w-6 text-right">{i + 1}.</div>
-              <div className="avatar">
-                <div className="w-6 rounded-full">
-                  {p.avatarUrl ? (
-                    <img
-                      src={p.avatarUrl}
-                      alt={p.name ? p.name : t("Anonymous")}
-                      onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
-                    />
-                  ) : (
-                    parse(multiavatar(p.name ? filterString(p.name) : t("Anonymous")))
-                  )}
-                </div>
-              </div>
+              <Avatar className="w-6 rounded-full" user={p} />
               <Link href={"/user/" + p?.alias} className="link font-bold text-base">
                 {p.name ? p.name : t("Anonymous")}
               </Link>

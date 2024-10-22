@@ -4,7 +4,8 @@
     "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
   },
   "Nav": {
-    "Posts": "트윗",
+    "Home": "홈",
+    "Tweets": "트윗",
     "Predictions": "예측",
     "News": "뉴스"
   },
@@ -36,7 +37,7 @@
     "Section4": "쌍: 쌍 주소"
   },
   "ProfileTab": {
-    "Posts": "트윗",
+    "Tweets": "트윗",
     "Predictions": "예측",
     "Invitation": "초대",
     "InvitationLink": "내 초대 링크",
@@ -44,7 +45,7 @@
     "CopyLink": "초대 링크 복사",
     "Copied": "초대 링크가 복사되었습니다",
     "MyInvitations": "초대한 사용자",
-    "PostsEndMessage": "와우! 다 봤어요",
+    "TweetsEndMessage": "와우! 다 봤어요",
     "PredictionsEndMessage": "와우! 다 봤어요",
     "Points": "포인트",
     "PointsList": "포인트 상세 내역",

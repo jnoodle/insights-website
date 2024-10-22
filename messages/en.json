@@ -4,7 +4,8 @@
     "localeShort": "{locale, select, en {EN} fr {FR} es {ES} zh_CN {简中} zh_TW {繁中} ja {日本語} ko {한국어} ru {RU} other {Unknown}}"
   },
   "Nav": {
-    "Posts": "Tweets",
+    "Home": "Home",
+    "Tweets": "Tweets",
     "Predictions": "Predictions",
     "News": "News"
   },
@@ -36,7 +37,7 @@
     "Section4": "Pair: Pair Address"
   },
   "ProfileTab": {
-    "Posts": "Posts",
+    "Tweets": "Tweets",
     "Predictions": "Predictions",
     "Invitation": "Invitation",
     "InvitationLink": "My Invitation Link",
@@ -44,7 +45,7 @@
     "CopyLink": "Copy Invitation Link",
     "Copied": "Invitation link copied",
     "MyInvitations": "Invited Users",
-    "PostsEndMessage": "Yay! You have seen it all",
+    "TweetsEndMessage": "Yay! You have seen it all",
     "PredictionsEndMessage": "Yay! You have seen it all",
     "Points": "Points",
     "PointsList": "Points Details",

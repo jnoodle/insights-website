@@ -14,6 +14,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import parse from "html-react-parser";
 import multiavatar from "@multiavatar/multiavatar/esm";
+import { Avatar } from "@/components/Avatar";
 
 export type ProfileTabPropType = {
   alias?: string;
@@ -24,7 +25,7 @@ export type ProfileTabPropType = {
 
 const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   const t = useTranslations("ProfileTab");
-  const [activeTab, setActiveTab] = useState(1); // default tab predictions
+  const [activeTab, setActiveTab] = useState(0); // default tab predictions
   const [tweets, setTweets]: [TweetPropType[], any] = useState([]);
   const [predictions, setPredictions]: [PredictionPropType[], any] = useState([]);
   const [invitations, setInvitations]: [any[], any] = useState([]);
@@ -46,11 +47,11 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
       switch (props.activeTabName) {
         case "prediction":
         case "predictions":
-          setActiveTab(1);
-          break;
-        case "post":
-        case "posts":
           setActiveTab(0);
+          break;
+        case "tweet":
+        case "tweets":
+          setActiveTab(1);
           break;
         case "invitation":
         case "invitations":
@@ -217,12 +218,12 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
 
   return (
     <div className="flex w-full flex-col">
-      <div role="tablist" className="tabtitle tabs tabs-bordered w-full max-w-5xl px-2 pt-2">
-        <div role="tab" className={`tab ${activeTab === 1 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
+      <div role="tablist" className="tabtitle tabs tabs-bordered w-full max-w-7xl px-2 pt-2">
+        <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
           {t("Predictions")}
         </div>
-        <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
-          {t("Posts")}
+        <div role="tab" className={`tab ${activeTab === 1 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
+          {t("Tweets")}
         </div>
         {!props.isPublic && props.invitationCode && (
           <div role="tab" className={`tab ${activeTab === 2 ? "tab-active" : ""}`} onClick={() => handleTabClick(2)}>
@@ -238,20 +239,6 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
       <div className="w-full">
         {activeTab === 0 ? (
           <InfiniteScroll
-            dataLength={tweets.length}
-            next={fetchMoreTweetsData}
-            hasMore={tweetsHasMore}
-            loader={<Loading />}
-            endMessage={<p className="text-center py-2">{t("PostsEndMessage")}</p>}
-          >
-            <div className="flex flex-col items-center justify-between w-full pt-2">
-              {tweets.map((t, i) => (
-                <Tweet {...t} key={i} />
-              ))}
-            </div>
-          </InfiniteScroll>
-        ) : activeTab === 1 ? (
-          <InfiniteScroll
             dataLength={predictions.length}
             next={fetchMorePredictionsData}
             hasMore={predictionsHasMore}
@@ -261,6 +248,20 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             <div className="flex flex-col items-center justify-between w-full pt-2">
               {predictions.map((t, i) => (
                 <Prediction {...t} key={i} />
+              ))}
+            </div>
+          </InfiniteScroll>
+        ) : activeTab === 1 ? (
+          <InfiniteScroll
+            dataLength={tweets.length}
+            next={fetchMoreTweetsData}
+            hasMore={tweetsHasMore}
+            loader={<Loading />}
+            endMessage={<p className="text-center py-2">{t("TweetsEndMessage")}</p>}
+          >
+            <div className="flex flex-col items-center justify-between w-full pt-2">
+              {tweets.map((t, i) => (
+                <Tweet {...t} key={i} />
               ))}
             </div>
           </InfiniteScroll>
@@ -304,19 +305,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
                   {invitations.map((t, i) => (
                     <li key={i} className="flex flex-row items-center justify-between w-full py-2 border-b">
                       <div className="flex items-center gap-2">
-                        <div className="avatar">
-                          <div className="w-10 rounded-full">
-                            {t.avatarUrl ? (
-                              <img
-                                src={t.avatarUrl}
-                                alt={t.name ? t.name : t("Anonymous")}
-                                onError={(e) => (e.currentTarget.src = "/insights-logo-icon.svg")}
-                              />
-                            ) : (
-                              parse(multiavatar(t.name ? filterString(t.name) : t("Anonymous")))
-                            )}
-                          </div>
-                        </div>
+                        <Avatar className="w-10 rounded-full" user={t} />
                         <div className="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
                           <div className="text-base font-bold">
                             {/*TODO alias*/}
