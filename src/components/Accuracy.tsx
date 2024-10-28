@@ -6,7 +6,7 @@ import { formatPrice } from "@/app/utils";
 export const Accuracy = ({ accuracy }: any) => {
   const t = useTranslations("Prediction");
   return (
-    <span className="flex flex-col lg:flex-row lg:gap-2">
+    <span className="flex flex-row gap-1 lg:gap-2">
       {accuracy && typeof accuracy.roi !== "undefined" && (
         <span>
           {t("Roi")}

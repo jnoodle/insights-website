@@ -18,6 +18,11 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-rgb));
+  background-image: url("../../public/insights-logo-bg.svg");
+  background-position: left center;
+  background-size: 40vh auto;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -30,7 +35,11 @@ body {
 // Global
 
 a {
-  color: #1d9bf0;
+  color: #1e3a59;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .link {
   cursor: pointer;
@@ -40,17 +49,27 @@ a {
   text-decoration: underline;
 }
 
-.btn.btn-primary:hover,
-.btn.btn-primary:focus {
-  background-color: #ffa92c;
-  border-color: #ffa92c;
+.btn.btn-primary {
+  border-color: #ffd856;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: #ffa92c;
+    border-color: #ffd856;
+  }
 }
 
 // Header
 
+.wrap {
+  z-index: 100;
+}
+
 .header {
   /*background-color: rgba(255, 255, 255, 0.85);*/
   /*backdrop-filter: blur(12px);*/
+  max-width: 1230px;
 
   .navbar-start {
     width: 60%;
@@ -133,6 +152,7 @@ a {
 .mobile-menu {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 68px 37px 23px;
+  z-index: 90;
 
   .mobile-main-nav {
     display: flex;
@@ -194,6 +214,406 @@ a {
     }
   }
 }
+
+// Main Content
+
+.main-content {
+  max-width: 1230px;
+}
+
+// Ranking ROI
+
+.ranking {
+  background-image: linear-gradient(180deg, #ffffff 21.99%, #f1f6fc 100%);
+  box-shadow: 0px 34px 60px rgba(232, 94, 48, 0.45);
+  border-radius: 24px;
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+  color: #1e3a59;
+  font-weight: bold;
+  padding: 2.5rem 2.5rem 1.5rem;
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../public/ranking-mask.svg");
+    background-repeat: no-repeat;
+    background-size: auto 680px;
+    background-position: center right -80px;
+    border-radius: 24px;
+    z-index: -1;
+  }
+
+  .link {
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 23vw;
+    min-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 10px;
+    text-align: center;
+    font-weight: bold;
+
+    i {
+      width: 47px;
+      height: 55px;
+      background-image: url("../../public/crown.png");
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+
+  .ranking-top {
+    width: 100%;
+    gap: 0 16px;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 60px;
+
+    .ranking-top-card {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px 0;
+      width: 100%;
+      height: 150px;
+      padding-bottom: 20px;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0px 15px 40px rgba(166, 184, 205, 0.5);
+
+      .avatar {
+        width: 143px;
+        height: 143px;
+        margin-bottom: 5px;
+        filter: drop-shadow(0px 8px 22px rgba(30, 58, 89, 0.5));
+      }
+
+      &.winner-1 {
+        height: 190px;
+
+        .avatar {
+          width: 190px;
+          height: 190px;
+        }
+      }
+    }
+  }
+
+  .rank-list {
+    padding: 0 20px 0;
+
+    li {
+      padding: 15px 0;
+
+      &:first-child {
+        border-bottom: 1px solid rgba(166, 184, 205, 0.5);
+      }
+
+      & > div {
+        gap: 0 20px;
+      }
+
+      .avatar {
+        width: 46px;
+        height: 46px;
+        background: linear-gradient(180deg, #ffd856 0%, #eea02e 100%);
+        border-radius: 10px;
+      }
+      .rank-no {
+        color: #1e3a59;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .roi-text {
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+
+    .roi-text-content {
+      display: flex;
+      height: 30px;
+      line-height: 30px;
+      position: relative;
+
+      &.star:after {
+        display: block;
+        content: "";
+        width: 24px;
+        height: 24px;
+        margin-left: 5px;
+        background-image: url("../../public/star.svg");
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        background-position: center center;
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    padding: 20px 12px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    box-shadow: 0px 0px 5px rgba(232, 94, 48, 0.45);
+
+    &:after {
+      background-size: auto 185px;
+      background-position: center right -50px;
+    }
+
+    .link {
+      font-size: 10px;
+      min-height: 14px;
+    }
+
+    h1 {
+      font-size: 18px;
+
+      i {
+        width: 20px;
+        height: 21px;
+      }
+    }
+
+    .ranking-top {
+      padding: 20px 0 0;
+      margin-top: 20px;
+      gap: 0 5px;
+
+      .ranking-top-card {
+        height: 64px;
+        border-radius: 12px;
+        gap: 5px 0;
+        padding-bottom: 10px;
+
+        .avatar {
+          width: 55px;
+          height: 55px;
+        }
+
+        &.winner-1 {
+          height: 78px;
+
+          .avatar {
+            width: 66px;
+            height: 66px;
+          }
+        }
+      }
+    }
+
+    .roi-text {
+      font-size: 12px;
+      height: 18px;
+      line-height: 18px;
+
+      .roi-text-content {
+        height: 18px;
+        line-height: 18px;
+
+        &.star:after {
+          width: 12px;
+          height: 12px;
+          background-size: 12px 12px;
+        }
+      }
+    }
+  }
+}
+
+// end message
+
+.end-message {
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
+// search
+
+.search {
+  .ant-input-wrapper,
+  .ant-input-affix-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+
+    input {
+      color: #ffffff;
+
+      &::placeholder {
+        color: #ffffff;
+      }
+    }
+
+    .ant-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #fff;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: #fff;
+      }
+
+      svg {
+        fill: #fff;
+      }
+    }
+
+    .ant-input-clear-icon {
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+// prediction-card
+
+.predictions-content {
+  gap: 18px;
+
+  .prediction-card {
+    width: 100%;
+    max-width: calc(33.3% - 12px);
+    background: linear-gradient(0deg, #ffffff, #ffffff), linear-gradient(180deg, #ffffff 35.44%, #e8f3ff 100%);
+    box-shadow: 0px 25px 30px rgba(232, 94, 48, 0.45);
+    border-radius: 24px;
+    padding: 25px;
+
+    .author {
+      border-radius: 20px;
+      background-color: #f1f6fc;
+      padding: 18px;
+
+      .avatar {
+        width: 46px;
+        height: 46px;
+        background: linear-gradient(180deg, #ffd856 0%, #eea02e 100%);
+        border-radius: 10px;
+      }
+
+      .author-name {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .author-roi {
+        font-size: 11px;
+        font-weight: bold;
+      }
+    }
+    .prediction-card-roi {
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 1;
+
+      & > .roi-percent {
+        font-size: 24px;
+      }
+    }
+    .content-label {
+      color: #a6b8cd;
+      font-size: 12px;
+    }
+    .content {
+      color: #1e3a59;
+      font-size: 20px;
+      font-weight: bold;
+
+      .date {
+        font-size: 14px;
+        font-weight: normal;
+        margin-left: 5px;
+        color: #1e3a59;
+      }
+    }
+    .date {
+      color: #a6b8cd;
+      font-size: 12px;
+    }
+    .token {
+      border-bottom: 1px solid #a6b8cd;
+      padding-top: 15px;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    gap: 14px;
+
+    .prediction-card {
+      max-width: 100%;
+      box-shadow: 0px 0px 5px rgba(232, 94, 48, 0.45);
+      padding: 15px;
+      border-radius: 20px;
+
+      .author {
+        padding: 12px;
+        border-radius: 12px;
+
+        .avatar {
+          width: 38px;
+          height: 38px;
+        }
+
+        .author-name {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .author-roi {
+          font-size: 10px;
+          font-weight: normal;
+        }
+      }
+      .prediction-card-roi {
+        font-size: 40px;
+
+        & > .roi-percent {
+          font-size: 18px;
+        }
+      }
+      .content {
+        font-size: 16px;
+      }
+      .trend {
+        img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      .token {
+        padding-top: 15px;
+        padding-bottom: 10px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+// -------------
 
 .tabtitle {
   border-bottom-width: 1px;

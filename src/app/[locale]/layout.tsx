@@ -75,7 +75,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Web3Modal>
             <Header />
-            {/*<main className="w-full max-w-7xl px-2 py-2">{children}</main>*/}
+            <main className="w-full px-4 lg:px-8 py-8">{children}</main>
           </Web3Modal>
           <ToastContainer />
           {/*<div className="fixed bottom-0 z-50 w-full max-w-7xl px-2 py-2">*/}

@@ -92,26 +92,24 @@ export function Prediction(props: PredictionPropType) {
   const resultIcon = () =>
     predictionResult === true ? (
       <div className="tooltip tooltip-left" data-tip={t("ROI")}>
-        <span className="text-lg text-success font-bold lg:text-2xl">
+        <span className="prediction-card-roi text-success">
           {/*{ROI(props.price, predictionResultPrice)}*/}
           {+props.roi > 10000 ? (
             <span>&gt; 100X</span>
           ) : (
             <>
               <span>{props.roi}</span>
-              <span className="text-base">%</span>
+              <span className="roi-percent">%</span>
             </>
           )}
         </span>
       </div>
     ) : predictionResult === false ? (
-      <div className="tooltip tooltip-left" data-tip={t("ROI")}>
-        <span className="text-lg text-error font-bold lg:text-2xl">
-          {/*﹣{ROI(props.price, predictionResultPrice)}*/}
-          {props.roi}
-          <span className="text-base">%</span>
-        </span>
-      </div>
+      <span className="prediction-card-roi text-error">
+        {/*﹣{ROI(props.price, predictionResultPrice)}*/}
+        {props.roi}
+        <span className="roi-percent">%</span>
+      </span>
     ) : (
       <Image src="/unknown.svg" width={48} height={48} priority alt={t("Unknown")} />
     );
@@ -166,104 +164,80 @@ export function Prediction(props: PredictionPropType) {
     !isDeleted &&
     props.coin && (
       <div
-        className="flex flex-col w-full px-2 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
+        className="prediction-card flex flex-col w-full px-2 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
         key={props.id}
       >
         <div className="author flex w-full justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Avatar className="w-12 rounded-full" user={props.userView} />
-            <div className="flex flex-col lg:flex-row gap-0 lg:gap-2 items-start lg:items-center">
-              <div className="text-base font-bold">
+          <div className="flex items-center gap-2 lg:gap-4">
+            <Avatar className=" " user={props.userView} />
+            <div className="flex flex-col items-start justify-center">
+              <div className="author-name">
                 {/*TODO alias*/}
                 <Link href={"/user/" + props.userView?.alias} className="link">
                   {props.userView && props.userView.name ? props.userView.name : t("Anonymous")}
                 </Link>
               </div>
-              {/*<div>@{props.userView && props.userView.screenName ? props.userView.screenName : "anonymous"}</div>*/}
-              <div>
+              <div className="author-roi">
                 <Accuracy accuracy={props.userView?.accuracy} />
               </div>
             </div>
           </div>
-          <div className="date hidden lg:block">
-            {props.createTime ? dateFormat(props.createTime) : new Date().toLocaleString()}
-          </div>
-          <div className="flex items-center lg:hidden">{resultIcon()}</div>
         </div>
-        <div className="prediction flex w-full flex-col lg:flex-row justify-between items-start lg:items-center lg:pl-5">
-          <div className="flex items-center gap-2 min-w-60" title={props.explanation}>
-            {props.trend === "rise" ? (
-              <Image src="/rise.svg" width={64} height={64} priority alt={t("Rise")} />
-            ) : (
-              <Image src="/fall.svg" width={64} height={64} priority alt={t("Fall")} />
-            )}
-            <Link href={props.coin.url} target="_blank" className="link text-primary text-2xl font-bold flex flex-col">
-              <span>{props.coin.symbol}</span>
-              <span className="text-xs font-normal">{props.coin.name}</span>
-            </Link>
+        <div className="prediction flex w-full flex-col justify-between items-center">
+          <div className="token flex flex-row w-full justify-between items-center">
+            <div className="trend flex items-center gap-x-1 lg:gap-x-2" title={props.explanation}>
+              {props.trend === "rise" ? (
+                <Image src="/rise.svg" width={64} height={64} priority alt={t("Rise")} />
+              ) : (
+                <Image src="/fall.svg" width={64} height={64} priority alt={t("Fall")} />
+              )}
+              <Link href={props.coin.url} target="_blank" className="link text-xl lg:text-2xl font-bold flex flex-col">
+                <span>{props.coin.symbol}</span>
+                <span className="text-neutral text-xs font-normal">{props.coin.name}</span>
+              </Link>
+            </div>
+            <div className="flex items-center">{resultIcon()}</div>
           </div>
-          <div className="flex flex-col items-start gap-2 grow">
-            <div className="flex flex-col lg:flex-row lg:items-center">
-              <span>{t("PriceAtCreate")}&nbsp;</span>
-              <span className="text-xs lg:text-sm">
-                <span className="font-bold text-accent text-sm">{formatPrice(props.price)}</span> (
-                {props.createTime && dateFormat(props.createTime)})
+          <div className="flex flex-col items-start gap-2 w-full">
+            <div className="flex flex-col items-start">
+              <span className="content-label">{t("PriceAtCreate")}&nbsp;</span>
+              <span className="content">
+                <span>{formatPrice(props.price)}</span>
+                <span className="date">({props.createTime && dateFormat(props.createTime)})</span>
               </span>
             </div>
-            <div className="flex flex-col lg:flex-row lg:items-center">
-              <span>{t("PriceAtFinish")}&nbsp;</span>
-              <span className="text-xs lg:text-sm">
-                <span className={`font-bold text-sm ${getTextColor(predictionResultPrice)}`}>
-                  {formatPrice(predictionResultPrice)}
-                  {/*{predictionResult != null &&*/}
-                  {/*  predictionResultPrice &&*/}
-                  {/*  " (ROI:" + ROI(props.price, predictionResultPrice) + "%)"}*/}
+            <div className="flex flex-col items-start">
+              <span className="content-label">{t("PriceAtFinish")}&nbsp;</span>
+              <span className="content">
+                <span className={`${getTextColor(predictionResultPrice)}`}>{formatPrice(predictionResultPrice)}</span>
+                <span className="date">
+                  (
+                  {predictionResultActualTime
+                    ? dateFormat(predictionResultActualTime)
+                    : predictionResultTime
+                      ? dateFormat(predictionResultTime)
+                      : "-"}
+                  )
                 </span>
-                &nbsp;(
-                {predictionResultActualTime
-                  ? dateFormat(predictionResultActualTime)
-                  : predictionResultTime
-                    ? dateFormat(predictionResultTime)
-                    : "-"}
-                )
               </span>
             </div>
-            {/*<div className="flex flex-col lg:flex-row lg:items-center">*/}
-            {/*  <span>*/}
-            {/*    Price (1d):{" "}*/}
-            {/*    <span className={`font-bold ${getTextColor(props.priceDayOne)}`}>{formatPrice(props.priceDayOne)}</span>*/}
-            {/*  </span>*/}
-            {/*  <span className="lg:ml-2">*/}
-            {/*    Price (3d):{" "}*/}
-            {/*    <span className={`font-bold ${getTextColor(props.priceDayThree)}`}>*/}
-            {/*      {formatPrice(props.priceDayThree)}*/}
-            {/*    </span>*/}
-            {/*  </span>*/}
-            {/*  <span className="lg:ml-2">*/}
-            {/*    Price (5d):{" "}*/}
-            {/*    <span className={`font-bold ${getTextColor(props.priceDayFive)}`}>{formatPrice(props.priceDayFive)}</span>*/}
-            {/*  </span>*/}
-            {/*  <span className="lg:ml-2">*/}
-            {/*    Price (7d):{" "}*/}
-            {/*    <span className={`font-bold ${getTextColor(props.priceDaySeven)}`}>*/}
-            {/*      {formatPrice(props.priceDaySeven)}*/}
-            {/*    </span>*/}
-            {/*  </span>*/}
-            {/*</div>*/}
-            {(props.tweetUrl || props.explanation) && (
-              <div className="flex lg:items-center gap-2">
-                {props.explanation && (
-                  <div className="tooltip" data-tip={props.explanation}>
-                    <span className="link text-primary mr-2">{t("ViewExplanation")}</span>
-                  </div>
-                )}
-                {props.tweetUrl && (
-                  <a href={props.tweetUrl} target="_blank">
-                    {t("OpenTweet")}
-                  </a>
-                )}
-              </div>
-            )}
+            <div className="flex flex-row w-full items-center justify-between">
+              <div className="date">{props.createTime ? dateFormat(props.createTime) : "--"}</div>
+              {(props.tweetUrl || props.explanation) && (
+                <div className="flex items-center gap-x-1">
+                  {props.explanation && (
+                    <div className="tooltip" data-tip={props.explanation}>
+                      <span className="btn btn-primary btn-sm rounded-full mr-2">{t("ViewExplanation")}</span>
+                    </div>
+                  )}
+                  {props.tweetUrl && (
+                    <a href={props.tweetUrl} target="_blank" className="btn btn-primary btn-sm rounded-full">
+                      {t("OpenTweet")}
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
             {predictionResult == null && props.userView && props.userView.alias === currentUserAlias && (
               <div className="flex flex-col lg:flex-row lg:items-center">
                 <button
@@ -304,7 +278,6 @@ export function Prediction(props: PredictionPropType) {
               </>
             )}
           </div>
-          <div className="flex items-center hidden lg:block">{resultIcon()}</div>
         </div>
       </div>
     )

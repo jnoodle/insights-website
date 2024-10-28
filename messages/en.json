@@ -25,7 +25,7 @@
     "mentions": "mentions"
   },
   "TopPrediction": {
-    "Title": "Top Prediction ROI Ranking"
+    "Title": "ROI Leaderboard"
   },
   "TokenLabel": {
     "24HChange": "24H Price Change:"

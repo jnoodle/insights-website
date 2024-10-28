@@ -25,7 +25,7 @@
     "mentions": "mentions"
   },
   "TopPrediction": {
-    "Title": "Classement du rendement des prédictions"
+    "Title": "Classement ROI"
   },
   "TokenLabel": {
     "24HChange": "Variation de prix 24H :"

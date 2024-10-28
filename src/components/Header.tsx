@@ -17,7 +17,7 @@ export function Header() {
   return (
     <>
       <div className="wrap flex items-center justify-center w-full bg-white h-16 lg:h-24 top-0 z-50 fixed">
-        <div className="header navbar w-full max-w-7xl px-2 py-1">
+        <div className="header navbar w-full px-2 py-1">
           <div className="navbar-start">
             <div className="p-0 flex">
               <Link href="/" className="relative logo lg:hover:scale-125 lg:transition-all">

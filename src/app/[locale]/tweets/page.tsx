@@ -55,9 +55,9 @@ export default function Home() {
       next={fetchMoreData}
       hasMore={hasMore}
       loader={<Loading />}
-      endMessage={<p className="text-center py-2">{t("EndMessage")}</p>}
+      endMessage={<p className="end-message">{t("EndMessage")}</p>}
     >
-      <div className="flex flex-col items-center justify-between w-full pt-14">
+      <div className="main-content flex flex-col items-center justify-between w-full pt-8 mx-auto bg-white rounded-3xl px-8">
         <TabTitle active="tweets" />
         {tweets.map((t) => (
           <Tweet key={t.id} {...t} />

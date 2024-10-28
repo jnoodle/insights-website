@@ -125,7 +125,7 @@ export default function Home() {
 
   // @ts-ignore
   return (
-    <div className="flex flex-col items-center justify-between w-full pt-4">
+    <div className="main-content flex flex-col items-center justify-between w-full pt-8 mx-auto bg-white rounded-3xl px-8">
       <h1 className="text-xl text-accent font-bold lg:mb-4 mb-2">{t("MyProfileTitle")}</h1>
       {!isConnected && (
         <div role="alert" className="alert alert-warning">

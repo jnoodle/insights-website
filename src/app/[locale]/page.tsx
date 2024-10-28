@@ -86,28 +86,32 @@ export default function Home() {
       next={fetchMoreData}
       hasMore={hasMore}
       loader={<Loading />}
-      endMessage={<p className="text-center py-2">{t("EndMessage")}</p>}
+      endMessage={<p className="end-message">{t("EndMessage")}</p>}
     >
-      <div className="flex flex-col items-center justify-between w-full pt-14">
+      <div className="main-content flex flex-col items-center justify-between w-full mx-auto">
         <TabTitle active="predictions" />
         <TopPredictions />
-        <div className="w-full text-right mt-2">
-          <AddPrediction onSuccess={handerAddPredictionSuccess} />
-        </div>
-        <div className="w-full text-right mt-2">
-          <Search
-            placeholder={t("PredictionSearchPlaceholder")}
-            allowClear
-            onSearch={onSearch}
-            /*
+        <div className="flex items-center justify-end w-full gap-x-2 py-6">
+          <div className="text-right mt-2 w-full max-w-md">
+            <Search
+              placeholder={t("PredictionSearchPlaceholder")}
+              allowClear
+              onSearch={onSearch}
+              /*
             // @ts-ignore */
-            onClear={onClear}
-            className="w-full max-w-96"
-          />
+              onClear={onClear}
+              className="w-full search"
+            />
+          </div>
+          <div className="text-right mt-2">
+            <AddPrediction onSuccess={handerAddPredictionSuccess} />
+          </div>
         </div>
-        {predictions.map((t) => (
-          <Prediction key={t.id} {...t} />
-        ))}
+        <div className="predictions-content flex flex-row flex-wrap">
+          {predictions.map((t) => (
+            <Prediction key={t.id} {...t} />
+          ))}
+        </div>
       </div>
     </InfiniteScroll>
   );

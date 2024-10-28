@@ -37,7 +37,7 @@ export default function Home({ params }: { params: { alias: string } }) {
   }, []);
 
   return userInfo && userInfo.alias ? (
-    <div className="flex flex-col items-center justify-between w-full pt-4 lg:pt-8">
+    <div className="main-content flex flex-col items-center justify-between w-full pt-8 mx-auto bg-white rounded-3xl px-8">
       <div className="flex items-center gap-2 lg:gap-4 w-full lg:flex-row flex-col">
         <div className="avatar lg:mt-0 mt-4">
           <div className="w-20 lg:w-32 rounded-full">
@@ -80,7 +80,7 @@ export default function Home({ params }: { params: { alias: string } }) {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col items-center justify-between w-full pt-4 lg:pt-8">
+    <div className="main-content flex flex-col items-center justify-between w-full pt-4 lg:pt-8 mx-auto">
       {!isUserExist && <h1 className="text-error">{t("UserNotExist")}</h1>}
     </div>
   );

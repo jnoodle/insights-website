@@ -218,7 +218,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
 
   return (
     <div className="flex w-full flex-col">
-      <div role="tablist" className="tabtitle tabs tabs-bordered w-full max-w-7xl px-2 pt-2">
+      <div role="tablist" className="main-content tabtitle tabs tabs-bordered w-full px-2 pt-2">
         <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
           {t("Predictions")}
         </div>
@@ -243,7 +243,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             next={fetchMorePredictionsData}
             hasMore={predictionsHasMore}
             loader={<Loading />}
-            endMessage={<p className="text-center py-2">{t("PredictionsEndMessage")}</p>}
+            endMessage={<p className="end-message">{t("PredictionsEndMessage")}</p>}
           >
             <div className="flex flex-col items-center justify-between w-full pt-2">
               {predictions.map((t, i) => (
@@ -257,7 +257,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             next={fetchMoreTweetsData}
             hasMore={tweetsHasMore}
             loader={<Loading />}
-            endMessage={<p className="text-center py-2">{t("TweetsEndMessage")}</p>}
+            endMessage={<p className="end-message">{t("TweetsEndMessage")}</p>}
           >
             <div className="flex flex-col items-center justify-between w-full pt-2">
               {tweets.map((t, i) => (
@@ -272,7 +272,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
               next={fetchMoreInvitationsData}
               hasMore={invitationsHasMore}
               loader={<Loading />}
-              endMessage={<p className="text-center py-2">{t("PredictionsEndMessage")}</p>}
+              endMessage={<p className="end-message">{t("PredictionsEndMessage")}</p>}
             >
               <div className="flex flex-row items-center justify-center w-full py-4">
                 <label className="form-control w-full bg-white">

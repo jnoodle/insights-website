@@ -17,7 +17,7 @@ export const dateFormat = (date: string) => {
   // const d = new Date(date);
   // const utc = new Date(d.getTime() + d.getTimezoneOffset() * 60000);
   // return utc.toLocaleString();
-  return dayjs(date.replace("T", " ")).format("YYYY-MM-DD HH:mm:ss");
+  return dayjs(date.replace("T", " ")).format("DD/MM HH:mm");
 };
 
 // remove emoji

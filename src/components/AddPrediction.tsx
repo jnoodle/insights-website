@@ -148,7 +148,7 @@ export function AddPrediction({ onSuccess, currentUserInfo }: { onSuccess?: any;
     <>
       {/*FIXME {((currentUser.tweet && currentUser.tweet.name) || currentUser.isOperator) && (*/}
       {currentUser && (
-        <button className="btn btn-primary btn-sm text-white font-normal" onClick={openAddPrediction}>
+        <button className="btn btn-primary btn-sm font-bold" onClick={openAddPrediction}>
           ＋{t("AddPredictionBtn")}
         </button>
       )}

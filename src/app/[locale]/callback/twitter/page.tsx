@@ -43,7 +43,7 @@ export default function Callback() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between w-full pt-14">
+    <div className="main-content flex flex-col items-center justify-between w-full pt-8 mx-auto bg-white rounded-3xl px-8">
       <h1>
         <span className="loading loading-spinner loading-xs mr-2"></span>
         {t("BindTwitterLoading")}

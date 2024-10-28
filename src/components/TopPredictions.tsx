@@ -47,50 +47,71 @@ export const TopPredictions = () => {
         setIsTopPredictionsLoading(false);
       });
   };
+
+  const renderROI = (p: TopPredictionsType) =>
+    p.roiAverage && (
+      <div className={`roi-text font-bold ${+p.roiAverage >= 0 ? "text-success" : "text-error"}`}>
+        {p.roiAverage > 10000 ? (
+          <span className="roi-text-content star">&gt; 100X</span>
+        ) : (
+          <span className="roi-text-content">{p.roiAverage + "%"}</span>
+        )}
+      </div>
+    );
+
   return (
-    <div className="flex flex-col items-center justify-center w-full my-2 py-4 px-4 border rounded-lg border-secondary">
-      <h1 className="text-accent font-bold text-lg border-b  border-secondary w-full text-center pb-2">{t("Title")}</h1>
-      {isTopPredictionsLoading && <span className="loading loading-dots loading-sm mt-2"></span>}
-      <ol className="text-left w-full list-decimal pl-0 text-neutral text-sm mt-2">
-        {predictions.map((p, i) => (
-          <li key={i} className="p-2 hover:bg-base-200 list-none flex justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-6 text-right">{i + 1}.</div>
-              <Avatar className="w-6 rounded-full" user={p} />
-              <Link href={"/user/" + p?.alias} className="link font-bold text-base">
-                {p.name ? p.name : t("Anonymous")}
-              </Link>
-              {/*<div>*/}
-              {/*  <span>*/}
-              {/*    {t2("Accuracy")}*/}
-              {/*    {p && (p.success || p.failure) ? (*/}
-              {/*      <>*/}
-              {/*        <span className="font-bold">*/}
-              {/*          {numeral(p.success / ((p.success || 0) + (p.failure || 0))).format("0.0%")}*/}
-              {/*        </span>{" "}*/}
-              {/*        ({p.success || 0}/{(p.success || 0) + (p.failure || 0)})*/}
-              {/*      </>*/}
-              {/*    ) : (*/}
-              {/*      "--"*/}
-              {/*    )}*/}
-              {/*  </span>*/}
-              {/*</div>*/}
-            </div>
-            {p.roiAverage && (
-              <div className={`text-base font-bold ${+p.roiAverage >= 0 ? "text-success" : "text-error"}`}>
-                {p.roiAverage > 10000 ? (
-                  <span className="flex items-center">
-                    <span>&gt; 100X</span>
-                    <img src="/star.svg" alt="Star" className="w-6 h-6" />
-                  </span>
-                ) : (
-                  p.roiAverage + "%"
-                )}
+    <div className="ranking-roi ranking flex flex-col items-center justify-center w-full">
+      <h1 className="text-accent w-full pb-2">
+        <i></i>
+        {t("Title")}
+        <i></i>
+      </h1>
+      {isTopPredictionsLoading ? (
+        <span className="loading loading-dots loading-sm mt-4"></span>
+      ) : (
+        predictions &&
+        predictions.length > 4 && (
+          <>
+            <div className="ranking-top flex flex-row">
+              <div className="ranking-top-card winner-2">
+                <Avatar className=" " user={predictions[1]} />
+                <Link href={"/user/" + predictions[1].alias} className="link">
+                  {predictions[1].name ? predictions[1].name : t("Anonymous")}
+                </Link>
+                {renderROI(predictions[1])}
               </div>
-            )}
-          </li>
-        ))}
-      </ol>
+              <div className="ranking-top-card winner-1">
+                <Avatar className=" " user={predictions[0]} />
+                <Link href={"/user/" + predictions[0].alias} className="link">
+                  {predictions[0].name ? predictions[0].name : t("Anonymous")}
+                </Link>
+                {renderROI(predictions[0])}
+              </div>
+              <div className="ranking-top-card winner-3">
+                <Avatar className=" " user={predictions[2]} />
+                <Link href={"/user/" + predictions[2].alias} className="link">
+                  {predictions[2].name ? predictions[2].name : t("Anonymous")}
+                </Link>
+                {renderROI(predictions[2])}
+              </div>
+            </div>
+            <ol className="rank-list text-left w-full list-decimal pl-0 text-neutral text-sm mt-2 hidden lg:block">
+              {predictions.slice(3, 5).map((p, i) => (
+                <li key={i} className="list-none flex justify-between">
+                  <div className="flex items-center">
+                    <div className="rank-no">No. {i + 4}</div>
+                    <Avatar className=" " user={p} />
+                    <Link href={"/user/" + predictions[0].alias} className="link">
+                      {p.name ? p.name : t("Anonymous")}
+                    </Link>
+                  </div>
+                  {renderROI(p)}
+                </li>
+              ))}
+            </ol>
+          </>
+        )
+      )}
     </div>
   );
 };
