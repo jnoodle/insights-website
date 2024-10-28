@@ -16,6 +16,7 @@
     "@telegram-apps/sdk-react": "^1.1.3",
     "@tonconnect/ui-react": "^2.0.6",
     "@twa-dev/sdk": "^7.0.0",
+    "@uidotdev/usehooks": "^2.4.1",
     "@web3modal/wagmi": "^4.2.3",
     "antd": "^5.17.3",
     "axios": "^1.6.8",
@@ -37,6 +38,7 @@
     "tweet-json-to-html": "^1.1.1",
     "tweet-to-html": "^2.0.0",
     "twitter-text": "^3.1.0",
+    "underscore": "^1.13.7",
     "viem": "^2.9.17",
     "wagmi": "^2.12.12"
   },
@@ -48,6 +50,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/twitter-text": "^3.1.10",
+    "@types/underscore": "^1.13.0",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.12.10",
     "eruda": "^3.2.0",

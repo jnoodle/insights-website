@@ -18,14 +18,14 @@ const queryClient = new QueryClient();
 
 // 1. Get projectId at https://cloud.walletconnect.com
 // TODO
-const projectId: string = "020c78253df1f82459d04971122c2600";
+const projectId: string = "0d6a916246a9b46ea361fb3cba425b8e";
 
 // 2. Create wagmiConfig
 const metadata: any = {
   name: "Insights",
   description: "",
-  url: "https://insights.best",
-  icons: ["https://insights.best/favicon.png"],
+  url: "https://web3insights.news",
+  icons: ["https://web3insights.news/favicon.png"],
 };
 
 const chains: [Chain, ...Chain[]] = [mainnet, confluxTestnet];

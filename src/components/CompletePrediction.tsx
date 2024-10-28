@@ -18,7 +18,9 @@ export function CompletePrediction({ id, createTime }: { id: string; createTime:
   const [isPredictionModalOpen, setIsPredictionModalOpen] = useState(false);
 
   const [predictionTime, setPredictionTime] = useState<Dayjs | null>(null);
+  const [predictionStartTime, setPredictionStartTime] = useState<Dayjs | null>(null);
   const [predictionPrice, setPredictionPrice] = useState<number | null>(null);
+  const [predictionStartPrice, setPredictionStartPrice] = useState<number | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [addLoading, setAddLoading] = useState(false);
 
@@ -46,6 +48,8 @@ export function CompletePrediction({ id, createTime }: { id: string; createTime:
       id,
       timestamp: predictionTime.format("YYYY-MM-DD HH:mm:ss"),
       price: predictionPrice,
+      startTimestamp: predictionStartTime ? predictionStartTime.format("YYYY-MM-DD HH:mm:ss") : "",
+      startPrice: predictionStartPrice || "",
     };
 
     // console.log(prediction);
@@ -106,12 +110,28 @@ export function CompletePrediction({ id, createTime }: { id: string; createTime:
           <div className="flex flex-col">
             <DatePicker
               showTime
+              value={predictionStartTime}
+              placeholder="选择预测开始时间（可不填）"
+              onOk={(value) => setPredictionStartTime(value)}
+              onChange={(value) => setPredictionStartTime(value)}
+            />
+          </div>
+          <div className="flex flex-col">
+            <InputNumber
+              value={predictionStartPrice}
+              min={0}
+              className="w-full"
+              onChange={(value) => setPredictionStartPrice(value || 0)}
+              placeholder="输入开始价格（相对USDT价格，可不填）"
+            />
+          </div>
+          <div className="flex flex-col">
+            <DatePicker
+              showTime
               value={predictionTime}
               placeholder="选择预测完成时间"
               onOk={(value) => setPredictionTime(value)}
               onChange={(value) => setPredictionTime(value)}
-              minDate={dayjs(createTime, "YYYY-MM-DD HH:mm:ss")}
-              maxDate={dayjs(dayjs(new Date()), "YYYY-MM-DD HH:mm:ss")}
             />
           </div>
           <div className="flex flex-col">

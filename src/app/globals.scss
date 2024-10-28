@@ -101,6 +101,7 @@ a {
         letter-spacing: 0.08em;
         border-bottom: 4px solid #ffd856;
         background: transparent;
+        text-decoration: none;
       }
     }
   }
@@ -115,6 +116,7 @@ a {
       &:hover,
       &:focus {
         border-bottom: none;
+        text-decoration: none;
         svg {
           fill: #ffd856;
         }

@@ -219,10 +219,10 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
   return (
     <div className="flex w-full flex-col">
       <div role="tablist" className="main-content tabtitle tabs tabs-bordered w-full px-2 pt-2">
-        <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
+        <div role="tab" className={`tab ${activeTab === 0 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
           {t("Predictions")}
         </div>
-        <div role="tab" className={`tab ${activeTab === 1 ? "tab-active" : ""}`} onClick={() => handleTabClick(0)}>
+        <div role="tab" className={`tab ${activeTab === 1 ? "tab-active" : ""}`} onClick={() => handleTabClick(1)}>
           {t("Tweets")}
         </div>
         {!props.isPublic && props.invitationCode && (
@@ -245,7 +245,7 @@ const ProfileTab = forwardRef((props: ProfileTabPropType, ref) => {
             loader={<Loading />}
             endMessage={<p className="end-message">{t("PredictionsEndMessage")}</p>}
           >
-            <div className="flex flex-col items-center justify-between w-full pt-2">
+            <div className="predictions-content flex flex-row flex-wrap pt-2">
               {predictions.map((t, i) => (
                 <Prediction {...t} key={i} />
               ))}

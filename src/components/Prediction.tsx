@@ -239,9 +239,9 @@ export function Prediction(props: PredictionPropType) {
               )}
             </div>
             {predictionResult == null && props.userView && props.userView.alias === currentUserAlias && (
-              <div className="flex flex-col lg:flex-row lg:items-center">
+              <div className="flex flex-row items-center mt-2">
                 <button
-                  className="btn btn-primary btn-xs text-white font-normal"
+                  className="btn btn-primary btn-sm rounded-full"
                   onClick={() => CompletePrediction(props.id)}
                   disabled={btnCompleteLoading}
                 >
@@ -252,7 +252,7 @@ export function Prediction(props: PredictionPropType) {
             )}
             {currentUserIsOperator && (
               <>
-                <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+                <div className="flex flex-col items-end w-full gap-2 border-t border-neutral pt-4 mt-2">
                   {predictionResult == null && (
                     <>
                       <button

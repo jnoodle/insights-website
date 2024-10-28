@@ -19,7 +19,6 @@ import { getMyProfile, getUserProfile, Login } from "@/api/user";
 import Image from "next/image";
 import * as React from "react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 export const clearStorage = () => {
   localStorage.removeItem("insights_signin_message");
@@ -44,7 +43,9 @@ export default function ConnectButton() {
   const [isLoading, setIsLoading] = useState(false);
   // change address
   const [preAddress, setPreAddress] = useState("");
-  const handleConnect = () => {
+  const handleConnect = (e: any) => {
+    e.stopPropagation();
+    e.preventDefault();
     console.log("handleConnect", address);
     if (!address && !isSigning) {
       // connect wallet
@@ -59,7 +60,9 @@ export default function ConnectButton() {
     //   // open({ view: "Account" });
     // }
   };
-  const handleDisconnect = () => {
+  const handleDisconnect = (e: any) => {
+    e.stopPropagation();
+    e.preventDefault();
     disconnect();
     clearStorage();
     window.location.reload();
@@ -70,6 +73,7 @@ export default function ConnectButton() {
     }
   };
   const handleToProfile = (e: any, tab: string | undefined) => {
+    e.stopPropagation();
     e.preventDefault();
     router.push("/profile" + (tab ? "?t=" + tab : ""));
     router.refresh(); //TODO
@@ -191,7 +195,7 @@ export default function ConnectButton() {
             // isConnected && chainId !== +process.env.NEXT_PUBLIC_CorrectChainId! ? "btn-error" : ""
             isConnected && !chainId ? "btn-error" : ""
           }`}
-          // onClick={handleConnect}
+          // onClick={() => {}}
         >
           {isSigning ? (
             "Signing In..."

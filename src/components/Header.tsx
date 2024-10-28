@@ -8,12 +8,14 @@ import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "@/navigation";
 import { useState } from "react";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("Header");
   const tNav = useTranslations("Nav");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { width: browserWidth } = useWindowSize();
   return (
     <>
       <div className="wrap flex items-center justify-center w-full bg-white h-16 lg:h-24 top-0 z-50 fixed">
@@ -125,9 +127,7 @@ export function Header() {
             <div className="justify-center py-2 mr-6 hidden lg:flex">
               <LocaleSwitcher />
             </div>
-            <div className="hidden lg:block">
-              <ConnectButton />
-            </div>
+            <div className="hidden lg:block">{browserWidth && browserWidth >= 1024 && <ConnectButton />}</div>
             <label className="p-4 swap swap-rotate inline-grid lg:hidden">
               <input type="checkbox" checked={mobileMenuOpen} onChange={() => setMobileMenuOpen(!mobileMenuOpen)} />
 
@@ -231,9 +231,7 @@ export function Header() {
           </li>
         </ul>
         <div className="mobile-sub-nav">
-          <div>
-            <ConnectButton />
-          </div>
+          <div>{browserWidth && browserWidth < 1024 && <ConnectButton />}</div>
           <ul className="items-center flex gap-4 justify-center">
             <li>
               <Link href="https://x.com/insightsofweb3" target="_blank" className="">
