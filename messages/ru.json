@@ -157,7 +157,9 @@
     "BindTwitter": "Привязать аккаунт X(Twitter)",
     "BindTwitterLoading": "Привязка аккаунта X(Twitter)...",
     "GetBindTwitterUriError": "Ошибка при получении службы привязки",
-    "BindTwitterSuccess": "Аккаунт X(Twitter) успешно привязан"
+    "BindTwitterSuccess": "Аккаунт X(Twitter) успешно привязан",
+    "UserNotExist": "Пользователь не существует!",
+    "ResetSearch": "Сбросить"
   },
   "Ad": {
     "PointsRanking": "Таблица лидеров",

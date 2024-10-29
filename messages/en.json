@@ -157,7 +157,9 @@
     "BindTwitter": "Bind X(Twitter) Account",
     "BindTwitterLoading": "Binding X(Twitter) Account...",
     "GetBindTwitterUriError": "Error fetching bind service",
-    "BindTwitterSuccess": "X(Twitter) account successfully bound"
+    "BindTwitterSuccess": "X(Twitter) account successfully bound",
+    "UserNotExist": "User does not exist!",
+    "ResetSearch": "Reset"
   },
   "Ad": {
     "PointsRanking": "Leaderboard",

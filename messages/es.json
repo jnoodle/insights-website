@@ -157,7 +157,9 @@
     "BindTwitter": "Vincular cuenta de X(Twitter)",
     "BindTwitterLoading": "Vinculando cuenta de X(Twitter)...",
     "GetBindTwitterUriError": "Error al obtener el servicio de vinculación",
-    "BindTwitterSuccess": "Cuenta de X(Twitter) vinculada exitosamente"
+    "BindTwitterSuccess": "Cuenta de X(Twitter) vinculada exitosamente",
+    "UserNotExist": "L'utilisateur n'existe pas !",
+    "ResetSearch": "Restablecer"
   },
   "Ad": {
     "PointsRanking": "Clasificación",

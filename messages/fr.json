@@ -157,7 +157,9 @@
     "BindTwitter": "Lier le compte X(Twitter)",
     "BindTwitterLoading": "Liaison du compte X(Twitter) en cours...",
     "GetBindTwitterUriError": "Erreur lors de l'obtention du service de liaison",
-    "BindTwitterSuccess": "Compte X(Twitter) lié avec succès"
+    "BindTwitterSuccess": "Compte X(Twitter) lié avec succès",
+    "UserNotExist": "L'utilisateur n'existe pas !",
+    "ResetSearch": "Réinitialiser"
   },
   "Ad": {
     "PointsRanking": "Classement",

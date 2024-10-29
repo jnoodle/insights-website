@@ -246,7 +246,7 @@ a {
     height: 100%;
     background-image: url("../../public/ranking-mask.svg");
     background-repeat: no-repeat;
-    background-size: auto 680px;
+    background-size: auto 900px;
     background-position: center right -80px;
     border-radius: 24px;
     z-index: -1;
@@ -256,7 +256,7 @@ a {
     font-size: 18px;
     font-weight: bold;
     max-width: 23vw;
-    min-height: 24px;
+    min-height: 22px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -324,10 +324,11 @@ a {
     padding: 0 20px 0;
 
     li {
-      padding: 15px 0;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(166, 184, 205, 0.5);
 
-      &:first-child {
-        border-bottom: 1px solid rgba(166, 184, 205, 0.5);
+      &:last-child {
+        border-bottom: none;
       }
 
       & > div {
@@ -357,7 +358,7 @@ a {
     .roi-text-content {
       display: flex;
       height: 30px;
-      line-height: 30px;
+      line-height: 32px;
       position: relative;
 
       &.star:after {
@@ -457,6 +458,9 @@ a {
 // search
 
 .search {
+  .ant-input-affix-wrapper {
+    padding: 3px 11px;
+  }
   .ant-input-wrapper,
   .ant-input-affix-wrapper {
     background: rgba(255, 255, 255, 0.2);
@@ -466,7 +470,7 @@ a {
       color: #ffffff;
 
       &::placeholder {
-        color: #ffffff;
+        color: rgba(255, 255, 255, 0.7);
       }
     }
 
@@ -489,6 +493,14 @@ a {
         fill: #fff;
       }
     }
+
+    .ant-input-group-addon {
+    }
+  }
+
+  .clear-btn {
+    min-height: 1.4rem;
+    font-size: 12px;
   }
 }
 
@@ -496,6 +508,7 @@ a {
 
 .predictions-content {
   gap: 18px;
+  width: 100%;
 
   .prediction-card {
     width: 100%;

@@ -95,7 +95,7 @@ export default function Home() {
           <div className="text-right mt-2 w-full max-w-md">
             <Search
               placeholder={t("PredictionSearchPlaceholder")}
-              allowClear
+              allowClear={{ clearIcon: <span className="clear-btn btn btn-secondary btn-xs">{t("ResetSearch")}</span> }}
               onSearch={onSearch}
               /*
             // @ts-ignore */

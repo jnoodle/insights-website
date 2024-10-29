@@ -96,7 +96,7 @@ export const TopPredictions = () => {
               </div>
             </div>
             <ol className="rank-list text-left w-full list-decimal pl-0 text-neutral text-sm mt-2 hidden lg:block">
-              {predictions.slice(3, 5).map((p, i) => (
+              {predictions.slice(3).map((p, i) => (
                 <li key={i} className="list-none flex justify-between">
                   <div className="flex items-center">
                     <div className="rank-no">No. {i + 4}</div>

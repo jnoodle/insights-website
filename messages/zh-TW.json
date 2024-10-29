@@ -157,7 +157,9 @@
     "BindTwitter": "绑定 X(Twitter) 帳戶",
     "BindTwitterLoading": "X(Twitter) 帳戶綁定中...",
     "GetBindTwitterUriError": "獲取綁定服務出錯",
-    "BindTwitterSuccess": "X(Twitter) 帳戶綁定成功"
+    "BindTwitterSuccess": "X(Twitter) 帳戶綁定成功",
+    "UserNotExist": "使用者不存在！",
+    "ResetSearch": "清空搜寻"
   },
   "Ad": {
     "PointsRanking": "积分排行榜",

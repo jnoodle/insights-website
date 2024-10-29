@@ -157,7 +157,9 @@
     "BindTwitter": "X(Twitter) アカウントをバインドする",
     "BindTwitterLoading": "X(Twitter) アカウントのバインド中...",
     "GetBindTwitterUriError": "バインドサービスの取得に失敗しました",
-    "BindTwitterSuccess": "X(Twitter) アカウントのバインドに成功しました"
+    "BindTwitterSuccess": "X(Twitter) アカウントのバインドに成功しました",
+    "UserNotExist": "ユーザーは存在しません！",
+    "ResetSearch": "リセット"
   },
   "Ad": {
     "PointsRanking": "リーダーボード",

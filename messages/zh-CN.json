@@ -158,7 +158,8 @@
     "BindTwitterLoading": "X(Twitter) 账户绑定中...",
     "GetBindTwitterUriError": "获取绑定服务出错",
     "BindTwitterSuccess": "X(Twitter) 账户绑定成功",
-    "UserNotExist": "用户不存在！"
+    "UserNotExist": "用户不存在！",
+    "ResetSearch": "清空搜索"
   },
   "Ad": {
     "PointsRanking": "积分排行榜",
