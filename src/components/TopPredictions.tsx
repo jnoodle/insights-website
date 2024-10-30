@@ -101,7 +101,7 @@ export const TopPredictions = () => {
                   <div className="flex items-center">
                     <div className="rank-no">No. {i + 4}</div>
                     <Avatar className=" " user={p} />
-                    <Link href={"/user/" + predictions[0].alias} className="link">
+                    <Link href={"/user/" + predictions[i + 3].alias} className="link">
                       {p.name ? p.name : t("Anonymous")}
                     </Link>
                   </div>
