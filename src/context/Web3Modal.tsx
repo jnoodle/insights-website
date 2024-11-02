@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 
 // 1. Get projectId at https://cloud.walletconnect.com
 // TODO
-const projectId: string = "0d6a916246a9b46ea361fb3cba425b8e";
+const projectId: string = "3cf86835898ef3b1ab600f3166f8a3ec";
 
 // 2. Create wagmiConfig
 const metadata: any = {
