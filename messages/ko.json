@@ -110,7 +110,7 @@
     "ConfirmDelete": "이 뉴스를 삭제하시겠습니까?",
     "DeleteSuccess": "뉴스 삭제 성공.",
     "DeleteFailure": "뉴스 삭제 실패.",
-    "ViewMore": "더 보기",
+    "ViewMore": "더보기",
     "Delete": "삭제"
   },
   "AddPrediction": {

@@ -110,7 +110,7 @@
     "ConfirmDelete": "このニュースを削除しますか？",
     "DeleteSuccess": "ニュースの削除に成功しました。",
     "DeleteFailure": "ニュースの削除に失敗しました。",
-    "ViewMore": "もっと見る",
+    "ViewMore": "もっと",
     "Delete": "削除"
   },
   "AddPrediction": {

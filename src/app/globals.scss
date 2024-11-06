@@ -234,7 +234,7 @@ a {
   font-size: 18px;
   color: #1e3a59;
   font-weight: bold;
-  padding: 2.5rem 2.5rem 1.5rem;
+  padding: 70px 40px 24px;
 
   &:after {
     position: absolute;
@@ -253,7 +253,7 @@ a {
   }
 
   .link {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     max-width: 23vw;
     min-height: 22px;
@@ -263,7 +263,7 @@ a {
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 37px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -272,11 +272,47 @@ a {
     font-weight: bold;
 
     i {
-      width: 47px;
-      height: 55px;
+      width: 40px;
+      height: 45px;
       background-image: url("../../public/crown.png");
       background-repeat: no-repeat;
       background-size: 100% auto;
+    }
+  }
+
+  .ranking-more {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    border-radius: 6px;
+    background-color: #edf3f9;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 3px;
+    padding: 5px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #a6b8cd;
+    }
+
+    i {
+      width: 18px;
+      height: 20px;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+
+      &.down {
+        background-image: url("../../public/down.svg");
+      }
+
+      &.up {
+        background-image: url("../../public/up.svg");
+      }
     }
   }
 
@@ -286,7 +322,7 @@ a {
     align-items: flex-end;
     justify-content: center;
     padding: 20px;
-    margin-top: 60px;
+    margin-top: 70px;
 
     .ranking-top-card {
       display: flex;
@@ -296,25 +332,51 @@ a {
       justify-content: flex-end;
       gap: 8px 0;
       width: 100%;
-      height: 150px;
-      padding-bottom: 20px;
+      height: 140px;
+      padding-bottom: 18px;
       border-radius: 24px;
       background: #ffffff;
       box-shadow: 0px 15px 40px rgba(166, 184, 205, 0.5);
 
       .avatar {
-        width: 143px;
-        height: 143px;
+        width: 127px;
+        height: 127px;
         margin-bottom: 5px;
         filter: drop-shadow(0px 8px 22px rgba(30, 58, 89, 0.5));
       }
 
+      .winner-tag {
+        position: absolute;
+        width: 65px;
+        height: 26px;
+        right: 0;
+        top: -40px;
+        font-size: 16px;
+        line-height: 28px;
+        border-radius: 12px 12px 12px 0;
+        background: linear-gradient(270deg, #ffcc56 0%, #ffd856 100%);
+        text-align: center;
+        color: #1e3a59;
+
+        &.winner-tag-1 {
+          background: linear-gradient(270deg, #ffcc56 0%, #ffd856 100%);
+        }
+
+        &.winner-tag-2 {
+          background: linear-gradient(270.13deg, #c7c7c7 -16.29%, #e2e2e2 99.88%);
+        }
+
+        &.winner-tag-3 {
+          background: linear-gradient(270.1deg, #f7a258 -49.14%, #ffc490 99.91%);
+        }
+      }
+
       &.winner-1 {
-        height: 190px;
+        height: 168px;
 
         .avatar {
-          width: 190px;
-          height: 190px;
+          width: 168px;
+          height: 168px;
         }
       }
     }
@@ -343,15 +405,16 @@ a {
       }
       .rank-no {
         color: #1e3a59;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
+        width: 45px;
       }
     }
   }
 
   .roi-text {
     display: flex;
-    font-size: 24px;
+    font-size: 21px;
     align-items: center;
     justify-content: center;
 
@@ -399,6 +462,22 @@ a {
         height: 21px;
       }
     }
+    .ranking-more {
+      right: 12px;
+      top: 12px;
+      font-size: 12px;
+      padding: 5px 0;
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      i {
+        width: 14px;
+        height: 16px;
+      }
+    }
 
     .ranking-top {
       padding: 20px 0 0;
@@ -414,6 +493,16 @@ a {
         .avatar {
           width: 55px;
           height: 55px;
+        }
+        .winner-tag {
+          position: absolute;
+          width: 30px;
+          height: 11px;
+          right: 0;
+          top: -5px;
+          font-size: 7px;
+          line-height: 13px;
+          border-radius: 6px 6px 6px 0;
         }
 
         &.winner-1 {

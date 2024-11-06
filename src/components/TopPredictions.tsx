@@ -24,8 +24,10 @@ export type TopPredictionsType = {
 export const TopPredictions = () => {
   const t = useTranslations("TopPrediction");
   const t2 = useTranslations("Prediction");
+  const t3 = useTranslations("Article");
   const [predictions, setPredictions] = useState<TopPredictionsType[]>([]);
   const [isTopPredictionsLoading, setIsTopPredictionsLoading] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const effectRef = useRef(false);
 
   useEffect((): any => {
@@ -59,8 +61,14 @@ export const TopPredictions = () => {
       </div>
     );
 
+  const toggleMore = () => setShowMore(!showMore);
+
   return (
     <div className="ranking-roi ranking flex flex-col items-center justify-center w-full">
+      <div className="ranking-more" onClick={toggleMore}>
+        <span>{t3("ViewMore")}</span>
+        <i className={showMore ? "up" : "down"}></i>
+      </div>
       <h1 className="text-accent w-full pb-2">
         <i></i>
         {t("Title")}
@@ -74,6 +82,7 @@ export const TopPredictions = () => {
           <>
             <div className="ranking-top flex flex-row">
               <div className="ranking-top-card winner-2">
+                <div className="winner-tag winner-tag-2">No.2</div>
                 <Avatar className=" " user={predictions[1]} />
                 <Link href={"/user/" + predictions[1].alias} className="link">
                   {predictions[1].name ? predictions[1].name : t("Anonymous")}
@@ -81,6 +90,7 @@ export const TopPredictions = () => {
                 {renderROI(predictions[1])}
               </div>
               <div className="ranking-top-card winner-1">
+                <div className="winner-tag winner-tag-1">No.1</div>
                 <Avatar className=" " user={predictions[0]} />
                 <Link href={"/user/" + predictions[0].alias} className="link">
                   {predictions[0].name ? predictions[0].name : t("Anonymous")}
@@ -88,6 +98,7 @@ export const TopPredictions = () => {
                 {renderROI(predictions[0])}
               </div>
               <div className="ranking-top-card winner-3">
+                <div className="winner-tag winner-tag-3">No.3</div>
                 <Avatar className=" " user={predictions[2]} />
                 <Link href={"/user/" + predictions[2].alias} className="link">
                   {predictions[2].name ? predictions[2].name : t("Anonymous")}
@@ -95,8 +106,12 @@ export const TopPredictions = () => {
                 {renderROI(predictions[2])}
               </div>
             </div>
-            <ol className="rank-list text-left w-full list-decimal pl-0 text-neutral text-sm mt-2 hidden lg:block">
-              {predictions.slice(3).map((p, i) => (
+            <ol
+              className={`rank-list text-left w-full list-decimal pl-0 text-neutral text-sm mt-2 ${
+                showMore ? "block" : "hidden"
+              } lg:block`}
+            >
+              {predictions.slice(3, showMore ? 10 : 5).map((p, i) => (
                 <li key={i} className="list-none flex justify-between">
                   <div className="flex items-center">
                     <div className="rank-no">No. {i + 4}</div>

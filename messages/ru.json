@@ -110,7 +110,7 @@
     "ConfirmDelete": "Подтвердить удаление этой новости?",
     "DeleteSuccess": "Новость успешно удалена.",
     "DeleteFailure": "Удаление новости не удалось.",
-    "ViewMore": "еще",
+    "ViewMore": "Больше",
     "Delete": "Удалить"
   },
   "AddPrediction": {

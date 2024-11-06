@@ -110,7 +110,7 @@
     "ConfirmDelete": "Confirmez la suppression de cette actualité ?",
     "DeleteSuccess": "Actualité supprimée avec succès.",
     "DeleteFailure": "La suppression de l'actualité a échoué.",
-    "ViewMore": "plus",
+    "ViewMore": "Plus",
     "Delete": "Supprimer"
   },
   "AddPrediction": {
