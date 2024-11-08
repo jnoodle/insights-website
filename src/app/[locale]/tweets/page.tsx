@@ -57,7 +57,7 @@ export default function Home() {
       loader={<Loading />}
       endMessage={<p className="end-message">{t("EndMessage")}</p>}
     >
-      <div className="main-content flex flex-col items-center justify-between w-full pt-8 mx-auto bg-white rounded-3xl px-8">
+      <div className="main-content flex flex-col items-center justify-between w-full mx-auto">
         <TabTitle active="tweets" />
         {tweets.map((t) => (
           <Tweet key={t.id} {...t} />
