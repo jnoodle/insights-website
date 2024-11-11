@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Chain } from "viem/chains";
 import { ReactNode } from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { confluxTestnet } from "@/context/Blockchains";
+import { confluxEspaceMainnet, confluxEspaceTestnet } from "@/context/Blockchains";
 
 // 0. Setup queryClient
 const queryClient = new QueryClient();
@@ -28,7 +28,7 @@ const metadata: any = {
   icons: ["https://web3insights.news/favicon.png"],
 };
 
-const chains: [Chain, ...Chain[]] = [mainnet, confluxTestnet];
+const chains: [Chain, ...Chain[]] = [mainnet, confluxEspaceMainnet, confluxEspaceTestnet];
 const wagmiConfig = defaultWagmiConfig({
   chains, // required
   projectId, // required

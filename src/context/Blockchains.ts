@@ -19,7 +19,7 @@ export const blastTestnet = defineChain({
 // export const scanUrl = "https://testnet.blastscan.io";
 export const scanUrl = "https://testnet-scan.bitlayer.org";
 
-export const confluxTestnet = defineChain({
+export const confluxEspaceTestnet = defineChain({
   id: 71,
   name: "Conflux eSpace Testnet",
   nativeCurrency: { name: "Conflux", symbol: "CFX", decimals: 18 },
@@ -30,6 +30,22 @@ export const confluxTestnet = defineChain({
     default: {
       name: "Confluxscan",
       url: "https://evmtestnet.confluxscan.io",
+    },
+  },
+  testnet: true,
+});
+
+export const confluxEspaceMainnet = defineChain({
+  id: 1030,
+  name: "Conflux eSpace",
+  nativeCurrency: { name: "Conflux", symbol: "CFX", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://evm.confluxrpc.com"] },
+  },
+  blockExplorers: {
+    default: {
+      name: "Confluxscan",
+      url: "https://evm.confluxscan.io",
     },
   },
   testnet: true,
