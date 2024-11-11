@@ -28,7 +28,7 @@ const metadata: any = {
   icons: ["https://web3insights.news/favicon.png"],
 };
 
-const chains: [Chain, ...Chain[]] = [mainnet, confluxEspaceMainnet, confluxEspaceTestnet];
+const chains: [Chain, ...Chain[]] = [mainnet, confluxEspaceMainnet];
 const wagmiConfig = defaultWagmiConfig({
   chains, // required
   projectId, // required
