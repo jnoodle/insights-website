@@ -54,70 +54,52 @@ export function Article(props: ArticlePropType) {
 
   return (
     !isDeleted && (
-      <div
-        className="flex flex-col w-full px-4 pt-3 pb-4 text-sm border-b border-b-secondary hover:bg-base-200"
-        key={props.id}
-      >
-        <div className="flex w-full flex-col lg:flex-row justify-between items-start lg:items-center">
-          <div className="flex items-center gap-4">
-            <div className="text-base font-bold">
-              <Link href={props.originalLink || "#"} target="_blank" className="text-accent link">
-                {props.title || "Null"}
-              </Link>
-            </div>
-          </div>
-          <div className="date whitespace-nowrap mt-1 lg:mt-0">
-            <div className="badge mr-3 border-secondary bg-secondary hover:bg-primary">
-              <Link href={props.sourceLink || "#"} target="_blank" className="text-neutral hover:text-white">
-                {props.source || "anonymous"}
-              </Link>
-            </div>
-            <span className="text-nowrap text-neutral">
-              {props.sourceCreateTime ? dateFormat(props.sourceCreateTime) : new Date().toLocaleString()}
-            </span>
-          </div>
-        </div>
-        <div className="flex items-center mt-2">
-          {props.thumbnail && (
-            <div className="thumbnail mr-3">
-              <div className="w-32 h-16 bg-neutral">
-                {/*fix cdn image load error: https://images.weserv.nl/*/}
-                <img
-                  src={"https://images.weserv.nl/?url=" + props.thumbnail || "/blockchaindemo.jpg"}
-                  alt={props.title || ""}
-                  style={{ width: "8rem", height: "4rem", objectFit: "cover" }}
-                />
-              </div>
-            </div>
-          )}
-          <div className="flex text-sm items-start justify-between w-full flex-col text-neutral">
+      <div className="article-item" key={props.id}>
+        <div className="flex flex-row w-full gap-x-8">
+          <div className="flex w-full flex-col gap-y-3">
+            <Link href={props.originalLink || "#"} target="_blank" className="article-title">
+              {props.title || "Null"}
+            </Link>
+            <Link href={props.sourceLink || "#"} target="_blank" className="badge">
+              {props.source || "anonymous"}
+            </Link>
+            <img
+              src={props.thumbnail ? "https://images.weserv.nl/?url=" + props.thumbnail : "/news/default2.jpg"}
+              alt={props.title || ""}
+              className="article-img"
+            />
             {viewDetails ? (
-              parse(props.content || "")
+              <div className="article-content">{parse(props.content || "")}</div>
             ) : (
-              <div>
-                {parse(props.subject || "")}
-                <span
-                  className="text-primary ml-2 cursor-pointer text-left inline"
-                  onClick={() => setViewDetails(true)}
-                >
-                  <span>{t("ViewMore")} </span>
-                  <img src="/downArrow.svg" alt="" className="inline w-5" />
-                </span>
-              </div>
+              <div className="article-content">{parse(props.subject || "")}</div>
             )}
+            <div className="article-more">
+              <span onClick={() => setViewDetails(!viewDetails)} className="more-btn">
+                <span>{t("ViewMore")} </span>
+                <img src={!viewDetails ? "/down.svg" : "/up.svg"} alt="" className="inline" />
+              </span>
+              <span className="more-date text-nowrap">
+                {props.sourceCreateTime ? dateFormat(props.sourceCreateTime) : new Date().toLocaleString()}
+              </span>
+            </div>
           </div>
-          {currentUserIsOperator && (
-            <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+          <div className="article-img-content">
+            {/*fix cdn image load error: https://images.weserv.nl/*/}
+            <img
+              src={props.thumbnail ? "https://images.weserv.nl/?url=" + props.thumbnail : "/news/default2.jpg"}
+              alt={props.title || ""}
+            />
+            {currentUserIsOperator && (
               <button
-                className="btn btn-warning btn-xs font-normal"
+                className="btn btn-warning btn-sm font-bold w-36 mt-5"
                 disabled={btnDeleteLoading}
                 onClick={() => handleDeleteNews(props.id)}
               >
                 {t("Delete")}
                 {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
               </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     )

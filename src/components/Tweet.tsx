@@ -158,9 +158,7 @@ export function Tweet(props: TweetPropType) {
             {props.media && props.media.length > 0 ? (
               <div className="flex gap-2 mt-2 w-full flex-wrap">
                 {props.media.map((m: any, i: any) =>
-                  m.mediaUrlHttps ? (
-                    <img src={m.mediaUrlHttps} key={i} className="max-w-40 max-h-40 lg:max-w-80 lg:max-h-80" />
-                  ) : null,
+                  m.mediaUrlHttps ? <img src={m.mediaUrlHttps} key={i} className="tweet-img" /> : null,
                 )}
               </div>
             ) : null}
