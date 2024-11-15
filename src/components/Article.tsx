@@ -66,7 +66,7 @@ export function Article(props: ArticlePropType) {
             <img
               src={props.thumbnail ? "https://images.weserv.nl/?url=" + props.thumbnail : "/news/default2.jpg"}
               alt={props.title || ""}
-              className="article-img"
+              className="article-img lg:hidden"
             />
             {viewDetails ? (
               <div className="article-content">{parse(props.content || "")}</div>
@@ -82,12 +82,23 @@ export function Article(props: ArticlePropType) {
                 {props.sourceCreateTime ? dateFormat(props.sourceCreateTime) : new Date().toLocaleString()}
               </span>
             </div>
+            {currentUserIsOperator && (
+              <button
+                className="btn btn-warning btn-sm font-bold w-36 mt-5 lg:hidden"
+                disabled={btnDeleteLoading}
+                onClick={() => handleDeleteNews(props.id)}
+              >
+                {t("Delete")}
+                {btnDeleteLoading && <span className="loading loading-spinner loading-xs"></span>}
+              </button>
+            )}
           </div>
           <div className="article-img-content">
             {/*fix cdn image load error: https://images.weserv.nl/*/}
             <img
               src={props.thumbnail ? "https://images.weserv.nl/?url=" + props.thumbnail : "/news/default2.jpg"}
               alt={props.title || ""}
+              className="article-img"
             />
             {currentUserIsOperator && (
               <button

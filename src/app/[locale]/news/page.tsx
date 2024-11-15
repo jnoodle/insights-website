@@ -58,7 +58,6 @@ export default function Home() {
       endMessage={<p className="end-message">{t("EndMessage")}</p>}
     >
       <div className="main-content flex flex-col items-center justify-between w-full mx-auto">
-        <TabTitle active="news" />
         <TopTopics />
         {articles.map((t) => (
           <Article key={t.id} {...t} />
